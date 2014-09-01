@@ -2,7 +2,7 @@
 layout: post
 title: "你好"
 description: ""
-category: 
-tags: []
+category: hellocat 
+tags: [hello, testing]
 ---
 {% include JB/setup %}
