@@ -6,3 +6,6 @@ category: hellocat
 tags: [hello, testing]
 ---
 {% include JB/setup %}
+
+hello everettjf
+testing content
