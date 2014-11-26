@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Welcome
+title: Stay Hungry, Stay Foolish
 tagline: Supporting tagline
 ---
 {% include JB/setup %}

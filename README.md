@@ -1,3 +1,3 @@
 # everettjf's blog 
 
-focus on `pentest` and `android` maybe.
+Focus on `Pentest`
