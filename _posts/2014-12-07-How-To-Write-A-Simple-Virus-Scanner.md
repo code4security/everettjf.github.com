@@ -211,12 +211,104 @@ WireShark
 
 ### 基于特征（feature-based）
 1. File Size
-1. Import Address Table
+1. Import Address Table(IAT)
 1. Section
 1. Resource (Version, Company)
 1. Packer
 
 ### 思想
 
-// todo
+如果把“PE文件与操作系统”的关系，比作“人与世界”的关系。
+
+1. 导入函数的类比
+  * 导入函数中包含CreateFile可以看做一个人拿着一支笔，人对世界没有什么危害。
+  * 导入函数CreateService就像人拿着一把小刀，对世界有了一点危害，但也不是那么大。
+  * 导入函数SetWindowsHook或CreateRemoteThread就像人拿着一把枪了，对世界危害就大了。
+2. 节的类比
+  * .text .rdata .data .rsrc .reloc就像一个穿着正常的好人。
+  ![alt text](/stuff/2014/goodman.png 'good man')
+  * .upx .upx1 就像是一个坏人了。
+  ![alt text](/stuff/2014/badman.png 'bad man')
+
+### 机器学习
+- SVM - Support Vector Machine 支持向量机
+- 监督学习算法
+- libsvm
+- svm-toy.exe 简单实用
+
+### 获取病毒样本
+
+[virussign](http://www.virussign.com/)
+
+卡饭或吾爱破解上也都提供了很多样本。
+
+### 开始开发
+
+1. 开发语言 Ruby
+1. 基于三个库 rb-libsvm , pedump , sqlite3
+  可以通过下面这样安装
+  > gem install rb-libsvm
+  > gem intall pedump
+  > gem install sqlite3
+
+### pedump获取文件属性
+1. imports : string list
+1. sections : string list
+1. packer : string
+1. version : string
+1. company : string
+
+### 将文件属性转换为向量（vector）
+
+1. 将packer转换为vector
+有packer为1，否则为0
+
+1. version和company同上。
+
+1. 将导入函数（imports）和节（sections）转换为向量（vector）
+> 可以这样，
+> 首先获取一个干净无毒的系统的system32下的所有文件的导入函数集合set(A)
+> 再获取一堆病毒（例如从virussign上获取到的病毒）的所有导入函数集合set(B)
+> set(C) = set(A) & set(B)
+> set(D) = set(A) - set(B)
+> set(E) = set(B) - set(A)
+> 这样，set(C)set(D)set(E)给予不同的权值。
+
+1. 最后将所有属性按照顺序组合成一个PE文件的vector
+
+### 训练模型
+train
+
+### 测试模型
+predict
+
+### 剩余问题
+- 训练大量的样本
+- 调整参数，降低误报率
+- 加入更多关键的特征，例如OEP是否被修改。
+- 自学习
+
+### 源码
+[source in github](https://github.com/everettjf/RubySVMVirusScanner)
+
+### 以上想法的来源
+QVM -> xiao70 -> me(everettjf)
+
+### 相关书籍
+- 《加密与解密》
+- 《计算机病毒防范艺术》
+- 《病毒分析实战》
+- 《黑客免杀攻防》
+
+- 《集体智慧编程》
+- 《模式分类》
+
+---
+[ppt download](/stuff/2014/HowToWriteASimpleVirusScanner.key)
+
+
+
+
+
+
 
