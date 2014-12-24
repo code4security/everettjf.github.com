@@ -1,6 +1,8 @@
 ---
 layout: page
-title: "About"
+title: "关于"
 description: ""
 ---
 {% include JB/setup %}
+
+// todo
