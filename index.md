@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 求知若饥，虚心若愚
+title: Stay Hungry Stay Foolish 
 tagline: Supporting tagline
 ---
 {% include JB/setup %}

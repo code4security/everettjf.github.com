@@ -8,8 +8,8 @@ highlighter: pygments
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : 我的渗透学习之路 
-tagline: everettjf pentester
+title : 我的渗透学习之路
+tagline: pentester of everettjf
 author :
   name : everettjf
   email : everettjf@live.com
