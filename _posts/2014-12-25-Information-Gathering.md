@@ -35,6 +35,8 @@ tags: [pentest]
   - 使用帮助直接 `man nslookup`
 1. More On PTES
 
+### 主动信息搜集
 
-// todo
+##### nmap
+
 

@@ -22,11 +22,9 @@
 				<nav class="nav-global">
 					<ul>
 						<li class="archive"><a href="/index.html">首页</a></li>
-						<li class="archive"><a href="/archive.html">归档</a></li>
-						<li class="category"><a href="/categories.html">分类</a></li>
-						<li class="tag"><a href="/tags.html">标签</a></li>
 						<li class="page"><a href="/favorites.html">收藏</a></li>
 						<li class="page"><a href="/books.html">书架</a></li>
+						<li class="page"><a href="/recommend.html">推荐</a></li>
 						<li class="page"><a href="/about.html">关于</a></li>
           </ul>
 				</nav>
@@ -46,8 +44,13 @@
 		<div class="unit-foot">
 			<div class="unit-inner unit-foot-inner">
 				<div class="misc vcard">
-					<h4>关于</h4>
 					<ul>
+                        <h4> </h4>
+						<li class="page">
+                                <a href="/archive.html">归档</a>
+                                <a href="/categories.html">分类</a>
+                                <a href="/tags.html">标签</a>
+                        </li>
 						<li class="contact"><address><span class="author fn n">{{ site.author.name }}</span> - <span class="fn email">{{ site.author.email }}</span></address></li>
 						<li class="github"><a href="http://github.com/{{ site.author.github }}/" rel="me">github.com/{{ site.author.github }}</a></li>
 						<li class="twitter"><a href="http://twitter.com/{{ site.author.twitter }}/" rel="me">twitter.com/{{ site.author.twitter }}</a></li>
