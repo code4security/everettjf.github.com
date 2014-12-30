@@ -17,27 +17,27 @@ tags: [emacs]
 
 3. osx10.10.1（界面英文）terminal下使用brew安装emacs，中文显示问号。
 
-- 系统切换为中文，解决。（不切换如何解决，暂不想研究了）
+  - 系统切换为中文，解决。（不切换如何解决，暂不想研究了）
 
 4. osx下，terminal或iterm下meta按键问题
 
-- terminal下
+  - terminal下
 
-- iterm下
+  - iterm下
 
 ## 笔记
 
 1. prelude推荐
 
-- 其他没有试过，作为新手，prelude给了我能量。
+  - 其他没有试过，作为新手，prelude给了我能量。
 
 2. 关于evil与中文输入法
 
-- vim中文输入法切换与vim本身的各种模式切换太别扭了（这也是想体验下emacs的原因之一吧）
+  - vim中文输入法切换与vim本身的各种模式切换太别扭了（这也是想体验下emacs的原因之一吧）
 
 3. osx下交换capslock与ctrl
 
-- 系统配置-》键盘
+  - 系统配置-》键盘
 
 ---
 ## TODO
