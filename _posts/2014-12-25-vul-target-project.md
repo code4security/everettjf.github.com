@@ -1,8 +1,11 @@
 ---
 layout: post
-title: "Vul Target Project"
+title: "草稿：Vul Target Project"
 description: ""
-category: 
+category:
 tags: []
 ---
 {% include JB/setup %}
+
+ubuntu metasploitalbe
+//TODO

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "情报搜集"
+title: "草稿：情报搜集"
 description: ""
 category: pentest
 tags: [pentest]
@@ -38,5 +38,3 @@ tags: [pentest]
 ### 主动信息搜集
 
 ##### nmap
-
-
