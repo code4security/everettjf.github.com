@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Stay Hungry Stay Foolish 
-tagline: Supporting tagline
+title: open source of my brain
+tagline: opensource
 ---
 {% include JB/setup %}
 
@@ -14,4 +14,3 @@ tagline: Supporting tagline
 </span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
-

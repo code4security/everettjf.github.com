@@ -14,7 +14,7 @@
 					{{ content }}
 					<div class="meta">
 						<p class="date-publish">
-							发布日期：
+							Date Publish：
 							<date class="date-pub" title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}" pubdate>
 							<span class="year">{{ page.date | date: '%Y' }}</span>
 							<span class="month"><abbr>{{ page.date | date: '%m' }}</abbr></span>
@@ -22,12 +22,12 @@
 							</date>
 						</p>
 						<ul class="list-category list-linear">
-							<li class="list-head">分类：</li>
+							<li class="list-head">Categories</li>
 							{% assign categories_list = page.categories %}
 							{% include JB/categories_list %}
 						</ul>
 						<ul class="list-tag list-linear">
-							<li class="list-head">标签：</li>
+							<li class="list-head">Tags</li>
 							{% assign tags_list = page.tags %}
 							{% include JB/tags_list %}
 						</ul>
@@ -36,7 +36,7 @@
 				<div class="misc-content">
           {% include JB/comments %}
 				</div><!-- misc-content -->
-				
+
 			</div><!-- bd -->
 			<footer class="unit-foot">
 				<div class="unit-inner unit-foot-inner">
@@ -54,7 +54,7 @@
 						</ul>
 					</nav>
 					<p class="gotop">
-						<a href="#page">回到顶部</a>
+						<a href="#page">Back To Top</a>
 					</p>
 				</div>
 			</footer>

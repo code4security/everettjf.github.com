@@ -37,5 +37,25 @@ tags: [pentest]
 
 ### 主动信息搜集
 
-##### nmap
-wxc S|>>>>>>>>>>>>>>>}>
+#### nmap
+- nmap -sS -Pn <ip>
+```
+nmap -sS -Pn 10.10.10.129
+```
+- -sS
+- -Pn
+- -A
+
+#### ipidseq TCP空闲扫描
+```
+use auxiliary/scanner/ip/ipidseq
+show options
+set RHOSTS 10.10.10.0/24
+set THREADS 50
+run
+```
+get "Incremental" ip
+- nmap参数 -sI 指定空闲主机ip
+``` nmap -Pn -sI <incremental ip> <target ip>```
+
+#### portscan
