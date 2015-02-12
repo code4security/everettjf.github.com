@@ -14,8 +14,6 @@ tags: [pentest]
 - google hacking
 - 网络拓扑扫描映射
 
-- IDS IPS
-
 ### PTES
 [Intelligence Gathering](http://www.pentest-standard.org/index.php/Intelligence_Gathering)
 
@@ -57,5 +55,3 @@ run
 get "Incremental" ip
 - nmap参数 -sI 指定空闲主机ip
 ``` nmap -Pn -sI <incremental ip> <target ip>```
-
-#### portscan

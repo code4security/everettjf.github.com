@@ -1,6 +1,6 @@
 ---
 layout: page
-title: open source of my brain
+title: some note , some mind
 tagline: opensource
 ---
 {% include JB/setup %}
