@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "草稿：Windows程序猿的OSX入门笔记"
+title: "Windows程序猿的OSX入门笔记"
 description: ""
 category: 笔记
 tags: [windows,osx]

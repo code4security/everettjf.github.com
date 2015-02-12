@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "草稿：emacs新手遇到的坑，以及笔记"
+title: "emacs新手遇到的坑，以及笔记"
 description: "vim新手学习emacs中遇到的坑"
 category: emacs
 tags: [emacs]

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: some note , some mind
-tagline: opensource
+tagline: some note , some mind
 ---
 {% include JB/setup %}
 
