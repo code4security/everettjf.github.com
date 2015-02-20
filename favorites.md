@@ -1,12 +1,12 @@
 ---
 layout: page
-title: "收藏"
-description: "常用网站收藏，工具收藏，开源库收藏"
+title: "Favorites"
+description: ""
 ---
 {% include JB/setup %}
 
 
-# 常用网站
+# 网站
 
 
 ---
@@ -19,4 +19,11 @@ description: "常用网站收藏，工具收藏，开源库收藏"
 # 开源库
 
 ---
+
+# 那些影响了我的文字、视频
+
+
+---
+
+# 书籍
 
