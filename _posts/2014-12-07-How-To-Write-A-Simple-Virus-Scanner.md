@@ -1,11 +1,14 @@
---- 
-layout: post 
-title: "编写简易病毒扫描程序"
-description: "编写一个简易病毒扫描程序"
-category: Security
-tags: [Virus,Scanner]
+---
+layout: post
+title: "如何编写简易病毒扫描程序"
+description: "how to write a simple virus scanner in script"
+category: security
+tags: [virus,scanner,machinelearning,ruby,script]
 ---
 {% include JB/setup %}
+
+
+
 
 # 背景
 - 2014年12月7日，开源中国济南城市圈活动[技术分享](http://city.oschina.net/jinan/event/194933)
@@ -15,7 +18,7 @@ tags: [Virus,Scanner]
 # 面向读者
 - 对病毒分析感兴趣的新手
 
-# 主要内容 
+# 主要内容
 - 什么是计算机病毒
 - 反病毒技术的发展
 - 分析计算机病毒
@@ -25,19 +28,17 @@ tags: [Virus,Scanner]
 
 ### 计算机病毒的定义
 1. 1949年，冯诺依曼在论文《Theory of self-reproducing automata》中就第一次给出了病毒的定义：
-
-> “能够实际复制自身的自动机”。
-
-2. wikipedia：计算机病毒是一种在*人为或非人为*的情况下产生的、在*用户不知情或未批准*下，能*自我复制或运行*的电脑程序。
+`“能够实际复制自身的自动机”。`
+1. wikipedia：计算机病毒是一种在*人为或非人为*的情况下产生的、在*用户不知情或未批准*下，能*自我复制或运行*的电脑程序。
 [参考](https://en.wikipedia.org/wiki/Computer_virus)
 
 ### 第一个计算机病毒
 1. 19世纪60年代，贝尔实验室3个人，在磁芯存储器上实现了2个程序，这2个程序想办法复制自身并让杀掉对方的程序，称为“磁芯大战”的游戏。
 
-2. 公认的第一个病毒1971年诞生，叫做Creeper的程序。
+1. 公认的第一个病毒1971年诞生，叫做Creeper的程序。
 [参考](https://en.wikipedia.org/wiki/Creeper_(program)).
 
-3. Reaper是用来清除掉Creeper的类似病毒的程序。
+1. Reaper是用来清除掉Creeper的类似病毒的程序。
 
 ### 病毒的主要特征
 1. 传播性
@@ -70,7 +71,7 @@ tags: [Virus,Scanner]
   * 造成系统重启、崩溃
   * 后期产生很多变种
 
-> 病毒作者很有意思，把自己的名字Parson也写到病毒中了，于是就被抓了。
+`病毒作者很有意思，把自己的名字Parson也写到病毒中了，于是就被抓了。`
 
 1. 恶作剧病毒
   * 女鬼病毒
@@ -97,8 +98,6 @@ tags: [Virus,Scanner]
 
 - 字符串扫描技术
 - 通配符扫描技术
-
-> 据说有杀毒软件通过文件路径判断病毒，这个不太靠谱.
 
 ### 基于文件的第二代扫描技术
 
@@ -132,6 +131,7 @@ tags: [Virus,Scanner]
 ### 多引擎
 
 * 360的QVM、云引擎、小红伞、BitDefender
+
 > 这个只是业务的组合，并没有实质性的改变。
 
 ### 人工智能
@@ -168,11 +168,9 @@ tags: [Virus,Scanner]
 
 > 参考 winnt.h
 
-> 参考
-
 ### 加壳
 - 可执行程序资源压缩
-- 本意为保护文件 
+- 本意为保护文件
 - 特殊的算法
 - 在内存中解压
 - 例如：UPX壳
@@ -193,7 +191,7 @@ Dependency Walker
 
 ### 动态分析
 
-OllyDbg 
+OllyDbg
 Windbg
 WireShark
 …
@@ -247,9 +245,12 @@ WireShark
 1. 开发语言 Ruby
 1. 基于三个库 rb-libsvm , pedump , sqlite3
   可以通过下面这样安装
+
+<pre>
   > gem install rb-libsvm
   > gem intall pedump
   > gem install sqlite3
+</pre>
 
 ### pedump获取文件属性
 1. imports : string list
@@ -266,6 +267,8 @@ WireShark
 1. version和company同上。
 
 1. 将导入函数（imports）和节（sections）转换为向量（vector）
+
+<pre>
 > 可以这样，
 > 首先获取一个干净无毒的系统的system32下的所有文件的导入函数集合set(A)
 > 再获取一堆病毒（例如从virussign上获取到的病毒）的所有导入函数集合set(B)
@@ -273,48 +276,39 @@ WireShark
 > set(D) = set(A) - set(B)
 > set(E) = set(B) - set(A)
 > 这样，set(C)set(D)set(E)给予不同的权值。
+</pre>
 
 1. 最后将所有属性按照顺序组合成一个PE文件的vector
 
 - 可以通过下面的命令获取到存储imports和sections的数据库。
 
-```
+<pre>
 ruby rvsfetchiat.rb --health C:/Windows/System32
-```
-```
 ruby rvsfetchiat.rb --virus E:/train_virus/files
-```
-```
 ruby rvsfetchiat.rb --merge
-```
+</pre>
 
 - 通过下面的命令获取一个文件的属性
 
-```
+<pre>
 ruby rvsfetchiat.rb --file C:/Windows/System32/notepad.exe
-```
+</pre>
 
 ### 训练模型
 指定存储要训练的正常文件的文件夹和病毒文件的文件夹。
 
-```
+<pre>
 ruby rvsscan.rb --train /Users/everettjf/Virus/train/train_health /Users/everettjf/Virus/train/train_virus
-```
+</pre>
 
 ### 测试模型
 
-```
+<pre>
 ruby rvsscan.rb --scan /Users/everettjf/Virus/train/train_virus
-```
-```
 ruby rvsscan.rb --scan /Users/everettjf/Virus/train/train_health
-```
-```
 ruby rvsscan.rb --scan /Users/everettjf/Virus/train/test_virus
-```
-```
 ruby rvsscan.rb --scan /Users/everettjf/Virus/train/test_health
-```
+</pre>
 
 ### 剩余问题
 - 训练大量的样本
@@ -338,11 +332,22 @@ QVM -> xiao70 -> me(everettjf)
 - 《模式分类》
 
 ---
-[ppt download](/stuff/2014/HowToWriteASimpleVirusScanner.key)
 
+### 资料下载
 
+[演示文稿下载](/stuff/2014/HowToWriteASimpleVirusScanner.key)
 
+---
 
+### 个人总结
 
+此次分享存在以下问题：
 
+- 时间估计不足。
+前期由于对内容多少没有把握，且讲解的时间没有经验，估计了30分钟，但结果却超过了1个小时。
+- 互动不足。
+几乎没有互动环节，没有与听众进行互动。
+- 内容侧重点不足。
+前期铺垫知识过多，导致前期时间占用较多。最后的“机器学习实现”部分讲解时间不够充分。
 
+总体来说，相信这次分享加深了大家对病毒的了解。相信再有机会还会进行分享，为济南营造好的程序员氛围做出努力哈。
