@@ -26,9 +26,6 @@ tags: [plan,2014,2015]
 
 
 ### 2014年看的书和视频
-** 基本按时间先后排序 **
-
-
 
 机器人方向：
 <pre>
@@ -88,7 +85,10 @@ Android方向：
 <pre>
 还有遗漏，但相信，想不起来的，一定是那些不那么重要的了，或者要远离我的了。
 </pre>
-`终于知道自己为什么脑子很乱了，太多东西看了，大脑内存不足了。大脑摄入信息的速度是一定的，一下子看了这么多，还没有太深入研究，记忆自然会很快淡化。`
+`终于知道自己为什么脑子很乱了，太多东西看了，`
+`大脑内存不足了。大脑摄入信息的速度是一定的，`
+`一下子看了这么多，还没有太深入研究，记忆自然会很快淡化。`
+`或者说是，贪婪。`
 
 ### 2014年的问题
 
@@ -99,23 +99,24 @@ Android方向：
 - 第一步，辞职。
 - 第二步，找到自己未来5-10年的工作方向。
 
-
 ### 回顾那些年的计划和总结
 
-- 找工作前的大学15天：http://blog.csdn.net/everettjf/article/category/612973
-- 找工作的前15天：http://blog.csdn.net/everettjf/article/category/613985
-- 2009年应聘总结：http://blog.csdn.net/everettjf/article/details/5021874
-- 2012年下半年计划：http://www.cppblog.com/everett/archive/2012/07/02/181065.html
-- 2013年计划：http://www.cppblog.com/everett/archive/2013/01/08/197133.html
-- 2013年上半年总结：http://www.cppblog.com/everett/archive/2013/08/24/202736.html
-- 2013年下半年计划：http://www.cppblog.com/everett/archive/2013/08/24/202737.html
-- 2014年上半年学习计划：http://www.cppblog.com/everett/archive/2014/01/14/205370.html
+- [找工作前的大学15天](http://blog.csdn.net/everettjf/article/category/612973)
+- [找工作的前15天](http://blog.csdn.net/everettjf/article/category/613985)
+- [2009年应聘总结](http://blog.csdn.net/everettjf/article/details/5021874)
+- [2012年下半年计划](http://www.cppblog.com/everett/archive/2012/07/02/181065.html)
+- [2013年计划](http://www.cppblog.com/everett/archive/2013/01/08/197133.html)
+- [2013年上半年总结](http://www.cppblog.com/everett/archive/2013/08/24/202736.html)
+- [2013年下半年计划](http://www.cppblog.com/everett/archive/2013/08/24/202737.html)
+- [2014年上半年学习计划](http://www.cppblog.com/everett/archive/2014/01/14/205370.html)
 
 `这些年，想法很多，想法确实很多。`
 
 ### 结语
 
-`让我想起来，小时候玩四驱车，有了一个四驱车就想要另一个，玩多了后驱就想玩前驱。不专一，不专一，不专一。`
+`让我想起来，小时候玩四驱车，有了一个四驱车就想要另一个，`
+`玩多了后驱就想玩前驱。不专一，不专一，不专一。`
+
 <pre>
 小和尚问老和尚，年轻时你做什么？老和尚说：挑水、砍柴、做饭。
 小和尚又问老和尚，得道后你又做什么？老和尚说：挑水、砍柴、做饭。
