@@ -7,12 +7,6 @@ tags: [pentest]
 ---
 {% include JB/setup %}
 
-## 草稿
-- 要具备从攻击者角度思考问题的能力
-
-- 网页搜索
-- google hacking
-- 网络拓扑扫描映射
 
 ### PTES
 [Intelligence Gathering](http://www.pentest-standard.org/index.php/Intelligence_Gathering)
@@ -56,3 +50,11 @@ nmap -sS -Pn <ip>
 get "Incremental" ip, nmap参数 -sI 指定空闲主机ip
 
     nmap -Pn -sI <incremental ip> <target ip>
+
+## 其他
+- 要具备从攻击者角度思考问题的能力
+
+- 网页搜索
+- google hacking
+- 网络拓扑扫描映射
+
