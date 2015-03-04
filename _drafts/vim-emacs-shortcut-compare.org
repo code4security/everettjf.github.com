@@ -1,0 +1,31 @@
+* 我的常用快捷键对照表
+
+ | vim | emacs   | function            |
+ |-----+---------+---------------------|
+ | i   |         | insert mode         |
+ | :   |         | command mode        |
+ | ESC |         | common mode         |
+ | h   |         | move left           |
+ | l   |         | move right          |
+ | j   |         | move down           |
+ | k   |         | move up             |
+ | :q  |         | quit                |
+ | :q! |         | quit force(no save) |
+ | x   |         | erase current char  |
+ | w   |         |                     |
+ | b   |         |                     |
+ | o   |         |                     |
+ | O   |         |                     |
+ | ^   |         |                     |
+ | $   |         |                     |
+ | 0   |         |                     |
+ | :w  | C-x C-s | save file           |
+ | a   |         |                     |
+ | A   |         |                     |
+ | I   |         |                     |
+ | C-v |         |                     |
+ | C-V |         |                     |
+ | p   |         |                     |
+ | y   |         |                     |
+ | dd  |         |                     |
+ |     |         |                     |

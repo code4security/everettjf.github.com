@@ -21,23 +21,23 @@ brew linkapps emacs
 
 ## 坑
 
-1. windows8.1下emacs24.4部分中文显示为“方块”。
+- windows8.1下emacs24.4部分中文显示为“方块”。
     在.emacs文件中（或者prelude的init.el文件中）加入下面一行：
 <pre>
     (set-fontset-font "fontset-default" 'gb18030 '("Microsoft YaHei" . "unicode-bmp"))
 </pre>
 
-2. .emacs文件和.emacs.d文件夹中的init.el同时存在，只有.emacs文件生效。
+- .emacs文件和.emacs.d文件夹中的init.el同时存在，只有.emacs文件生效。
 <pre>
     当使用prelude时，需要删除.emacs文件(如何使两者都有效？)
 </pre>
 
-3. osx10.10.1（界面英文）terminal下使用brew安装emacs，中文显示问号。
+- osx10.10.1（界面英文）terminal下使用brew安装emacs，中文显示问号。
   <pre>
   系统切换为中文，解决。（不切换如何解决，暂不想研究了）
   </pre>
 
-4. osx下，terminal或iterm下meta按键问题
+- osx下，terminal或iterm下meta按键问题
 
   - terminal下
   <pre>
@@ -53,12 +53,12 @@ brew linkapps emacs
   Rigth option key acts as : +Esc
   </pre>
 
-5. 如何找到.emacs文件的存放位置（尤其是windows下）
+- 如何找到.emacs文件的存放位置（尤其是windows下）
     C-X C-F ~/
 
 ## 笔记
 
-1. prelude推荐
+- prelude推荐
 
   - Github地址：[https://github.com/bbatsov/prelude](https://github.com/bbatsov/prelude)
   - 其他没有试过，作为新手，prelude给了我能量。
@@ -70,7 +70,7 @@ cd ~/.emacs.d
   </pre>
 samples中复制出prelude_modules.el，并启动emacs。
 
-2. 关于evil与中文输入法
+- 关于evil与中文输入法
 
   - 中文输入法切换与vim本身的各种模式切换太别扭了（这也是想体验下emacs的原因之一吧）
   - 如果编写程序还是可以启用evil
@@ -79,15 +79,15 @@ samples中复制出prelude_modules.el，并启动emacs。
   M-x evil-mode
   </pre>
 
-3. osx下交换capslock与ctrl
+- osx下交换capslock与ctrl
 
   - 系统偏好设置->键盘->键盘->修饰键（右下角）
 
-4. 按键重复速度
+- 按键重复速度
 
   - 系统偏好设置->键盘->键盘->调整按键重复（到最快）
 
-5. 安装主题monokai
+- 安装主题monokai
 很喜欢monokai这个主题
 <pre>
 M-x package-install
