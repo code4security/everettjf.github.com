@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "情报搜集"
+title: "情报搜集简介"
 description: ""
 category: pentest
 tags: [pentest]
