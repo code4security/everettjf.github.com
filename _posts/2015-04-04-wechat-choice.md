@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "订阅号：选择"
+title: "选择"
 description: ""
 category: wechart
 tags: [wechat,choice]

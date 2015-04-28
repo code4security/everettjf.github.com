@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "idea分享-签到App"
+title: "idea-签到App"
 description: ""
 category: ideashare
 tags: [ideashare,app]

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "订阅号：计划"
+title: "计划"
 description: ""
 category: wechat
 tags: [plan,wechat]

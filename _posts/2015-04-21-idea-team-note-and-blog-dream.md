@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "idea分享-开源团队笔记"
+title: "idea-开源团队笔记"
 description: ""
 category: idea
 tags: [idea,team,knowledgebase,note]

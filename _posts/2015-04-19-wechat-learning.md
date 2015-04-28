@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "订阅号：学习"
+title: "学习"
 description: ""
 category: learn
 tags: [wechat,learn]
