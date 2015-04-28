@@ -1,0 +1,221 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "---\nlayout: post\ntitle: \"订阅号：理想的工作环境\"\ndescription: \"\"\ncategory: wechat\ntags: [wechat]\n---\n{% include JB/setup %}\n\n*以下想法主要面向软件公司（互联网公司）*\n\n# 多数现有的工作环境\n- 1周工作5天或6天，1天工作8小时、7.5小时或7小时。\n- 办公室隔间。\n- 每年一次或每两年一次的集体旅游。\n- 白色的墙上贴着规章制度。\n- 层级管理。\n- 对员工健康不关注。\n- 全部时间用于工作。\n- 被动的知识分享。\n- 员工固定的12或14、15薪。\n- 乒乓球室。\n- 台式电话。\n- 自己翻墙，甚至隔离网络。\n\n\n# 我认为理想的工作环境\n- 1周工作4天或5天，1天工作7.5小时或7小时。\n- 开放办公环境。\n- 公司内部办公位置随意组合，可以站着编程，甚至可以趴着编程。\n- 内部装饰、涂鸦由员工创造。\n- 每月4天或8天（甚至更多）远程办公时间。\n- 弹性工作时间。\n- 扁平化管理。\n- 关注员工健康，每天定时提醒员工锻炼。\n- 主动的知识分享。\n- 业绩好，年底不只是14、15，甚至24、36薪（有点夸大，但存在）。\n- 乒乓球室、游戏娱乐室、台球室等。\n- 没有台式电话。\n- 公司网络内置翻墙。\n- 全自动咖啡机。\n- 多个白板。\n- 工程学椅子。\n- 人均带宽100MB/s。\n- 有公共书架，每个人都可以贡献书籍。\n- 双显示器。\n\n# 理想的\n- 理想，如何成为现实？\n- 找不到现有的公司，为何不尝试从自己开始。\n\n\n",
+			"file": "_posts/2015-04-28-wechat-work-place.md",
+			"file_size": 1535,
+			"file_write_time": 130747112310000000,
+			"settings":
+			{
+				"buffer_size": 682,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 67.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/everettjf/GitHub/everettjf.github.com/_posts",
+		"/Users/everettjf/GitHub/everettjf.github.com"
+	],
+	"file_history":
+	[
+		"/Users/everettjf/GitHub/everettjf.github.com/index.md",
+		"/Users/everettjf/GitHub/everettjf.github.com/_posts/2015-04-19-wechat-learning.md",
+		"/Users/everettjf/GitHub/everettjf.github.com/_posts/2015-04-21-idea-team-note-and-blog-dream.md",
+		"/Users/everettjf/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/everettjf/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/everettjf/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"ctrl+shift+p"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "_posts/2015-04-28-wechat-work-place.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 682,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								636,
+								636
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "blog.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 354.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
