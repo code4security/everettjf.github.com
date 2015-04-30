@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "ios develop guide for cpp programmer"
+title: "C++转iOS开发一个半月总结"
 description: ""
-category: 
-tags: []
+category: iOS
+tags: [iOS,cpp]
 ---
 {% include JB/setup %}
 

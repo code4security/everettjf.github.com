@@ -1,7 +1,7 @@
 ---
 layout: page
-title: dump my brain
-tagline: dump my brain , some note
+title: [brain dump]
+tagline: [brain dump]
 ---
 {% include JB/setup %}
 
