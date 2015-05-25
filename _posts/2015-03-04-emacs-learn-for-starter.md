@@ -12,7 +12,7 @@ tags: [emacs]
 ## 安装
 - MacOS
     <pre>
-    brew install emacs --cocoa
+    brew install emacs --with-cocoa
     brew linkapps emacs
 
     然后重新打开iTerm2，输入emacs就可以在终端运行emacs了。
