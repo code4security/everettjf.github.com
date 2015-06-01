@@ -13,16 +13,15 @@ tags: [redis]
 # 数据类型
 1. string
   字符串类型（就是最简单的key-value）
-
-  ```
+  <pre>
   SET bar 1
   GET bar
-  ```
+  </pre>
 
 2. hash
   散列类型(key-field1-value1-field2-value2...)
-  
-  ```
+
+  ```ruby
   HSET car price 500
   HSET car name BMW
   HGET car name
