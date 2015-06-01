@@ -13,17 +13,21 @@ tags: [redis]
 # 数据类型
 1. string
   字符串类型（就是最简单的key-value）
+
   ```
   SET bar 1
   GET bar
   ```
+
 2. hash
   散列类型(key-field1-value1-field2-value2...)
+  
   ```
   HSET car price 500
   HSET car name BMW
   HGET car name
   ```
+
 3. list
   列表类型(key-value1-value2...)
   ```
