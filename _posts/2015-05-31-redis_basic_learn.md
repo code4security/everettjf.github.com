@@ -68,7 +68,7 @@ tags: [redis]
   e.g.
   SET blog.name
   GET blog.name
-  <pre>
+  </pre>
 
 2. 文章自增ID
   <pre>
