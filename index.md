@@ -1,7 +1,7 @@
 ---
 layout: page
-title: [brain dump]
-tagline: [brain dump]
+title: [Article List]
+tagline: [article list]
 ---
 {% include JB/setup %}
 
