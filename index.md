@@ -1,7 +1,7 @@
 ---
 layout: page
-title: [Article List]
-tagline: [article list]
+title: [五花八门，样样都通，洋洋不精]
+tagline: [everettjf]
 ---
 {% include JB/setup %}
 
