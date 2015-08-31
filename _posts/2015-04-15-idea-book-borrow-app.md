@@ -5,7 +5,6 @@ description: ""
 category: idea
 tags: [idea,app]
 ---
-{% include JB/setup %}
 
 # 图书借阅登记App（或个人图书管理App）
 

@@ -5,7 +5,6 @@ description: "how to write a simple virus scanner in script"
 category: security
 tags: [virus,scanner,machinelearning,ruby,script]
 ---
-{% include JB/setup %}
 
 
 

@@ -5,7 +5,6 @@ description: ""
 category: idea
 tags: [idea]
 ---
-{% include JB/setup %}
 
 # vim下写中英文混合的文章
 最近写这些文章，一直是在终端下用vim写。但vim的各种快捷键和中文输入法的配合实在是不爽。

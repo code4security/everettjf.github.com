@@ -5,7 +5,6 @@ description: ""
 category: redis
 tags: [redis]
 ---
-{% include JB/setup %}
 
 《redis入门指南》笔记。
 *注意：使用何种类型取决于具体情境，以下仅是某一种方式。*

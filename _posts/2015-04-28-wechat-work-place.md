@@ -5,7 +5,6 @@ description: ""
 category: wechat
 tags: [wechat]
 ---
-{% include JB/setup %}
 
 *以下想法主要面向软件公司（互联网公司）*
 

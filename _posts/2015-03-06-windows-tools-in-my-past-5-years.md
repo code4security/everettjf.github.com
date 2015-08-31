@@ -5,7 +5,6 @@ description: "windows tools in my past 5 years"
 category: tools
 tags: [windows,tools]
 ---
-{% include JB/setup %}
 
 <pre>
 Windows平台的C++开发工作已经5年时间，在即将转向Android开发之时，整理下曾经使用到的工具。

@@ -5,7 +5,6 @@ description: ""
 category: idea
 tags: [idea,team,knowledgebase,note]
 ---
-{% include JB/setup %}
 
 # 团队知识库的需要
 最近加入创业团队，建立团队的知识库。（我以前的公司没有专用的知识库，很多知识都是口口相传的非物质文化遗产。深刻体会到知识库的必要。）调查了3个产品：

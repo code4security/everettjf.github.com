@@ -5,7 +5,6 @@ description: ""
 category: freelance
 tags: [wechat,freelance]
 ---
-{% include JB/setup %}
 
 # 自由职业途径收集
 主要是面向程序员的自由职业。

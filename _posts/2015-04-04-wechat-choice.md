@@ -5,7 +5,6 @@ description: ""
 category: wechart
 tags: [wechat,choice]
 ---
-{% include JB/setup %}
 
 # 每时每刻都在选择
 

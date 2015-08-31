@@ -5,7 +5,6 @@ description: ""
 category: learn
 tags: [wechat,learn]
 ---
-{% include JB/setup %}
 
 # 专一：挑水、砍柴、做饭
 听过的一个故事：

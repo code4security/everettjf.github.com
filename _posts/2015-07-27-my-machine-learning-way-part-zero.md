@@ -5,7 +5,6 @@ description: "machine learning"
 category: machinelearning
 tags: [machinelearning]
 ---
-{% include JB/setup %}
 
 - 这是第0篇，下一篇可能会1年之后再写，也可能不再写。
 - 这不是一片成功的文章，只是一个流水账。

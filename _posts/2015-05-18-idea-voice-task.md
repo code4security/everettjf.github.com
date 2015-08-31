@@ -5,7 +5,6 @@ description: ""
 category: idea
 tags: [wechat,idea]
 ---
-{% include JB/setup %}
 
 # 语音任务指派
 - 我们程序员都在使用各种GTD工具，团队也在使用各种项目管理工具。

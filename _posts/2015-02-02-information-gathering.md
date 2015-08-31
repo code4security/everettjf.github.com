@@ -5,7 +5,6 @@ description: ""
 category: pentest
 tags: [pentest]
 ---
-{% include JB/setup %}
 
 
 ### PTES

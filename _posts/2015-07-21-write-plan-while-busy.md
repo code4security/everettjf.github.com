@@ -5,7 +5,6 @@ description: ""
 category: wechat
 tags: [wechat,plan]
 ---
-{% include JB/setup %}
 
 
 # 坚持与习惯

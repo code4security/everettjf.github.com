@@ -5,7 +5,6 @@ description: ""
 category: wechat,team
 tags: [team]
 ---
-{% include JB/setup %}
 
 
 # 技术分享氛围

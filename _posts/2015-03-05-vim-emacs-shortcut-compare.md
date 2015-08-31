@@ -5,7 +5,6 @@ description: ""
 category: editor
 tags: [vim,emacs]
 ---
-{% include JB/setup %}
 
 <pre>
 习惯了vim快捷键，又了解下emacs。

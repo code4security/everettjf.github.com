@@ -5,7 +5,6 @@ description: ""
 category: note
 tags: [windows,osx]
 ---
-{% include JB/setup %}
 
 ### macbook pro
 2014年10月初，买了macbook pro和《MacTalk人生元编程》，从此一位在Windows下搬了5年砖的C++程序猿不小心跨入了OSX的世界。

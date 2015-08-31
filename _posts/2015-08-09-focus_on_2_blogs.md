@@ -5,7 +5,6 @@ description: ""
 category: blog
 tags: [blog]
 ---
-{% include JB/setup %}
 
 1. CSDN博客重新启用。[http://blog.csdn.net/everettjf](http://blog.csdn.net/everettjf)
 2. cppblog博客暂停。[http://www.cppblog.com/everett/](http://www.cppblog.com/everett/)

@@ -5,7 +5,6 @@ description: ""
 category: wechat
 tags: [wechat,dream]
 ---
-{% include JB/setup %}
 
 从前，在梦的花园里，依古比古依古安，我们要去追……
 

@@ -5,7 +5,6 @@ description: ""
 category: idea
 tags: [wechat,idea]
 ---
-{% include JB/setup %}
 
 # 背景
 - 平时看网页、查资料，看到好的网站就加到收藏夹中，看到就加，看到就加……越来越多。日积月累，成百上千。

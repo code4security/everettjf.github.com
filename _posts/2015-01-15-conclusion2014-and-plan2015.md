@@ -5,7 +5,6 @@ description: "总结过去，计划未来"
 category: plan
 tags: [plan,2014,2015]
 ---
-{% include JB/setup %}
 
 ### 2014关键事件
 1. 媳妇生了个大胖小子，8斤沉。

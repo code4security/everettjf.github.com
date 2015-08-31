@@ -5,7 +5,6 @@ description: ""
 category: wechat
 tags: [plan,wechat]
 ---
-{% include JB/setup %}
 
 # 计划即瞎猜
 

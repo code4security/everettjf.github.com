@@ -5,7 +5,6 @@ description: ""
 category: ideashare
 tags: [ideashare,app]
 ---
-{% include JB/setup %}
 
 # 签到App
 
