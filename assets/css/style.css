@@ -48,7 +48,6 @@ h3 {
   line-height: 24px;
   margin-top: 24px;
   margin-bottom: 20px;
-  text-transform: uppercase;
 }
 h3 small {
   font-size: 13px;
@@ -62,18 +61,15 @@ h4 {
   margin-top: 24px;
   margin-bottom: 16px;
   font-size: 16px;
-  text-transform: uppercase;
 }
 h4 small {
   font-size: 16px;
 }
 h5 {
   font-size: 16px;
-  text-transform: uppercase;
 }
 h6 {
   font-size: 13px;
-  text-transform: uppercase;
   margin: 0;
 }
 /* - Links - */
@@ -216,7 +212,7 @@ q {
 }
 @include hyphens(none);
 pre {
-  
+
 }@include text-shadow(none);
 /* - Font weight classes - */
 .black {
@@ -243,7 +239,6 @@ pre {
   font-size: 60px;
   font-weight: bold;
   line-height: 1;
-  text-transform: uppercase;
 }
 .super.text-center small {
   display: block;
@@ -267,7 +262,6 @@ pre {
 }
 /* - Text transform classes - */
 .text-caps {
-  text-transform: uppercase !important;
 }
 .text-italic {
   font-style: italic;
@@ -473,7 +467,6 @@ html {
 .blog-title {
   font-size: 36px;
   line-height: 36px;
-  text-transform: uppercase;
   margin-bottom: 12px;
 }
 .blog-title span {
@@ -2529,7 +2522,6 @@ body.search-overlay:after {
 .post-list .entry-date {
     display: none;
     font-size: 14px;
-    text-transform: uppercase;
 }
 
 @media only screen and (min-width:48em) {
@@ -3922,7 +3914,6 @@ a#slide.slide:after{
 #sidebar #navigation li a{
     padding:0 0 18px;
     font:700 16px/1em "Cambria";
-    text-transform: uppercase;;
     color:#b3b3b1
     }
 
@@ -4013,7 +4004,7 @@ body.slide{
 /*      Responsive      */
 
 @media screen and (max-width:1140px){
-    
+
     #header,
     #posts-container,
     .entry .text,
@@ -4022,7 +4013,7 @@ body.slide{
     .entry .details{
         width:700px
         }
-    
+
     }
 
 @media screen and (max-width:700px){
@@ -4047,9 +4038,9 @@ body.slide{
 
 
 @media screen and (max-width:500px){
-    
+
     a#slide{
-        position:absolute    
+        position:absolute
         }
 
 
