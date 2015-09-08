@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "使用fastlane实现iOS持续集成脚本"
+title: "使用fastlane实现iOS持续集成"
 description:
 headline:
 modified: 2015-09-08
