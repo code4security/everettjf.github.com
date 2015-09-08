@@ -42,24 +42,24 @@ mathjax:
 fastlane和shenzhen都需要gem安装，把gem更换为`淘宝源`。
 
 1. 安装fastlane
-  {% highlight ruby %}
+  <pre>
   sudo gem install fastlane
-  {% endhighlight}
+  </pre>
   - fastlane是ruby编写，使用gem安装。
   - [https://fastlane.tools/](https://fastlane.tools/)
 
 1. 安装shenzhen
-  {% highlight ruby %}
+  <pre>
   sudo gem install shenzhen
-  {% endhighlight}
+  </pre>
   - 如果只使用了gym命令，而不使用ipa命令，可以不安装。
   - [https://github.com/nomad/shenzhen](https://github.com/nomad/shenzhen)
 
 # 示例步骤
 1. 在xcodeproj文件同级目录下，执行
-  {% highlight ruby %}
+  <pre>
 fastlane init
-  {% endhighlight}
+  </pre>
 fastlane 很强大，甚至能自动截图，自动提交AppStore审核，不过我只用最简单的打包功能。
 这里会有一系列提问。
   - Do you want to get started...? y
@@ -74,17 +74,17 @@ fastlane 很强大，甚至能自动截图，自动提交AppStore审核，不过
   上面有一步要输入AppleID，是因为fastlane（的一个工具sigh，这个字母是H）会自动下载对应的provisioning文件。自动下载provisioning文件，对于经常增加测试设备的Developer证书挺方便。不过，示例就不自动下载了。
 
   执行完成后，会在工程目录下生成fastlane文件夹。
-  {% highlight ruby %}
+  <pre>
 drwxr-xr-x   5 everettjf  staff   170B Sep  8 22:32 fastlane
 drwxr-xr-x  10 everettjf  staff   340B Sep  8 22:00 fastlanedemo
 drwxr-xr-x   5 everettjf  staff   170B Sep  8 22:38 fastlanedemo.xcodeproj
 drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
-  {% endhighlight}
+  </pre>
   我们需要修改fastlane文件夹的两个配置文件：Appfile和Fastfile。（实际是ruby代码）
 
 2. 修改Appfile
 
-  {% highlight ruby %}
+  <pre>
   app_identifier "com.everettjf.fastlanedemo"
   apple_id "aaa@aaa.com"
 
@@ -92,7 +92,7 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
     app_identifier "com.everettjf.fastlanedemoqiye"
     apple_id "bbb@bbb.com"
   end
-  {% endhighlight}
+  </pre>
 
   企业InHouse版本与AppStore的app_identifier、apple_id不同。
   这里for_lane 就是为后面Fastfile中定义的:inhouse版本设置单独的信息。
@@ -102,7 +102,7 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
   这个文件中要编写每个版本的编译和打包代码（Developer版本、AppStore版本、InHouse版本、多个渠道版本），
   每个版本要经过以下几个步骤：
   - 修改版本号和build号（修改为外部传入的版本，例如：1.0.0和100）
-  {% highlight ruby %}
+  <pre>
   def prepare_version(options)
       #say 'version number:'
       #say options[:version]
@@ -117,10 +117,10 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
           xcodeproj: PROJECT_FILE_PATH,
       )
   end
-  {% endhighlight}
+  </pre>
   
   - 修改app identifier（就是bundle id，例如：com.everettjf.fastlanedemo）
-  {% highlight ruby %}
+  <pre>
   def update_app_identifier(app_id)
       update_info_plist(
           xcodeproj:PROJECT_FILE_PATH ,
@@ -135,17 +135,17 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
   end
 
   - 修改签名的配置，配置对应的provision file
-  {% highlight ruby %}
+  <pre>
   def update_provision(typePrefix)
     update_project_provisioning(
         xcodeproj:PROJECT_FILE_PATH ,
         profile:"./fastlane/provision/#{typePrefix}.mobileprovision",
     )
   end
-  {% endhighlight}
+  </pre>
 
   - 渠道版本修改Info.plist文件中对应的字符串
-  {% highlight ruby %}
+  <pre>
   def set_info_plist_value(path,key,value)
     sh "/usr/libexec/PlistBuddy -c \"set :#{key} #{value}\" #{path}"
   end
@@ -156,13 +156,13 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
           "#{channelId}"
       )
   end
-  {% endhighlight}
+  </pre>
 
   - 编译打包为ipa
 
   这步使用了工具shenzhen，也可以使用fastlane推荐的gym。
 
-  {% highlight ruby %}
+  <pre>
   def generate_ipa(typePrefix,options)
     #say 'generate ipa'
     fullVersion = options[:version] + '.' + options[:build]
@@ -176,7 +176,7 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
     )
     sh "mv ./../build/#{APP_NAME}.app.dSYM.zip ./../build/#{APP_NAME}_#{fullVersion}_#{typePrefix}.app.dSYM.zip"
   end
-  {% endhighlight}
+  </pre>
 
 4. 编写shell脚本
   {% highlight sh %}
@@ -203,12 +203,12 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
   do
       fastlane Channel version:$versionNumber build:$buildNumber channel_id:$channelId
   done
-  {% endhighlight}
+  </pre>
 
 
-  {% highlight ruby %}
+  <pre>
   sh build.sh 1.0.0 100
-  {% endhighlight}
+  </pre>
   我们传入主版本号和一个自增的id（一般是jenkins的build number）。
 
 # 配置Jenkins
@@ -228,13 +228,13 @@ sh build.sh 1.0.0 ${BUILD_NUMBER}
 假设我们有两个开发者账号，一个是标准开发者账户（99刀，个人或公司），一个是企业账户（299刀）。
 - 标准开发者账户：aaa@aaa.com
   ```
-  {% highlight ruby %}
+  <pre>
   Identifier中增加com.everettjf.fastlanedemo
   Provisioning Profiles中增加一个 iOS Distribution(AdHoc 和 AppStore) 和 iOS Development
   ```
 - 企业账户：bbb@bbb.com
   ```
-  {% highlight ruby %}
+  <pre>
   Identifier中增加com.everettjf.fastlanedemoqiye
   Provisioning Profiles中增加一个 iOS Distribution(AdInHouse)
   ```
