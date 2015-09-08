@@ -133,6 +133,7 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
           plist_path:"#{UNITTEST_PLIST_FILE_PATH}"
       )
   end
+  </pre>
 
   - 修改签名的配置，配置对应的provision file
   <pre>
