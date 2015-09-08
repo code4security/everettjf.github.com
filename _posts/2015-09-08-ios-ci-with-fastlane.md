@@ -118,7 +118,7 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
       )
   end
   </pre>
-  
+
   - 修改app identifier（就是bundle id，例如：com.everettjf.fastlanedemo）
   <pre>
   def update_app_identifier(app_id)
@@ -179,7 +179,7 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
   </pre>
 
 4. 编写shell脚本
-  {% highlight sh %}
+  <pre>
   #!/bin/sh
 
   #
@@ -227,17 +227,15 @@ sh build.sh 1.0.0 ${BUILD_NUMBER}
 # 苹果开发者证书配置
 假设我们有两个开发者账号，一个是标准开发者账户（99刀，个人或公司），一个是企业账户（299刀）。
 - 标准开发者账户：aaa@aaa.com
-  ```
   <pre>
   Identifier中增加com.everettjf.fastlanedemo
   Provisioning Profiles中增加一个 iOS Distribution(AdHoc 和 AppStore) 和 iOS Development
-  ```
+  </pre>
 - 企业账户：bbb@bbb.com
-  ```
   <pre>
   Identifier中增加com.everettjf.fastlanedemoqiye
   Provisioning Profiles中增加一个 iOS Distribution(AdInHouse)
-  ```
+  </pre>
 
 # 相关文档
 
