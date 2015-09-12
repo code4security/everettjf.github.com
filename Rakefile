@@ -20,6 +20,9 @@
      post.puts "comments: true"
      post.puts "mathjax: "
      post.puts "---"
+     post.puts " "
+     post.puts " "
+     post.puts " "
      post.puts "*文章首次发布于：everettjf.github.io*"
    end
   end
