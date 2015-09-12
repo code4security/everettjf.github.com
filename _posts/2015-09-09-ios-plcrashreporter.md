@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "iOS崩溃收集与分析，使用plcrashreporter"
-description: 
-headline: 
+title: "(编写中)iOS崩溃收集与分析，使用plcrashreporter"
+description:
+headline:
 modified: 2015-09-09
 category: personal
 tags: []
-image: 
-  feature: 
+image:
+  feature:
 comments: true
-mathjax: 
+mathjax:
 ---

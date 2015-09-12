@@ -1,17 +1,18 @@
 ---
 layout: post
 title: "(writing...)iOS knowledge tree"
-description: 
-headline: 
+description:
+headline:
 modified: 2015-09-02
 category: iOS
 tags: [iOS]
-image: 
-  feature: 
+image:
+  feature:
 comments: true
-mathjax: 
+mathjax:
 ---
 
+本文将把我作为一名C++开发转为iOS开发的过程中需要学习的各种知识点罗列出来。
 *for c++ developers*
 
 # Environment
@@ -62,4 +63,3 @@ mathjax:
 # Blog
 
 # Book
-
