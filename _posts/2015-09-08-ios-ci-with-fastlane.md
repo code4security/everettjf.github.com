@@ -11,6 +11,7 @@ image:
 comments: true
 mathjax:
 ---
+*文章首次发布于：everettjf.github.io*
 
 # 简介
 持续集成是个“一次配置长期受益”的工作。但很多小公司都没有。以前在做Windows开发配置感觉简单一些，这次配置iOS的，感觉步骤还挺多。整理出来，分享给大家，不正确的地方请及时指正。
@@ -250,19 +251,4 @@ sh build.sh 1.0.0 ${BUILD_NUMBER}
 一个Developer证书签名的ipa，之后使用其他证书分别签名。
 
 # 重要补充
-1. 安装jenkins的机器上的Xcode要导入开发者账户（存在私钥的账户信息，通过首次创建证书的电脑上的Xcode导出）
-
-
-*文章首次发布于：everettjf.github.io*
-
-
-
-
-
-
-
-
-
-
-
-
+- 安装jenkins的机器上的Xcode要导入开发者账户（存在私钥的账户信息，通过首次创建证书的电脑上的Xcode导出）

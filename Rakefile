@@ -1,4 +1,4 @@
-  # adapted from https://github.com/imathis/octopress/blob/master/Rakefile   
+  # adapted from https://github.com/imathis/octopress/blob/master/Rakefile
   # usage rake new_post['My New Post'] or rake new_post (defaults to "My New Post")
   desc "Start a new post"
   task :new, :title do |t, args|
@@ -20,6 +20,7 @@
      post.puts "comments: true"
      post.puts "mathjax: "
      post.puts "---"
+     post.puts "*文章首次发布于：everettjf.github.io*"
    end
   end
 
@@ -71,7 +72,7 @@
    end
   end
 
-    # adapted from https://github.com/imathis/octopress/blob/master/Rakefile   
+    # adapted from https://github.com/imathis/octopress/blob/master/Rakefile
   # usage rake new_post['My New Post'] or rake new_post (defaults to "My New Post")
   desc "Start a new page"
   task :newpage, :title do |t, args|
