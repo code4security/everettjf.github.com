@@ -1,7 +1,7 @@
 title:            everettjf
-description:      "Love Life , Love Coding"
+description:      Love Life , Love Coding
 logo:
-disqus_shortname: 
+disqus_shortname:
 # Assign a default image for your site's header and footer
 default_bg:       default_bg1.jpg
 search:           true
@@ -26,7 +26,7 @@ owner:
   avatar:         everettjfnew.jpg
   email:          everettjf@live.com
   # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
-  description:    啥都折腾，不能这样
+  description:    Love Life , Love Coding
   # Social networking links used in footer. Update and remove as you like.
   twitter:        everettjf
   facebook:
