@@ -11,3 +11,16 @@ image:
 comments: true
 mathjax:
 ---
+
+
+{% highlight c %}
+int main(){
+  cout << "hello";
+  cout << "hello";
+  cout << "hello";
+  cout << "hello";
+
+  return 0;
+}
+
+{% endhighlight %}
