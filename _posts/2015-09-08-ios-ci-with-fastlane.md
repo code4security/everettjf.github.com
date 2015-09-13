@@ -19,6 +19,7 @@ mathjax:
 
 最近转行iOS开发，首要任务是使用Jenkins（算是hudson的兄弟）配置iOS工程的持续集成。
 查找各种资料后，整理出以下几个关键词。
+
 1. jenkins搭建。
 1. 使用fastlane中提供的工具修改工程配置。
 1. gym 或 ipa 工具编译工程。
@@ -57,42 +58,48 @@ fastlane和shenzhen都需要gem安装，把gem更换为`淘宝源`。
 
 # 示例步骤
 1. 在xcodeproj文件同级目录下，执行
-  <pre>
+
+{% highlight sh %}
 fastlane init
-  </pre>
+{% endhighlight %}
+
 fastlane 很强大，甚至能自动截图，自动提交AppStore审核，不过我只用最简单的打包功能。
 这里会有一系列提问。
-  - Do you want to get started...? y
-  - Do you have everything commited... ? y
-  - App Identifier (com.krausefx.app): com.everettjf.fastlanedemo
-  - Your Apple ID (fastlane@krausefx.com): xxxxxxxx@xxxx.com
-  - ... updates to the App Store or Apple TestFlight? (y/n) n
-  - Do you want to setup 'snapshot'... n
-  - Do you want to use 'sigh'... n （是否自动下载provisioning文件）
-  - The scheme name of your app: fastlanetest （如果就一个工程，也可不输入）
+{% highlight sh %}
+* Do you want to get started...? y
+* Do you have everything commited... ? y
+* App Identifier (com.krausefx.app): com.everettjf.fastlanedemo
+* Your Apple ID (fastlane@krausefx.com): xxxxxxxx@xxxx.com
+* ... updates to the App Store or Apple TestFlight? (y/n) n
+* Do you want to setup 'snapshot'... n
+* Do you want to use 'sigh'... n （是否自动下载provisioning文件）
+* The scheme name of your app: fastlanetest （如果就一个工程，也可不输入）
+{% endhighlight %}
 
   上面有一步要输入AppleID，是因为fastlane（的一个工具sigh，这个字母是H）会自动下载对应的provisioning文件。自动下载provisioning文件，对于经常增加测试设备的Developer证书挺方便。不过，示例就不自动下载了。
 
   执行完成后，会在工程目录下生成fastlane文件夹。
-  <pre>
+{% highlight sh %}
 drwxr-xr-x   5 everettjf  staff   170B Sep  8 22:32 fastlane
 drwxr-xr-x  10 everettjf  staff   340B Sep  8 22:00 fastlanedemo
 drwxr-xr-x   5 everettjf  staff   170B Sep  8 22:38 fastlanedemo.xcodeproj
 drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
-  </pre>
+{% endhighlight %}
+  
   我们需要修改fastlane文件夹的两个配置文件：Appfile和Fastfile。（实际是ruby代码）
 
 2. 修改Appfile
 
-  <pre>
-  app_identifier "com.everettjf.fastlanedemo"
-  apple_id "aaa@aaa.com"
+{% highlight ruby %}
+app_identifier "com.everettjf.fastlanedemo"
+apple_id "aaa@aaa.com"
 
-  for_lane :inhouse do
-    app_identifier "com.everettjf.fastlanedemoqiye"
-    apple_id "bbb@bbb.com"
-  end
-  </pre>
+for_lane :inhouse do
+  app_identifier "com.everettjf.fastlanedemoqiye"
+  apple_id "bbb@bbb.com"
+end
+{% endhighlight %}
+
 
   企业InHouse版本与AppStore的app_identifier、apple_id不同。
   这里for_lane 就是为后面Fastfile中定义的:inhouse版本设置单独的信息。
@@ -102,141 +109,142 @@ drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
   这个文件中要编写每个版本的编译和打包代码（Developer版本、AppStore版本、InHouse版本、多个渠道版本），
   每个版本要经过以下几个步骤：
   - 修改版本号和build号（修改为外部传入的版本，例如：1.0.0和100）
-  <pre>
-  def prepare_version(options)
-      #say 'version number:'
-      #say options[:version]
-      increment_version_number(
-          version_number: options[:version],
-          xcodeproj: PROJECT_FILE_PATH,
-      )
-      #say 'build number:'
-      #say options[:build]
-      increment_build_number(
-          build_number: options[:build],
-          xcodeproj: PROJECT_FILE_PATH,
-      )
-  end
-  </pre>
+{% highlight ruby %}
+
+def prepare_version(options)
+    #say 'version number:'
+    #say options[:version]
+    increment_version_number(
+        version_number: options[:version],
+        xcodeproj: PROJECT_FILE_PATH,
+    )
+    #say 'build number:'
+    #say options[:build]
+    increment_build_number(
+        build_number: options[:build],
+        xcodeproj: PROJECT_FILE_PATH,
+    )
+end
+{% endhighlight %}
 
   - 修改app identifier（就是bundle id，例如：com.everettjf.fastlanedemo）
-  <pre>
-  def update_app_identifier(app_id)
-      update_info_plist(
-          xcodeproj:PROJECT_FILE_PATH ,
-          app_identifier:app_id,
-          plist_path:"#{PLIST_FILE_PATH}"
-      )
-      update_info_plist(
-          xcodeproj:PROJECT_FILE_PATH ,
-          app_identifier:app_id,
-          plist_path:"#{UNITTEST_PLIST_FILE_PATH}"
-      )
-  end
-  </pre>
+{% highlight ruby %}
+def update_app_identifier(app_id)
+    update_info_plist(
+        xcodeproj:PROJECT_FILE_PATH ,
+        app_identifier:app_id,
+        plist_path:"#{PLIST_FILE_PATH}"
+    )
+    update_info_plist(
+        xcodeproj:PROJECT_FILE_PATH ,
+        app_identifier:app_id,
+        plist_path:"#{UNITTEST_PLIST_FILE_PATH}"
+    )
+end
+{% endhighlight %}
 
   - 修改签名的配置，配置对应的provision file
-  <pre>
-  def update_provision(typePrefix)
-    update_project_provisioning(
-        xcodeproj:PROJECT_FILE_PATH ,
-        profile:"./fastlane/provision/#{typePrefix}.mobileprovision",
-    )
-  end
-  </pre>
+{% highlight ruby %}
+def update_provision(typePrefix)
+  update_project_provisioning(
+      xcodeproj:PROJECT_FILE_PATH ,
+      profile:"./fastlane/provision/#{typePrefix}.mobileprovision",
+  )
+end
+{% endhighlight %}
 
   - 渠道版本修改Info.plist文件中对应的字符串
-  <pre>
-  def set_info_plist_value(path,key,value)
-    sh "/usr/libexec/PlistBuddy -c \"set :#{key} #{value}\" #{path}"
-  end
-  def set_channel_id(channelId)
-      set_info_plist_value(
-          "./../fastlanedemo/#{PLIST_FILE_PATH}",
-          'ChannelID',
-          "#{channelId}"
-      )
-  end
-  </pre>
+{% highlight ruby %}
+def set_info_plist_value(path,key,value)
+  sh "/usr/libexec/PlistBuddy -c \"set :#{key} #{value}\" #{path}"
+end
+def set_channel_id(channelId)
+    set_info_plist_value(
+        "./../fastlanedemo/#{PLIST_FILE_PATH}",
+        'ChannelID',
+        "#{channelId}"
+    )
+end
+{% endhighlight %}
 
   - 编译打包为ipa
 
   这步使用了工具shenzhen，也可以使用fastlane推荐的gym。
 
-  <pre>
-  def generate_ipa(typePrefix,options)
-    #say 'generate ipa'
-    fullVersion = options[:version] + '.' + options[:build]
-    channelId = options[:channel_id]
-    ipa(
-        configuration:"Release",
-        scheme:"#{SCHEME_NAME}",
-        destination:"./build",
-        ipa:"#{APP_NAME}_#{fullVersion}_#{typePrefix}.ipa",
-        archive:false
-    )
-    sh "mv ./../build/#{APP_NAME}.app.dSYM.zip ./../build/#{APP_NAME}_#{fullVersion}_#{typePrefix}.app.dSYM.zip"
-  end
-  </pre>
+{% highlight ruby %}
+def generate_ipa(typePrefix,options)
+  #say 'generate ipa'
+  fullVersion = options[:version] + '.' + options[:build]
+  channelId = options[:channel_id]
+  ipa(
+      configuration:"Release",
+      scheme:"#{SCHEME_NAME}",
+      destination:"./build",
+      ipa:"#{APP_NAME}_#{fullVersion}_#{typePrefix}.ipa",
+      archive:false
+  )
+  sh "mv ./../build/#{APP_NAME}.app.dSYM.zip ./../build/#{APP_NAME}_#{fullVersion}_#{typePrefix}.app.dSYM.zip"
+end
+{% endhighlight %}
 
 4. 编写shell脚本
-  <pre>
-  #!/bin/sh
+{% highlight sh %}
+#!/bin/sh
 
-  #
-  # usage:
-  # > sh build.sh 1.0.0 200
-  #
+#
+# usage:
+# > sh build.sh 1.0.0 200
+#
 
-  versionNumber=$1 # 1.0.0
-  buildNumber=$2 # 2000
+versionNumber=$1 # 1.0.0
+buildNumber=$2 # 2000
 
-  rm -rf build
+rm -rf build
 
-  basicLanes="AdHoc AppStore Develop InHouse"
-  for laneName in $basicLanes
-  do
-      fastlane $laneName version:$versionNumber build:$buildNumber
-  done
+basicLanes="AdHoc AppStore Develop InHouse"
+for laneName in $basicLanes
+do
+    fastlane $laneName version:$versionNumber build:$buildNumber
+done
 
-  channelIds="fir 91"
-  for channelId in $channelIds
-  do
-      fastlane Channel version:$versionNumber build:$buildNumber channel_id:$channelId
-  done
-  </pre>
+channelIds="fir 91"
+for channelId in $channelIds
+do
+    fastlane Channel version:$versionNumber build:$buildNumber channel_id:$channelId
+done
+{% endhighlight %}
 
 
-  <pre>
-  sh build.sh 1.0.0 100
-  </pre>
+{% highlight sh %}
+sh build.sh 1.0.0 100
+{% endhighlight %}
   我们传入主版本号和一个自增的id（一般是jenkins的build number）。
 
 # 配置Jenkins
 有了能一键编译的脚本，让Jenkins在获取代码后，调用build.sh就可以了。
 
 安装
-```
+{% highlight sh %}
 brew install jenkins
-```
+{% endhighlight %}
 配置获取代码，获取代码后调用shell：
-```
+{% highlight sh %}
 sh build.sh 1.0.0 ${BUILD_NUMBER}
-```
+{% endhighlight %}
 
 
 # 苹果开发者证书配置
 假设我们有两个开发者账号，一个是标准开发者账户（99刀，个人或公司），一个是企业账户（299刀）。
 - 标准开发者账户：aaa@aaa.com
-  <pre>
-  Identifier中增加com.everettjf.fastlanedemo
-  Provisioning Profiles中增加一个 iOS Distribution(AdHoc 和 AppStore) 和 iOS Development
-  </pre>
+{% highlight sh %}
+Identifier中增加com.everettjf.fastlanedemo
+Provisioning Profiles中增加一个 iOS Distribution(AdHoc 和 AppStore) 和 iOS Development
+{% endhighlight %}
 - 企业账户：bbb@bbb.com
-  <pre>
-  Identifier中增加com.everettjf.fastlanedemoqiye
-  Provisioning Profiles中增加一个 iOS Distribution(AdInHouse)
-  </pre>
+{% highlight sh %}
+Identifier中增加com.everettjf.fastlanedemoqiye
+Provisioning Profiles中增加一个 iOS Distribution(AdInHouse)
+{% endhighlight %}
 
 # 相关文档
 
