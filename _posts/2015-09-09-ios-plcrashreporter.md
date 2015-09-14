@@ -4,7 +4,7 @@ title: "iOS崩溃收集与分析，使用plcrashreporter"
 description:
 headline:
 modified: 2015-09-09
-category: personal
+category: iOS
 tags: []
 image:
   feature:
@@ -156,6 +156,7 @@ pod 'PLCrashReporter', '~> 1.2'
 返回的NSData是plcrashreporter私有的格式，通过官方提供的```plcrashutil```工具可转换为标准的苹果崩溃日志。
 
 例如：
+
 1. 打开示例工程，Command + R 运行，然后退出程序。
 2. 单独通过模拟器运行plcrashreporter2。点击 Exception 触发崩溃。
 3. 再次打开App，App将自动把崩溃日志记录为d.plcrash。
@@ -215,7 +216,7 @@ export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
   https://github.com/kstenerud/KSCrash
 
 # 参考文章
-http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers
+- http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers
 
 
 
