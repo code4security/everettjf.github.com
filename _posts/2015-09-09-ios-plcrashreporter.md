@@ -176,7 +176,7 @@ UUID: B1020E4A-07DD-35E4-B3F0-71E3B7CA49BB (x86_64) plcrashreportertest2.app/plc
 UUID: B1020E4A-07DD-35E4-B3F0-71E3B7CA49BB (x86_64) plcrashreportertest2.app.dSYM/Contents/Resources/DWARF/plcrashreportertest2
 {% endhighlight %}
 
-9.查看crashlog的uuid
+9. 查看crashlog的uuid
 {% highlight sh %}
 Binary Images:
        0x107d23000 -        0x107d4efff +plcrashreportertest2 x86_64  <b1020e4a07dd35e4b3f071e3b7ca49bb> ......
@@ -200,7 +200,7 @@ export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
 [everettjf@e Desktop ]$ ./symbolicatecrash apple.log plcrashreportertest2.app.dSYM > result.log
 {% endhighlight %}
 
-最后，atos，其中0x107d23000可在 Binary Images:后看到。0x0000000107d24c3e是Last Exception Backtrace 中。
+12. 最后，atos，其中0x107d23000可在 Binary Images:后看到。0x0000000107d24c3e是Last Exception Backtrace 中。
 {% highlight sh %}
 [everettjf@e Desktop ]$ xcrun atos -o plcrashreportertest2.app/plcrashreportertest2 -l 0x107d23000
 0x0000000107d24c3e
