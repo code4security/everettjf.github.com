@@ -51,10 +51,15 @@ mathjax:
 1. UITableView
 
 # 特殊知识
+1. MVC
+1. MVVM
 1. KVC (Key Value Coding)
 1. KVO (Key Value Observing)
   - NSMutableArray特殊对待
   - KVC是基础知识
+1. Toll-Free Bridging
+1. Bitcode
+1. Method Swizzing
 
 # 第三方库
 
