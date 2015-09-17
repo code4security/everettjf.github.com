@@ -20,3 +20,13 @@ mathjax:
 - 初中去网吧打游戏，被班主任逮着了，老爸夸我鼠标用的挺溜。
 - 小学时玩四驱车，玩疯了。
 - 小时候在小霸王学习机上照着说明书打出马里奥从屏幕中心向四个角上跑的程序，高兴坏了。
+
+---
+
+{% highlight ruby %}
+E-mail:everettjf@live.com
+Wechat:everettjf
+Weibo:everettjf
+
+Wechat Public:everettjf0x
+{% endhighlight %}
