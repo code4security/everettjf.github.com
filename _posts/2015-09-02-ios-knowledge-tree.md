@@ -38,6 +38,7 @@ mathjax:
 # 语言
 
 1. Objective-C
+2. @dynamic
 
 # 界面开发
 
@@ -62,6 +63,9 @@ mathjax:
 1. Method Swizzing
 1. 关联对象
 2. Objective C++
+3. 消息转发机制（12条）
+4. 缓存delegate（23条）
+5. 
 
 # 第三方库
 
