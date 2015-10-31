@@ -1,0 +1,778 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="iOS,plcrashreporter,崩溃分析," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="everettjf" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="本文示例代码
+简介App上线后，如果崩溃，难道只能干瞪眼？不可能拿到用户的手机来通过Organizer导入崩溃日志，因此需要在程序崩溃时自动收集崩溃的日志，并在程序再次启动时，将崩溃日志上传到服务器。
+
+崩溃日志要关联到某一个revision的代码（如果是svn）。（一般使用持续集成Jenkins，可以通过Jenkins的BuildNumber间接关联到代码）。
+对应版本的dSYM符号文件。（链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS崩溃收集与分析，使用plcrashreporter">
+<meta property="og:url" content="http://everettjf.github.io/2015/09/09/ios-plcrashreporter/index.html">
+<meta property="og:site_name" content="everettjf">
+<meta property="og:description" content="本文示例代码
+简介App上线后，如果崩溃，难道只能干瞪眼？不可能拿到用户的手机来通过Organizer导入崩溃日志，因此需要在程序崩溃时自动收集崩溃的日志，并在程序再次启动时，将崩溃日志上传到服务器。
+
+崩溃日志要关联到某一个revision的代码（如果是svn）。（一般使用持续集成Jenkins，可以通过Jenkins的BuildNumber间接关联到代码）。
+对应版本的dSYM符号文件。（链接">
+<meta property="og:updated_time" content="2015-10-30T10:27:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS崩溃收集与分析，使用plcrashreporter">
+<meta name="twitter:description" content="本文示例代码
+简介App上线后，如果崩溃，难道只能干瞪眼？不可能拿到用户的手机来通过Organizer导入崩溃日志，因此需要在程序崩溃时自动收集崩溃的日志，并在程序再次启动时，将崩溃日志上传到服务器。
+
+崩溃日志要关联到某一个revision的代码（如果是svn）。（一般使用持续集成Jenkins，可以通过Jenkins的BuildNumber间接关联到代码）。
+对应版本的dSYM符号文件。（链接">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> iOS崩溃收集与分析，使用plcrashreporter | everettjf </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?ae4dc36612ce279544bc2e56e0ee9f83";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">everettjf</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              iOS崩溃收集与分析，使用plcrashreporter
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-09T00:00:00+08:00" content="2015-09-09">
+            2015-09-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/开发/" itemprop="url" rel="index">
+                  <span itemprop="name">开发</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/09/09/ios-plcrashreporter/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/09/ios-plcrashreporter/" itemprop="commentsCount"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p><a href="https://github.com/everettjf/ios_crash_report_demo" target="_blank" rel="external">本文示例代码</a></p>
+<h1 id="简介">简介</h1><p>App上线后，如果崩溃，难道只能干瞪眼？不可能拿到用户的手机来通过Organizer导入崩溃日志，因此需要在程序崩溃时自动收集崩溃的日志，并在程序再次启动时，将崩溃日志上传到服务器。</p>
+<ol>
+<li>崩溃日志要关联到某一个revision的代码（如果是svn）。（一般使用持续集成Jenkins，可以通过Jenkins的BuildNumber间接关联到代码）。</li>
+<li>对应版本的dSYM符号文件。（链接时可配置生成）</li>
+</ol>
+<h1 id="直接调用系统函数获取崩溃时的栈信息">直接调用系统函数获取崩溃时的栈信息</h1><p>这种方式，能获取到简单的崩溃信息，但无法配合dSYM文件，定位到具体的哪行代码。且能获取到的崩溃类型种类有限，如果要获取更多的信息还需要更多的工作（下文中的开源的plcrashreporter已经做好了）。</p>
+<ul>
+<li>signal 进行错误信号的捕获</li>
+<li>NSSetUncaughtExceptionHandler 未捕获的OC异常</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> s_fatal_signals[] = &#123;</span><br><span class="line">    SIGABRT,</span><br><span class="line">    SIGBUS,</span><br><span class="line">    SIGFPE,</span><br><span class="line">    SIGILL,</span><br><span class="line">    SIGSEGV,</span><br><span class="line">    SIGTRAP,</span><br><span class="line">    SIGTERM,</span><br><span class="line">    SIGKILL,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> s_fatal_signal_num = <span class="keyword">sizeof</span>(s_fatal_signals) / <span class="keyword">sizeof</span>(s_fatal_signals[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">UncaughtExceptionHandler</span><span class="params">(NSException *exception)</span> </span>&#123;</span><br><span class="line">    NSArray *arr = [exception callStackSymbols];<span class="comment">//得到当前调用栈信息</span></span><br><span class="line">    NSString *reason = [exception reason];<span class="comment">//非常重要，就是崩溃的原因</span></span><br><span class="line">    NSString *name = [exception name];<span class="comment">//异常类型</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SignalHandler</span><span class="params">(<span class="keyword">int</span> code)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    NSLog(@<span class="string">"signal handler = %d"</span>,code);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitCrashReport</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">// 1 linux错误信号捕获</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s_fatal_signal_num; ++i) &#123;</span><br><span class="line">        signal(s_fatal_signals[i], SignalHandler);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 2 objective-c未捕获异常的捕获</span></span><br><span class="line">    NSSetUncaughtExceptionHandler(&amp;UncaughtExceptionHandler);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        InitCrashReport();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate <span class="keyword">class</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="使用PLCrashReporter">使用PLCrashReporter</h1><h2 id="官网">官网</h2><p><a href="https://www.plcrashreporter.org/" target="_blank" rel="external">https://www.plcrashreporter.org/</a></p>
+<h2 id="安装">安装</h2><p>可使用CocoaPods安装：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pod</span> <span class="string">'PLCrashReporter'</span>, <span class="string">'~&gt; 1.2'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="示例">示例</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"> <span class="comment">// Called to handle a pending crash report.</span></span><br><span class="line"> <span class="comment">//</span></span><br><span class="line">- (<span class="keyword">void</span>) handleCrashReport &#123;</span><br><span class="line">     PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];</span><br><span class="line">     NSData *crashData;</span><br><span class="line">     NSError *error;</span><br><span class="line"></span><br><span class="line">     <span class="comment">// Try loading the crash report</span></span><br><span class="line">     crashData = [crashReporter loadPendingCrashReportDataAndReturnError: &amp;error];</span><br><span class="line">     <span class="keyword">if</span> (crashData == nil) &#123;</span><br><span class="line">         NSLog(@<span class="string">"Could not load crash report: %@"</span>, error);</span><br><span class="line">         [crashReporter purgePendingCrashReport];</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line">    [crashData writeToFile:[self crashDataPath] atomically:YES];</span><br><span class="line"></span><br><span class="line">     <span class="comment">// We could send the report from here, but we'll just print out</span></span><br><span class="line">     <span class="comment">// some debugging info instead</span></span><br><span class="line">     PLCrashReport *report = [[PLCrashReport alloc] initWithData: crashData error: &amp;error];</span><br><span class="line">     <span class="keyword">if</span> (report == nil) &#123;</span><br><span class="line">         NSLog(@<span class="string">"Could not parse crash report"</span>);</span><br><span class="line">         [crashReporter purgePendingCrashReport];</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     NSLog(@<span class="string">"Crashed on %@"</span>, report.systemInfo.timestamp);</span><br><span class="line">     NSLog(@<span class="string">"Crashed with signal %@ (code %@, address=0x%"</span> PRIx64 <span class="string">")"</span>, report.signalInfo.name,</span><br><span class="line">           report.signalInfo.code, report.signalInfo.address);</span><br><span class="line">    </span><br><span class="line">    NSString *humanText = [PLCrashReportTextFormatter stringValueForCrashReport:report withTextFormat:PLCrashReportTextFormatiOS];</span><br><span class="line">    </span><br><span class="line">    [self WriteContent:humanText];</span><br><span class="line">    </span><br><span class="line">     <span class="comment">// Purge the report</span></span><br><span class="line">     [crashReporter purgePendingCrashReport];</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">return</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line">    <span class="comment">// Override point for customization after application launch.</span></span><br><span class="line">    </span><br><span class="line">    PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];</span><br><span class="line">    NSError *error;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Check if we previously crashed</span></span><br><span class="line">    <span class="keyword">if</span> ([crashReporter hasPendingCrashReport])</span><br><span class="line">        [self handleCrashReport];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Enable the Crash Reporter</span></span><br><span class="line">    <span class="keyword">if</span> (![crashReporter enableCrashReporterAndReturnError: &amp;error])</span><br><span class="line">        NSLog(@<span class="string">"Warning: Could not enable crash reporter: %@"</span>, error);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配合dSYM文件">配合dSYM文件</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">crashData</span> = [crashReporter loadPendingCrashReportDataAndReturnError: &amp;<span class="built_in">error</span>];</span><br></pre></td></tr></table></figure>
+<p>返回的NSData是plcrashreporter私有的格式，通过官方提供的<code>plcrashutil</code>工具可转换为标准的苹果崩溃日志。</p>
+<p>例如：</p>
+<ol>
+<li>打开示例工程，Command + R 运行，然后退出程序。</li>
+<li>单独通过模拟器运行plcrashreporter2。点击 Exception 触发崩溃。</li>
+<li>再次打开App，App将自动把崩溃日志记录为d.plcrash。</li>
+<li>打开Xcode菜单，Window -&gt; Projects ，点击Derived Data右侧的小箭头，进入 /Users/everettjf/Library/Developer/Xcode/DerivedData/plcrashreportertest2-aoaojvrcqilsxqcarfmgulsddpvc/</li>
+<li>再手动进入目录 Build/Products/Debug-iphonesimulator，这里保存着 plcrashreportertest2.app.dSYM 和 plcrashreportertest2.app 文件，（为方便演示）将这两个文件复制到桌面。（注：产品发布的Archive时，也会生成对应的dSYM文件，会在另一个目录。这些目录其实都是可以配置的，一些工具例如：shenzhen或fastlane中的gym都会自动将dSYM文件夹打包成zip。）(再注：dSYM是个文件夹）</li>
+<li>复制出d.plcrash文件。我机器上在这个路径 /Users/everettjf/Library/Developer/CoreSimulator/Devices/319973DD-0853-494A-8688-DC73E733019D/data/Containers/Data/Application/D85F4320-1826-4EDD-8167-1197BFA5ACBA/Documents/ 。（可以看终端的输出）（不同模拟器最后的文件夹不同）也复制到桌面。</li>
+<li><p>转换为苹果日志格式</p>
+ <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ plcrashutil convert --<span class="keyword">format</span>=ios <span class="keyword">d</span>.plcrash &gt; apple.<span class="literal">log</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dwarfdump 查看uuid</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ dwarfdump --uuid plcrashreportertest2.app/plcrashreportertest2</span><br><span class="line">UUID: B1020E4A-<span class="number">07</span>DD-<span class="number">35E4</span>-B3F0-<span class="number">71E3</span>B7CA49BB (x86_64) plcrashreportertest2.app/plcrashreportertest2</span><br><span class="line">$ dwarfdump --uuid plcrashreportertest2.app.dSYM</span><br><span class="line">UUID: B1020E4A-<span class="number">07</span>DD-<span class="number">35E4</span>-B3F0-<span class="number">71E3</span>B7CA49BB (x86_64) plcrashreportertest2.app.dSYM/Contents/Resources/DWARF/plcrashreportertest2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看crashlog的uuid</p>
+ <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Binary Images:</span><br><span class="line">       <span class="number">0x107d23000</span> -        <span class="number">0x107d4</span>efff +plcrashreportertest2 x86_64  &lt;b<span class="number">1020e4a07</span>dd<span class="number">35e4b3f07</span>1e3b7ca49bb&gt; ......</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三个uuid一致，则可以分析了。</p>
+</li>
+<li><p>symbolicatecrash工具</p>
+<ul>
+<li>干脆把这个藏得这么深得工具也复制一份出来。</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd <span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>SharedFrameworks<span class="regexp">/DTDeviceKitBase.framework/</span>Versions<span class="regexp">/A/</span>Resources/</span><br><span class="line">cp symbolicatecrash ~/Desktop</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置DEVELOPER_DIR。</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DEVELOPER_DIR=<span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Developer</span><br></pre></td></tr></table></figure>
+<ul>
+<li>导出。</li>
+</ul>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./symbolicatecrash apple.log plcrashreportertest2.app.dSYM &gt; <span class="literal">result</span>.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后，atos，其中0x107d23000可在 Binary Images:后看到。0x0000000107d24c3e是Last Exception Backtrace 中。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ xcrun atos -o plcrashreportertest2.<span class="keyword">app</span>/plcrashreportertest2 -<span class="keyword">l</span> 0x107d23000</span><br><span class="line">0x0000000107d24c3e</span><br><span class="line">-[ViewController exceptionTouchUp:] (<span class="keyword">in</span> plcrashreportertest2) (ViewController.<span class="keyword">m</span>:84)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="结语">结语</h1><p>最后这个atos还需要手动逐个输入，较麻烦。不知道Mac或iOS下有没有像windows下windbg一样的神器，以后知道了补上。</p>
+<h1 id="其他开源项目">其他开源项目</h1><ul>
+<li>KSCrash<br><a href="https://github.com/kstenerud/KSCrash" target="_blank" rel="external">https://github.com/kstenerud/KSCrash</a></li>
+</ul>
+<h1 id="参考文章">参考文章</h1><ul>
+<li><a href="http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers" target="_blank" rel="external">http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers</a></li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/plcrashreporter/" rel="tag">#plcrashreporter</a>
+          
+            <a href="/tags/崩溃分析/" rel="tag">#崩溃分析</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/26/simple-tab-page-scroll-view-publish/" rel="prev">简单的TabPageScrollView开发笔记</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/08/ios-ci-with-fastlane/" rel="next">使用fastlane实现iOS持续集成</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div id="disqus_thread">
+                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.png" alt="everettjf" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">everettjf</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/everettjf" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/everettjf" target="_blank">twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2610542055" target="_blank">weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/everettjf" target="_blank">douban</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/everettjf" target="_blank">zhihu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#直接调用系统函数获取崩溃时的栈信息"><span class="nav-number">2.</span> <span class="nav-text">直接调用系统函数获取崩溃时的栈信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用PLCrashReporter"><span class="nav-number">3.</span> <span class="nav-text">使用PLCrashReporter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#官网"><span class="nav-number">3.1.</span> <span class="nav-text">官网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">3.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配合dSYM文件"><span class="nav-number">3.4.</span> <span class="nav-text">配合dSYM文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他开源项目"><span class="nav-number">5.</span> <span class="nav-text">其他开源项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">6.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2014 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">everettjf</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'everettjf';
+      var disqus_identifier = '2015/09/09/ios-plcrashreporter/';
+      var disqus_title = 'iOS崩溃收集与分析，使用plcrashreporter';
+      var disqus_url = 'http://everettjf.github.io/2015/09/09/ios-plcrashreporter/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
