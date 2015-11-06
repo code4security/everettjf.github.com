@@ -57,7 +57,8 @@ http://www.raywenderlich.com/17811/how-to-make-a-simple-mac-app-on-os-x-10-7-tut
 ![XcodePluginCreate](http://everettjf.github.io/images/extern/xbookmarkdev2.png)
 
 ## 增加菜单
-```
+
+~~~
 NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
 if (menuItem) {
     [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
@@ -69,11 +70,11 @@ if (menuItem) {
         [[menuItem submenu] addItem:actionMenuItem];
     }
     //...
-```
+~~~
 
 ## 获取书签位置
 
-```
+~~~
 IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
 NSTextView* textView = editor.textView;
 if (nil == textView)
@@ -89,7 +90,7 @@ XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePat
 [[XBookmarkModel sharedModel]toggleBookmark:bookmark];
 
 //...
-```
+~~~
 
 ## 增加书签列表
 
