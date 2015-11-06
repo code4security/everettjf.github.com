@@ -1,15 +1,11 @@
 ---
 layout: post
-title: "iOS崩溃收集与分析，使用plcrashreporter"
-description:
-headline:
-modified: 2015-09-09
-categories: 开发
-tags: [iOS,崩溃分析,plcrashreporter]
-image:
-  feature:
+title: iOS崩溃收集与分析，使用PLCrashReporter
+excerpt: ""
+tags: [iOS开发笔记,崩溃分析,PLCrashReporter]
+date: 2015-09-09 10:10:10
+modified: 
 comments: true
-mathjax:
 ---
 
 [本文示例代码](https://github.com/everettjf/ios_crash_report_demo)
@@ -28,7 +24,7 @@ App上线后，如果崩溃，难道只能干瞪眼？不可能拿到用户的�
 - signal 进行错误信号的捕获
 - NSSetUncaughtExceptionHandler 未捕获的OC异常
 
-```c
+~~~ c
 
 static int s_fatal_signals[] = {
     SIGABRT,
@@ -73,7 +69,7 @@ int main(int argc, char * argv[]) {
     }
 }
 
-```
+~~~ 
 
 # 使用PLCrashReporter
 
@@ -82,12 +78,12 @@ https://www.plcrashreporter.org/
 
 ## 安装
 可使用CocoaPods安装：
-```
+~~~ 
 pod 'PLCrashReporter', '~> 1.2'
-```
+~~~ 
 
 ## 示例
-```c
+~~~ c
 
 //
  // Called to handle a pending crash report.
@@ -147,73 +143,74 @@ pod 'PLCrashReporter', '~> 1.2'
     return YES;
 }
 
-```
+~~~ 
 
 ## 配合dSYM文件
-```
+
+~~~ 
      crashData = [crashReporter loadPendingCrashReportDataAndReturnError: &error];
-```
+~~~ 
 返回的NSData是plcrashreporter私有的格式，通过官方提供的`plcrashutil`工具可转换为标准的苹果崩溃日志。
 
 例如：
 
-1. 打开示例工程，Command + R 运行，然后退出程序。
-2. 单独通过模拟器运行plcrashreporter2。点击 Exception 触发崩溃。
-3. 再次打开App，App将自动把崩溃日志记录为d.plcrash。
-4. 打开Xcode菜单，Window -> Projects ，点击Derived Data右侧的小箭头，进入 /Users/everettjf/Library/Developer/Xcode/DerivedData/plcrashreportertest2-aoaojvrcqilsxqcarfmgulsddpvc/
-5. 再手动进入目录 Build/Products/Debug-iphonesimulator，这里保存着 plcrashreportertest2.app.dSYM 和 plcrashreportertest2.app 文件，（为方便演示）将这两个文件复制到桌面。（注：产品发布的Archive时，也会生成对应的dSYM文件，会在另一个目录。这些目录其实都是可以配置的，一些工具例如：shenzhen或fastlane中的gym都会自动将dSYM文件夹打包成zip。）(再注：dSYM是个文件夹）
-6. 复制出d.plcrash文件。我机器上在这个路径 /Users/everettjf/Library/Developer/CoreSimulator/Devices/319973DD-0853-494A-8688-DC73E733019D/data/Containers/Data/Application/D85F4320-1826-4EDD-8167-1197BFA5ACBA/Documents/ 。（可以看终端的输出）（不同模拟器最后的文件夹不同）也复制到桌面。
-7. 转换为苹果日志格式
+1- 打开示例工程，Command + R 运行，然后退出程序。
 
-    ```
-    $ plcrashutil convert --format=ios d.plcrash > apple.log
-    ```
+2- 单独通过模拟器运行plcrashreporter2。点击 Exception 触发崩溃。
 
-8. dwarfdump 查看uuid
+3- 再次打开App，App将自动把崩溃日志记录为d.plcrash。
 
-    ```
-    $ dwarfdump --uuid plcrashreportertest2.app/plcrashreportertest2
-    UUID: B1020E4A-07DD-35E4-B3F0-71E3B7CA49BB (x86_64) plcrashreportertest2.app/plcrashreportertest2
-    $ dwarfdump --uuid plcrashreportertest2.app.dSYM
-    UUID: B1020E4A-07DD-35E4-B3F0-71E3B7CA49BB (x86_64) plcrashreportertest2.app.dSYM/Contents/Resources/DWARF/plcrashreportertest2
-    ```
+4- 打开Xcode菜单，Window -> Projects ，点击Derived Data右侧的小箭头，进入 /Users/everettjf/Library/Developer/Xcode/DerivedData/plcrashreportertest2-aoaojvrcqilsxqcarfmgulsddpvc/
 
-9. 查看crashlog的uuid
+5- 再手动进入目录 Build/Products/Debug-iphonesimulator，这里保存着 plcrashreportertest2.app.dSYM 和 plcrashreportertest2.app 文件，（为方便演示）将这两个文件复制到桌面。（注：产品发布的Archive时，也会生成对应的dSYM文件，会在另一个目录。这些目录其实都是可以配置的，一些工具例如：shenzhen或fastlane中的gym都会自动将dSYM文件夹打包成zip。）(再注：dSYM是个文件夹）
 
-    ```
-    Binary Images:
-           0x107d23000 -        0x107d4efff +plcrashreportertest2 x86_64  <b1020e4a07dd35e4b3f071e3b7ca49bb> ......
+6- 复制出d.plcrash文件。我机器上在这个路径 
+`/Users/everettjf/Library/Developer/CoreSimulator/Devices/319973DD-0853-494A-8688-DC73E733019D/data/Containers/Data/Application/D85F4320-1826-4EDD-8167-1197BFA5ACBA/Documents/` 
+（可以看终端的输出）（不同模拟器最后的文件夹不同）也复制到桌面。
 
-    ```
+7- 转换为苹果日志格式
 
-10. 三个uuid一致，则可以分析了。
-11. symbolicatecrash工具
+~~~ 
+$ plcrashutil convert --format=ios d.plcrash > apple.log
+~~~ 
 
+8- dwarfdump 查看uuid
+
+~~~ 
+$ dwarfdump --uuid plcrashreportertest2.app/plcrashreportertest2
+UUID: B1020E4A-07DD-35E4-B3F0-71E3B7CA49BB (x86_64) plcrashreportertest2.app/plcrashreportertest2
+$ dwarfdump --uuid plcrashreportertest2.app.dSYM
+UUID: B1020E4A-07DD-35E4-B3F0-71E3B7CA49BB (x86_64) plcrashreportertest2.app.dSYM/Contents/Resources/DWARF/plcrashreportertest2
+~~~ 
+
+9- 查看crashlog的uuid
+
+~~~ 
+Binary Images:
+       0x107d23000 -        0x107d4efff +plcrashreportertest2 x86_64  <b1020e4a07dd35e4b3f071e3b7ca49bb> ......
+
+~~~ 
+
+10- 三个uuid一致，则可以分析了。
+11- symbolicatecrash工具
+
+~~~ 
     - 干脆把这个藏得这么深得工具也复制一份出来。
-
-    ```
-    cd /Applications/Xcode.app/Contents/SharedFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/
-    cp symbolicatecrash ~/Desktop
-    ```
-
+cd /Applications/Xcode.app/Contents/SharedFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/
+cp symbolicatecrash ~/Desktop
     - 设置DEVELOPER_DIR。
-
-    ```
-    export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
-    ```
-
+export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
     - 导出。
+$ ./symbolicatecrash apple.log plcrashreportertest2.app.dSYM > result.log
+~~~ 
 
-    ```
-    $ ./symbolicatecrash apple.log plcrashreportertest2.app.dSYM > result.log
-    ```
+12- 最后，atos，其中0x107d23000可在 Binary Images:后看到。0x0000000107d24c3e是Last Exception Backtrace 中。
 
-12. 最后，atos，其中0x107d23000可在 Binary Images:后看到。0x0000000107d24c3e是Last Exception Backtrace 中。
-    ```
-    $ xcrun atos -o plcrashreportertest2.app/plcrashreportertest2 -l 0x107d23000
-    0x0000000107d24c3e
-    -[ViewController exceptionTouchUp:] (in plcrashreportertest2) (ViewController.m:84)
-    ```
+~~~ 
+$ xcrun atos -o plcrashreportertest2.app/plcrashreportertest2 -l 0x107d23000
+0x0000000107d24c3e
+-[ViewController exceptionTouchUp:] (in plcrashreportertest2) (ViewController.m:84)
+~~~ 
 
 
 # 结语

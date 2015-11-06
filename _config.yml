@@ -35,6 +35,9 @@ kramdown:
 # Jekyll configuration
 ####################################
 #
+
+permalink:  /:year/:month/:day/:title
+
 owner:
   name: everettjf
   avatar: everettjf.png
