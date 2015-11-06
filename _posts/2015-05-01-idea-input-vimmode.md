@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "idea-输入法的vim模式"
-description: ""
-categories: 随笔
-tags: [idea,vim,输入法]
+excerpt: ""
+tags: [随笔]
+date: 2015-05-01
+modified: 
+comments: true
 ---
 
 # vim下写中英文混合的文章

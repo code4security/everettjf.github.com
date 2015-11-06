@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "idea-网址管理及分享"
-description: ""
-categories: 随笔
-tags: [wechat,idea]
+excerpt: ""
+tags: [随笔]
+date: 2015-05-09
+modified: 
+comments: true
 ---
 
 # 背景
@@ -40,9 +42,3 @@ tags: [wechat,idea]
 - 有想法，告诉我吧。
 
 
----
-欢迎关注微信公众号：everettjf0x 程序员的所想所记。
-
----
-
-blog:inkmind.xyz

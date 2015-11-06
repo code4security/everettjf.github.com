@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "Windows程序猿的OSX入门笔记"
-description: ""
-categories: 开发
-tags: [Windows,OSX,入门]
+excerpt: ""
+tags: [Mac开发笔记]
+date: 2015-02-14
+modified: 
+comments: true
 ---
 
 ### macbook pro
@@ -32,21 +34,23 @@ tags: [Windows,OSX,入门]
 
 比较喜欢monokai主题，可以在这里面找到。
 [https://github.com/mbadolato/iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-<pre>
+
+~~~
 打开下面的链接，下载Raw，就可以导入iTerm2的Colors里了。
 https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/schemes/Monokai%20Soda.itermcolors
-</pre>
+~~~
 
 ### zsh
-<pre>
+
+~~~
 cd ~
 vim .zshrc
-</pre>
+~~~
 
 例如：
-<pre>
-alias e="emacs"
-</pre>
 
----
+~~~
+alias e="emacs"
+~~~
+
 

@@ -1,23 +1,22 @@
 ---
 layout: post
 title: "vim emacs 常用快捷键对比"
-description: ""
-categories: 开发
-tags: [vim,emacs,快捷键]
+excerpt: ""
+tags: [emacs笔记,vim笔记]
+date: 2015-03-05
+modified: 
+comments: true
 ---
 
-<pre>
+
 习惯了vim快捷键，又了解下emacs。
 vim使用spf，emacs使用prelude，体验了两位“大神”。（写多了，这篇文章与这两个没有直接关系，写出了作为笔记）
-</pre>
 
-<pre>
 个人经常使用vim的dd或者yy然后p，感觉emacs的就麻烦了（C-a C-k C-y）
 主要是emacs用的很少。
 
 习惯了vim，可以emacs启用evil-mode。
 emacs的M-x很强大。
-</pre>
 
 简单整理下常用快捷键的对比，作为笔记。
 

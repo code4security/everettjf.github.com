@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "梦想随想"
-description: ""
-categories: 随笔
-tags: [wechat,dream]
+excerpt: ""
+tags: [随笔]
+date: 2015-05-16
+modified: 
+comments: true
 ---
 
 从前，在梦的花园里，依古比古依古安，我们要去追……

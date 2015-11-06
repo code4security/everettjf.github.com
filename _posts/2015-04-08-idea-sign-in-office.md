@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "idea-签到App"
-description: ""
-categories: 随笔
-tags: [分享,App]
+excerpt: ""
+tags: [随笔]
+date: 2015-04-08
+modified: 
+comments: true
 ---
 
 # 签到App
@@ -31,4 +33,3 @@ tags: [分享,App]
 
 
 （这些idea都是突然想起来，不一定具有可操作性，记录下来，仅供参考）
-（第一次idea分享就晚点了……改正）

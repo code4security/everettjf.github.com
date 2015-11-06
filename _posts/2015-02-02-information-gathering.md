@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "情报搜集简介"
-description: ""
-categories: 安全
-tags: [渗透,情报搜集]
+excerpt: ""
+tags: [安全]
+date: 2015-02-02
+modified: 
+comments: true
 ---
 
 
@@ -31,8 +33,7 @@ tags: [渗透,情报搜集]
 #### nmap
 
 nmap -sS -Pn <ip>
-
-    nmap -sS -Pn 10.10.10.129
+nmap -sS -Pn 10.10.10.129
 
 - -sS
 - -Pn
@@ -40,15 +41,15 @@ nmap -sS -Pn <ip>
 
 #### ipidseq TCP空闲扫描
 
-    use auxiliary/scanner/ip/ipidseq
-    show options
-    set RHOSTS 10.10.10.0/24
-    set THREADS 50
-    run
+use auxiliary/scanner/ip/ipidseq
+show options
+set RHOSTS 10.10.10.0/24
+set THREADS 50
+run
 
 get "Incremental" ip, nmap参数 -sI 指定空闲主机ip
 
-    nmap -Pn -sI <incremental ip> <target ip>
+nmap -Pn -sI <incremental ip> <target ip>
 
 ## 其他
 - 要具备从攻击者角度思考问题的能力

@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "idea-语音任务指派"
-description: ""
-categories: 随笔
-tags: [wechat,idea]
+excerpt: ""
+tags: [随笔]
+date: 2015-05-18
+modified: 
+comments: true
 ---
 
 # 语音任务指派

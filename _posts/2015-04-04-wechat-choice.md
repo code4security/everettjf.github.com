@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "选择"
-description: ""
-categories: 随笔
-tags: [订阅号]
+excerpt: ""
+tags: [随笔]
+date: 2015-04-04
+modified: 
+comments: true
 ---
 
 # 每时每刻都在选择

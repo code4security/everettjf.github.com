@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "技术团队软硬件配置随想"
-description: ""
-categories: 随笔
-tags: [team]
+excerpt: ""
+tags: [随笔]
+date: 2015-05-06
+modified: 
+comments: true
 ---
 
 
@@ -61,9 +63,5 @@ tags: [team]
   若使用阿里云，可以有两个阿里云服务器，一个作为测试版本环境，一个作为发布环境。
 - 也可以，公司内部服务器中通过虚拟机搭建测试环境。
 
----
-欢迎关注微信公众号：everettjf0x 程序员的所想所记。
 
----
 
-blog:inkmind.xyz

@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "理想的工作环境"
-description: ""
-categories: 随笔
-tags: [wechat]
+excerpt: ""
+tags: [随笔]
+date: 2015-04-28
+modified: 
+comments: true
 ---
 
 *以下想法主要面向软件公司（互联网公司）*

@@ -2,7 +2,7 @@
 layout: post
 title: 简单的TabPageScrollView开发笔记
 excerpt: ""
-tags: [iOS开发笔记, TabPage]
+tags: [iOS开发笔记]
 date: 2015-09-26 22:38:41
 modified: 
 comments: true

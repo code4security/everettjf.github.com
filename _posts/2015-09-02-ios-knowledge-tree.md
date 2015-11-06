@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "(编写中)iOS 知识树"
-description:
-categories: 开发
-tags: [iOS,知识树]
+title: (未完成)iOS 知识树
+excerpt: ""
+tags: [iOS开发笔记]
+date: 2015-09-02
+modified: 
+comments: true
 ---
 
 *文章于2015年9月2日开始编写，暂未编写完成……*

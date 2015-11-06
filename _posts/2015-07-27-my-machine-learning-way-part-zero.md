@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "我的机器学习之路，第零篇，横冲直撞"
-description: "machine learning"
-categories: 总结
-tags: [机器学习,总结]
+title: 我的机器学习之路，第零篇，横冲直撞
+excerpt: ""
+tags: [机器学习,随笔]
+date: 2015-07-27
+modified: 
+comments: true
 ---
 
 - 这是第0篇，下一篇可能会1年之后再写，也可能不再写。

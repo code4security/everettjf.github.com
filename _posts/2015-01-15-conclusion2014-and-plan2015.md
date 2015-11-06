@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "2014年总结及2015年计划"
-description: "总结过去，计划未来"
-categories: 计划
-tags: [计划,MacBookPro]
+excerpt: ""
+tags: [总结,计划]
+date: 2015-01-15
+modified: 
+comments: true
 ---
 
 ### 2014关键事件

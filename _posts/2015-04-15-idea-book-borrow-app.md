@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "idea-图书借阅登记App（或个人图书管理App）"
-description: ""
-categories: 随笔
-tags: [idea,app]
+excerpt: ""
+tags: [随笔]
+date: 2015-04-15
+modified: 
+comments: true
 ---
 
 # 图书借阅登记App（或个人图书管理App）

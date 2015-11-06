@@ -1,13 +1,12 @@
 ---
 layout: post
 title: "如何编写简易病毒扫描程序"
-description: "how to write a simple virus scanner in script"
-categories: 开发
-tags: [病毒,扫描器,机器学习,Ruby]
+excerpt: ""
+tags: [安全,机器学习,病毒扫描]
+date: 2014-12-07
+modified: 
+comments: true
 ---
-
-
-
 
 # 背景
 - 2014年12月7日，开源中国济南城市圈活动[技术分享](http://city.oschina.net/jinan/event/194933)
@@ -245,11 +244,11 @@ WireShark
 1. 基于三个库 rb-libsvm , pedump , sqlite3
   可以通过下面这样安装
 
-<pre>
+~~~
   > gem install rb-libsvm
   > gem intall pedump
   > gem install sqlite3
-</pre>
+~~~
 
 ### pedump获取文件属性
 1. imports : string list
@@ -267,7 +266,7 @@ WireShark
 
 1. 将导入函数（imports）和节（sections）转换为向量（vector）
 
-<pre>
+~~~
 > 可以这样，
 > 首先获取一个干净无毒的系统的system32下的所有文件的导入函数集合set(A)
 > 再获取一堆病毒（例如从virussign上获取到的病毒）的所有导入函数集合set(B)
@@ -275,39 +274,39 @@ WireShark
 > set(D) = set(A) - set(B)
 > set(E) = set(B) - set(A)
 > 这样，set(C)set(D)set(E)给予不同的权值。
-</pre>
+~~~
 
 1. 最后将所有属性按照顺序组合成一个PE文件的vector
 
 - 可以通过下面的命令获取到存储imports和sections的数据库。
 
-<pre>
+~~~
 ruby rvsfetchiat.rb --health C:/Windows/System32
 ruby rvsfetchiat.rb --virus E:/train_virus/files
 ruby rvsfetchiat.rb --merge
-</pre>
+~~~
 
 - 通过下面的命令获取一个文件的属性
 
-<pre>
+~~~
 ruby rvsfetchiat.rb --file C:/Windows/System32/notepad.exe
-</pre>
+~~~
 
 ### 训练模型
 指定存储要训练的正常文件的文件夹和病毒文件的文件夹。
 
-<pre>
+~~~
 ruby rvsscan.rb --train /Users/everettjf/Virus/train/train_health /Users/everettjf/Virus/train/train_virus
-</pre>
+~~~
 
 ### 测试模型
 
-<pre>
+~~~
 ruby rvsscan.rb --scan /Users/everettjf/Virus/train/train_virus
 ruby rvsscan.rb --scan /Users/everettjf/Virus/train/train_health
 ruby rvsscan.rb --scan /Users/everettjf/Virus/train/test_virus
 ruby rvsscan.rb --scan /Users/everettjf/Virus/train/test_health
-</pre>
+~~~
 
 ### 剩余问题
 - 训练大量的样本

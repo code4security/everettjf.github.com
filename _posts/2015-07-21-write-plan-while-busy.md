@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "坚持与习惯，及近期文章计划"
-description: ""
-categories: 随笔
-tags: [wechat,计划]
+excerpt: ""
+tags: [随笔]
+date: 2015-07-21
+modified: 
+comments: true
 ---
 
 
@@ -40,5 +42,3 @@ tags: [wechat,计划]
 - gitlab邮件配置
 - LinkHub想法来源，使用说明
 
-# 未来1个月内，将陆续奉上。
-**写博客是习惯，不需要坚持**

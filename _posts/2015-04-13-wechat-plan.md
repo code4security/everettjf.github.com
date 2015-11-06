@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "计划"
-description: ""
-categories: 随笔
-tags: [计划,订阅号]
+excerpt: ""
+tags: [随笔]
+date: 2015-04-13
+modified: 
+comments: true
 ---
 
 # 计划即瞎猜

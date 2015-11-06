@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "idea-开源团队笔记"
-description: ""
-categories: 随笔
-tags: [idea,team,knowledgebase,note]
+excerpt: ""
+tags: [随笔]
+date: 2015-04-21
+modified: 
+comments: true
 ---
 
 # 团队知识库的需要

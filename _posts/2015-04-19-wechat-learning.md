@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "学习"
-description: ""
-categories: 随笔
-tags: [wechat,learn]
+excerpt: ""
+tags: [随笔]
+date: 2015-04-19
+modified: 
+comments: true
 ---
 
 # 专一：挑水、砍柴、做饭

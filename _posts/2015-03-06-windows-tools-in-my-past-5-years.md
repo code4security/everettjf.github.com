@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "Windows平台C++5年来使用到的工具汇总"
-description: "windows tools in my past 5 years"
-categories: 开发
-tags: [Windows,工具]
+excerpt: ""
+tags: [Windows开发笔记]
+date: 2015-03-06
+modified: 
+comments: true
 ---
 
-<pre>
 Windows平台的C++开发工作已经5年时间，在即将转向Android开发之时，整理下曾经使用到的工具。
 Star表示此工具很常用。
-</pre>
 
 - Tools
 

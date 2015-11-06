@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "自由职业途径搜集"
-description: ""
-categories: 随笔
-tags: [wechat,freelance]
+excerpt: ""
+tags: [随笔]
+date: 2015-05-17
+modified: 
+comments: true
 ---
 
 # 自由职业途径收集
@@ -25,3 +27,5 @@ tags: [wechat,freelance]
 
 # 试用报告
 等试用后补充。//todo
+
+`2015年11月6号补充：来北京工作了，这篇文章没有然后了……`
