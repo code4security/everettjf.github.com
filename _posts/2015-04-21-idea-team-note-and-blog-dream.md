@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "idea-开源团队笔记"
-excerpt: ""
+excerpt: "还是一个小小想法，感觉各种比较都不好用。不过这个想法工作有点多。"
 tags: [随笔]
 date: 2015-04-21
 modified: 

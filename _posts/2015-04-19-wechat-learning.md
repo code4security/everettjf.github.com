@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "学习"
-excerpt: ""
+excerpt: "向来枉费推移力，此日中流自在行。"
 tags: [随笔]
 date: 2015-04-19
 modified: 

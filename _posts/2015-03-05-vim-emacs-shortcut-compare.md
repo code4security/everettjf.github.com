@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "vim emacs 常用快捷键对比"
-excerpt: ""
+excerpt: "对比下两个神器的快捷键吧，不要再折腾啦"
 tags: [emacs笔记,vim笔记]
 date: 2015-03-05
 modified: 

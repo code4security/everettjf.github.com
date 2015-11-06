@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "坚持与习惯，及近期文章计划"
-excerpt: ""
+excerpt: "口口声声坚持，但做到了吗？想法太多，浪费的时间太多，不要什么都想着自己去开发"
 tags: [随笔]
 date: 2015-07-21
 modified: 

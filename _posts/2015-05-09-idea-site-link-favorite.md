@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "idea-网址管理及分享"
-excerpt: ""
+excerpt: "分享网址，未来的mostlike.link"
 tags: [随笔]
 date: 2015-05-09
 modified: 

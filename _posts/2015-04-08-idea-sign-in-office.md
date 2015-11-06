@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "idea-签到App"
-excerpt: ""
+excerpt: "一个小想法，貌似有公司已经实现了"
 tags: [随笔]
 date: 2015-04-08
 modified: 

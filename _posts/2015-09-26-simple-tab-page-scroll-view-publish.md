@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 简单的TabPageScrollView开发笔记
-excerpt: ""
+title: 简单的iOS TabPageScrollView开发笔记
+excerpt: "开发了个小小小Tab页面的小组件，供iOS初学者学习"
 tags: [iOS开发笔记]
 date: 2015-09-26 22:38:41
 modified: 

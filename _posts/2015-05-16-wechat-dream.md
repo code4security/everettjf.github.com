@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "梦想随想"
-excerpt: ""
+excerpt: "天天说自己为了梦想，到底还是浪费了大量时间瞎折腾"
 tags: [随笔]
 date: 2015-05-16
 modified: 

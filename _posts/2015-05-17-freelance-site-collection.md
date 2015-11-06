@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "自由职业途径搜集"
-excerpt: ""
+excerpt: "曾经想着自由职业，结果被一个短暂的创业合伙给耽搁了"
 tags: [随笔]
 date: 2015-05-17
 modified: 

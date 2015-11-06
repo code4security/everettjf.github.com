@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "idea-语音任务指派"
-excerpt: ""
+excerpt: "小想法，未来的hackathon用上了"
 tags: [随笔]
 date: 2015-05-18
 modified: 

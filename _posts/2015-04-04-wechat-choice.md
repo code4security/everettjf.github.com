@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "选择"
-excerpt: ""
+excerpt: "我，意志不坚定，优柔寡断，选择太多，迷失方向"
 tags: [随笔]
 date: 2015-04-04
 modified: 

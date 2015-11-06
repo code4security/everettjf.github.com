@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "计划"
-excerpt: ""
+excerpt: "我的那堆计划计划计划，不在计划，在Action"
 tags: [随笔]
 date: 2015-04-13
 modified: 

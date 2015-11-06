@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "idea-输入法的vim模式"
-excerpt: ""
+excerpt: "来回切换挺麻烦，写文章还是不要用vim模式了"
 tags: [随笔]
 date: 2015-05-01
 modified: 

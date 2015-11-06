@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Xcode书签插件XBookmark开发笔记
-excerpt: ""
+excerpt: "Xcode竟然没办法添加书签，自己来开发一个啦"
 tags: [Xcode插件, XBookmark]
 date: 2015-10-04 00:33:53
 modified: 2015-10-04 00:33:53

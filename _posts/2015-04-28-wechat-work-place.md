@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "理想的工作环境"
-excerpt: ""
+excerpt: "自己不在这样的公司，就总是妄想，甚至妄想自己创办……自己太简单"
 tags: [随笔]
 date: 2015-04-28
 modified: 
