@@ -18,10 +18,8 @@
     {% endif %}
 
     <p class="post-meta">
-      By
-      <a class="post-author" href="{{ author.site }}">{{ author.name }}</a>
+      <a class="post-author">{{ post.date }}</a>
       {% if post.tags.size > 0 %}
-      under
       {% for tag in post.tags %}
       <a class="post-tag {{ tag | slugize }}" href="{{ site.url }}/tags/#{{ tag }}">{{ tag }}</a>
       {% endfor %}
