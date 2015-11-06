@@ -8,7 +8,7 @@ modified: 2015-10-04 00:33:53
 comments: true
 ---
 
-代码：https://github.com/everettjf/XBookmark
+代码：[https://github.com/everettjf/XBookmark](https://github.com/everettjf/XBookmark)
 
 # 效果
 
