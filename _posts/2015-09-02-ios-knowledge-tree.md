@@ -82,6 +82,7 @@ comments: true
 1. 代码签名
 1. fastlane工具包
 1. Jenkins持续集成配置
+2. fir.im
 
 # 逆向
 1. todo
@@ -92,6 +93,10 @@ comments: true
 1. Code4app
 
 # 牛人博客
+
+1. http://blog.devtang.com/
+2. http://nianxi.net/
+3. 更多到：[我的MostLike.Link iOS博客专题](http://mostlike.link/u/everettjf/ios) 点击`博客`标签
 
 # 书
 1. 《马上着手开发 iOS 应用程序 (Start Developing iOS Apps Today)》 ：苹果官方文档，入门必看。
