@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SegmentFault Hackathon 2015 北京站 总结
+title: 参与SegmentFault Hackathon 2015 北京站 总结
 excerpt: "旅游工具类App 24小时内从没有想法到演示，VV战队幸运获得三等奖，简单总结"
 date: 2015-11-01
 tags: [随笔]
@@ -9,6 +9,10 @@ comments: true
 
 # 开始
 2015年10月24日参加了 [SegmentFault Hackathon 2015 北京](http://segmentfault.com/e/1160000003736572) 活动。
+
+先上一张图片哈：
+![hackathon](http://d.pr/i/1c2on+)
+
 
 这是我第二次参加黑客马拉松活动。
 
