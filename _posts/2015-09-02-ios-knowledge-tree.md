@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (未完成)iOS 知识树，C++转iOS开发指导路线图
+title: (Writing)iOS 知识树，C++转iOS开发指导路线图
 excerpt: "想成为C++转iOS开发的一个入门指导教程，还在编写中"
 tags: [iOS开发笔记]
 date: 2015-09-02
