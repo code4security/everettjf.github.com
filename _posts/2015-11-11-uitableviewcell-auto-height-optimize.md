@@ -33,6 +33,11 @@ comments: true
 
 
 # 使用estimated效果不好
+
+~~~
+- (CGFloat)tableView:(UITableView * _Nonnull)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath
+
+~~~
 估计高度，会减少很多高度的计算量，每当Cell需要显示的时候才会计算高度。但大量消息的到来会导致Cell抖动，看起来很不舒服。
 
 因为新增Cell是先按照估计高度显示，如果实际所需高度与估计高度不同，会在Cell显示后，再有个调整高度的过程（会有个简单的动画效果。这个效果如果在新增一条消息时很不多，但如果大量消息很短的间隔到来，就会导致Cell跳动起来）
