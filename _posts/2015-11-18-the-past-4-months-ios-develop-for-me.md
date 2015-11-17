@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 共计5个月iOS开发总结（C++转iOS）
+title: 5个月iOS开发总结（C++转iOS）
 excerpt: ""
 date: 2015-11-18
 tags: []
