@@ -70,14 +70,15 @@ comments: true
 
 这些库基本上都是开发必用的了。
 
-- AFNetworking
-- Masonry
-- MBProgressHUD
-- MJRefresh
-- JSONKit
-- SDWebImage
+- AFNetworking 很出名的网络库
+- Masonry 方便的手写自动布局
+- MBProgressHUD 等待进度
+- MJRefresh 下拉刷新
+- JSONKit JSON解析
+- SDWebImage 异步加载图片
 
 ### 概念
+- GCD
 - KVC/KVO
 - MVC
 - NSCoping
@@ -119,16 +120,16 @@ comments: true
 - 分析崩溃
 
 ### 持续集成
-- fastlane
-- fir.im
-- Jenkins
+- fastlane 是一个工具集合，各种iOS开发的流程，甚至App自动截图。
+- fir.im 很好的解决了App内测分发。老板想看看最新开发中的App，给他一个链接就OK了。
+- Jenkins 强大的持续集成系统，配合 fastlane 和 fir.im 方便的自动化整个打包、上传过程。
 
 ### CocoaPods
 - 如何自己创建库
 
 ### 一些更深一步的概念
-- Method Swizzing
-- 消息转发机制
+- Method Swizzing ：以前做Windows Hook，Objective-C也有啊，概念总是相似的。
+- 消息转发机制 
 - Toll-Free Bridging
 - 关联对象
 - Bitcode
@@ -159,9 +160,18 @@ comments: true
 ## 第四阶段
 这一阶段是我的计划。过去5年自己一直做安全产品，对安全总是情有独钟，现在做iOS开发了，肯定不能少。书已经买好等着我看啦。
 
-### 优化
+### 继续深入
+- 各种特效
+- 各种动画
+- 各种界面
 
 ### 安全
 - 《iOS应用逆向工程》
 - 《iOS应用安全攻防实战》
 - 《深入解析Mac OS X & iOS操作系统》
+
+
+# 总结
+以上是我这几个月的iOS学习经历，可能有遗漏，分享给大家，希望能帮助到其他C++转iOS的同行们。
+
+如有不正确的地方，请指正。
