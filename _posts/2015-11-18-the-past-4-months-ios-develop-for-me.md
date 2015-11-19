@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 5个月iOS开发入门总结
+title: 5个月iOS开发入门总结（C++转行iOS）
 excerpt: ""
 date: 2015-11-18
 tags: []
@@ -59,14 +59,14 @@ comments: true
 ## 第二阶段：真正开始开发
 这个阶段前后加起来算是最长时间，大概4个多月吧。
 
-### 熟练控件
+### 5. 熟练控件
 - UITableView
 - UIScrollView
 
-### CocoaPods
+### 6. CocoaPods
 - 基本使用
 
-### 熟悉常用的几个库
+### 7. 熟悉常用的几个库
 
 这些库基本上都是开发必用的了。
 
@@ -77,19 +77,17 @@ comments: true
 - JSONKit JSON解析
 - SDWebImage 异步加载图片
 
-### 概念
+### 8. 几个概念
 - GCD
 - KVC/KVO
 - MVC
 - NSCoping
 - NSCoding
-
-### 证书
 - 开发者账号的类别
 - 开发证书、生产证书、推送证书
 - 描述文件
 
-### Xcode插件
+### 9. Xcode插件
 先安装插件管理器 [http://alcatraz.io/](http://alcatraz.io/)
 
 - FuzzyAutocomplete 代码自动完成的模糊匹配
@@ -100,12 +98,12 @@ comments: true
 - XBookmark 书签功能（我习惯用书签功能，以前用VisualStudio时的习惯）
 - ColorSenseRainbow 代码中方便预览颜色
 
-### 几本书
+### 10. 几本书
 - 《精通iOS开发》 补充概念，工具书。
 - 《iOS开发进阶》 页数不多，但很实用。
 - 《Effective Objective-C 2.0》 小经典
 
-### 常用网站
+### 11. 常用网站
 - Code4App
 - CocoaChina
 - GitHub
@@ -115,19 +113,19 @@ comments: true
 
 给一个App的需求，自己能自信的说没问题了。应该进一步深入的强化下自己的知识了。
 
-### 崩溃获取及分析
+### 12. 崩溃获取及分析
 - PLCrashReporter
 - 分析崩溃
 
-### 持续集成
+### 13. 持续集成
 - fastlane 是一个工具集合，各种iOS开发的流程，甚至App自动截图。
 - fir.im 很好的解决了App内测分发。老板想看看最新开发中的App，给他一个链接就OK了。
 - Jenkins 强大的持续集成系统，配合 fastlane 和 fir.im 方便的自动化整个打包、上传过程。
 
-### CocoaPods
+### 14. CocoaPods
 - 如何自己创建库
 
-### 一些更深一步的概念
+### 15. 一些更深一步的概念
 - Method Swizzing ：以前做Windows Hook，Objective-C也有啊，概念总是相似的。
 - 消息转发机制 
 - Toll-Free Bridging
@@ -135,37 +133,37 @@ comments: true
 - Bitcode
 - Objective C++
 
-### 源码学习
+### 16. 源码学习
 - Masonry
 - UITableViewCell-Auto...
 - MBProgressHUD
 - MJRefresh
-- ...
+- 看到一些不错的效果，有源码就看一看
 
-### 单元测试
+### 17. 单元测试
 - Specta/Expecta
 - Kiwi
 
-### MVVM
+### 18. MVVM
 - ReactiveCocoa
 
-### 几本书
+### 19. 几本书
 - 《Objective-C编程之道》主要是学习思想。还没看完。
 - 《大话移动APP测试，Android与iOS应用测试指南》从测试的角度反思下开发。
 
-### 文章
-- 招聘一个靠谱的iOS http://blog.sunnyxx.com/2015/07/04/ios-interview/
-- 答案 https://github.com/ChenYilong/iOSInterviewQuestions
+### 20. 文章
+- 招聘一个靠谱的iOS [http://blog.sunnyxx.com/2015/07/04/ios-interview/](http://blog.sunnyxx.com/2015/07/04/ios-interview/)
+- 答案 [https://github.com/ChenYilong/iOSInterviewQuestions](https://github.com/ChenYilong/iOSInterviewQuestions)
 
 ## 第四阶段
 这一阶段是我的计划。过去5年自己一直做安全产品，对安全总是情有独钟，现在做iOS开发了，肯定不能少。书已经买好等着我看啦。
 
-### 继续深入
+### 21. 继续深入
 - 各种特效
 - 各种动画
 - 各种界面
 
-### 安全
+### 22. 安全
 - 《iOS应用逆向工程》
 - 《iOS应用安全攻防实战》
 - 《深入解析Mac OS X & iOS操作系统》
