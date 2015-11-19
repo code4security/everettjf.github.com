@@ -150,6 +150,7 @@ comments: true
 ### 19. 几本书
 - 《Objective-C编程之道》主要是学习思想。还没看完。
 - 《大话移动APP测试，Android与iOS应用测试指南》从测试的角度反思下开发。
+- 《Objective-C 高级编程：iOS与OS X多线程和内存管理》
 
 ### 20. 文章
 - 招聘一个靠谱的iOS [http://blog.sunnyxx.com/2015/07/04/ios-interview/](http://blog.sunnyxx.com/2015/07/04/ios-interview/)
