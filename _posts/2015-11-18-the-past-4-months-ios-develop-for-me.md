@@ -116,6 +116,8 @@ comments: true
 ### 12. 崩溃获取及分析
 - PLCrashReporter
 - 分析崩溃
+- 理解崩溃 [https://developer.apple.com/library/ios/technotes/tn2151/_index.html](https://developer.apple.com/library/ios/technotes/tn2151/_index.html)
+- 符号化方法 [http://wufawei.com/2014/03/symbolicating-ios-crash-logs/](http://wufawei.com/2014/03/symbolicating-ios-crash-logs/)
 
 ### 13. 持续集成
 - fastlane 是一个工具集合，各种iOS开发的流程，甚至App自动截图。
