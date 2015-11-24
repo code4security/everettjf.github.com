@@ -26,8 +26,7 @@ comments: true
   - 内部测试版本：使用标准开发者的Developer证书签名的ipa文件。
   - 公开测试版本：使用企业账户的Distribute InHouse证书签名的ipa文件。
   - AppStore版本：使用标准开发者的AppStore证书签名的ipa文件。
-  - 渠道版本：内部测试版本，但Info.plist中增加每个渠道的标示符 
- <DEL>（因为渠道例如fir.im 会使用自己的证书重新签名ipa）</DEL>
+  - 渠道版本：内部测试版本，但Info.plist中增加每个渠道的标示符<DEL>（因为渠道例如fir.im 会使用自己的证书重新签名ipa）</DEL>
 PS: 2015年11月24日补充，fir.im 不会重新签名ipa。
 
 
