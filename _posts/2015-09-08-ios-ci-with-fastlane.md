@@ -29,6 +29,7 @@ comments: true
   - 渠道版本：内部测试版本，但Info.plist中增加每个渠道的标示符 
  <DEL>（因为渠道例如fir.im 会使用自己的证书重新签名ipa）</DEL>
 PS: 2015年11月24日补充，fir.im 不会重新签名ipa。
+
 2. 保留每个版本的dSYM调试符号文件。
 
 
