@@ -19,7 +19,7 @@ comments: true
 
 关键代码：
 
-```
+~~~
 #import <substrate.h>
 #import <mach-o/dyld.h>
 #import <dlfcn.h>
@@ -43,7 +43,7 @@ void *my_dlsym(void *handle, const char *symbol){
 	MSHookFunction((void*)dlsym,(void*)my_dlsym,(void**)&old_dlsym);
 }
 
-```
+~~~
 
 自己已测试，还蛮好用。
 这是代码，可参考：
