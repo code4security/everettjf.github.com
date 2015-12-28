@@ -59,7 +59,7 @@ int main(int argc, char * argv[]) {
 
 基本思路就是，
 
-1. ps -e | grep /var 找到AppBinary路径
+1. `ps -e | grep /var` 找到AppBinary路径
 2. 把AppBinary复制出
 3. 二进制编辑器（iHex等）修改__RESTRICT和__restrict为其他值。（比如：__RRRRRRRR和__rrrrrrrr。保证长度不变就行啦）
 
