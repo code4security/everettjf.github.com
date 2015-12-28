@@ -62,6 +62,9 @@ int main(int argc, char * argv[]) {
 1. `ps -e | grep /var` 找到AppBinary路径
 2. 把AppBinary复制出
 3. 二进制编辑器（iHex等）修改__RESTRICT和__restrict为其他值。（比如：__RRRRRRRR和__rrrrrrrr。保证长度不变就行啦）
+4. `ldid -S AppBinary` 重签名。
+5. Cydia中安装 `AppSync`。
+
 
 在这篇文章中 http://www.iosre.com/t/tweak-app-app-tweak/438
 
