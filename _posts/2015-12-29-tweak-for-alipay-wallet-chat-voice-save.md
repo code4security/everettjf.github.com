@@ -24,6 +24,7 @@ comments: true
 ## 获取 AppBundleIdentifier
 
 进入 AlipayWallet.app 目录，
+
 ~~~
 everettjfs-iPhone:/var/mobile/Containers/Bundle/Application/9DB7CE45-3B4C-42A3-9D4D-49A3A5122903/AlipayWallet.app root# cat Info.plist | grep com.
     <string>com.alipay.iphoneclient</string>
