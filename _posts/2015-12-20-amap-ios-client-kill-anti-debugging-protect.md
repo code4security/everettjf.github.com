@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 实战学习：去掉高德地图版本7.5.4版iOS客户端的反动态调试保护
+title: 去掉使用ptrace的反动态调试保护
 excerpt: "hook ptrace"
 date: 2015-12-20
 tags: [iOS逆向]
@@ -8,7 +8,7 @@ comments: true
 ---
 
 学习了 http://www.iosre.com/t/7-2-0-ios/770 和 http://bbs.iosre.com/t/ptrace/371 两篇文章后，上手操作了下。
-发现7.5.4版本已经没有了sub函数，而是直接在start中加入了ptrace的动态加载。如下图：
+发现高德地图7.5.4版本已经没有了sub函数，而是直接在start中加入了ptrace的动态加载。如下图：
 
 
 ![code](http://7xibfi.com1.z0.glb.clouddn.com/uploads/default/original/2X/3/36d0c61b45367ad359fcd472574bc6da38529425.png)
