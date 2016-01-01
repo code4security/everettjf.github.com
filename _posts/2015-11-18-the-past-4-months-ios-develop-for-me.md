@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 5个月iOS开发入门总结（C++转行iOS）
-excerpt: ""
+title: C++转iOS开发5个月总结
+excerpt: "iOS入门的同学可参考此文"
 date: 2015-11-18
-tags: []
+tags: [iOS开发]
 comments: true
 ---
 
