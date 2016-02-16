@@ -15,7 +15,7 @@ url: http://everettjf.github.io # the base hostname & protocol for your site
 ####################################
 #
 markdown:    kramdown
-highlighter: pygments
+highlighter: rouge
 excerpt_separator: <!--more-->
 sass:
   sass_dir: _sass
