@@ -22,6 +22,13 @@
     </nav>
     <nav class="nav">
       <ul class="nav-list">
+        <li class="nav-item">
+          <a href="http://everettjf.github.io/feed.xml" target="_blank">feed</a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="nav">
+      <ul class="nav-list">
         {% for page in site.pages %} {% if page.title %}
         <li class="nav-item">
           <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a>{% unless forloop.last %} <span>/</span>{% endunless %}
