@@ -6,7 +6,7 @@
 title: everettjf
 email: everettjf@live.com
 description: > # this means to ignore newlines until "baseurl:"
-  Full Stack Developer
+  iOS/Mac Developer
 url: http://everettjf.github.io # the base hostname & protocol for your site
 
 #
@@ -41,7 +41,7 @@ permalink:  /:year/:month/:day/:title
 owner:
   name: everettjf
   avatar: everettjf.png
-  bio: "Full Stack Developer"
+  bio: "iOS/Mac Developer"
   email: everettjf@live.com
   disqus-shortname: everettjf
   twitter: everettjf #username
