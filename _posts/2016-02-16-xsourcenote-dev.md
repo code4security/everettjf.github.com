@@ -24,8 +24,35 @@ comments: true
 
 对SDWebImage和YYCache或者其他源码的学习笔记，到时候一起放出来吧……
 
+
+*---以下2016年3月21日补充--*
+
+# 效果
+
+经过这1个月断断续续的开发及不断的使用修改，终于可以发布第一个版本啦。效果如下：
+
+![XSourceNote](http://everettjf.github.io/stuff/xsourcenote/project-whole.png)
+
+
+
+
+# 安装
+
+在 [Alcatraz](http://alcatraz.io) 中搜索“XSourceNote”安装即可。
+
+
+
 # 使用
 
-// 开发中……
+## 1. 配置
+例如：
+
+ - 使用Xcode打开位于 /Users/everettjf/GitHub/XSourceNote 路径下的工程文件。
+ - 按快捷键 Shift + F4 打开“笔记列表窗口”，如下图：
+
+ ![XSourceNote](http://everettjf.github.io/stuff/xsourcenote/project-whole.png)
+
+
+
 
 
