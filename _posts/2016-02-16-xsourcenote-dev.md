@@ -27,6 +27,10 @@ comments: true
 
 *---以下2016年3月21日补充--*
 
+# 源码
+
+[https://github.com/everettjf/XSourceNote](https://github.com/everettjf/XSourceNote)
+
 # 效果
 
 经过这1个月断断续续的开发及不断的使用修改，终于可以发布第一个版本啦。
