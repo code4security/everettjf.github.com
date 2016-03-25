@@ -1,6 +1,6 @@
 ---
 layout: post
-title: XSourceNote 源码学习笔记，生成markdown笔记
+title: XSourceNote第一版完成（Xcode源码笔记插件）
 excerpt: "说好的源码学习呢"
 date: 2016-02-16
 tags: [开发]
@@ -51,6 +51,12 @@ comments: true
 
 
 # 使用
+
+## 0. 菜单
+
+`Xcode->Edit->XSourceNote`
+
+或按对应的快捷键。（快捷键在Tool中可修改)
 
 ## 1. 配置
 例如：
