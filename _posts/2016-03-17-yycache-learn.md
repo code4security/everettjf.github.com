@@ -51,8 +51,7 @@ comments: true
 {% endhighlight %}
 
 
- 
- - YYMemoryCache 是内存缓存。 
+  - YYMemoryCache 是内存缓存。 
  - Key是retained，而不是copied。
  - 使用了LRU（最近最少使用）算法。 
 
@@ -337,6 +336,511 @@ http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/
 学到了获取时间的一个函数 CACurrentMediaTime()。
 
 
+## 12. YYMemoryCache.m
+
+ - Path : /YYCache/YYMemoryCache.m
+ - Line : 478 - 478
+ - Note : 
+
+{% highlight oc %}
+        } else if (_lru->_releaseOnMainThread && !pthread_main_np()) {
+{% endhighlight %}
+
+
+pthread_main_np 判断主线程。返回非零，则为主线程。
+
+
+## 13. YYMemoryCache.m
+
+ - Path : /YYCache/YYMemoryCache.m
+ - Line : 357 - 363
+ - Note : 
+
+{% highlight oc %}
+
+- (NSUInteger)totalCount {
+    pthread_mutex_lock(&_lock);
+    NSUInteger count = _lru->_totalCount;
+    pthread_mutex_unlock(&_lock);
+    return count;
+}
+{% endhighlight %}
+
+
+    pthread_mutex_init(&_lock, NULL);
+    pthread_mutex_destroy(&_lock);
+pthread mutex 基本使用方法。
+
+
+## 14. YYMemoryCache.m
+
+ - Path : /YYCache/YYMemoryCache.m
+ - Line : 291 - 291
+ - Note : 
+
+{% highlight oc %}
+        if (pthread_mutex_trylock(&_lock) == 0) {
+{% endhighlight %}
+
+
+使用trylock避免阻塞
+
+
+## 15. YYMemoryCache.m
+
+ - Path : /YYCache/YYMemoryCache.m
+ - Line : 352 - 353
+ - Note : 
+
+{% highlight oc %}
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+{% endhighlight %}
+
+
+监听程序进入后台，以及系统内存不足。
+
+
+## 16. YYMemoryCache.m
+
+ - Path : /YYCache/YYMemoryCache.m
+ - Line : 27 - 27
+ - Note : 
+
+{% highlight oc %}
+static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
+{% endhighlight %}
+
+
+static inline 文件内，内联
+
+
+## 17. YYDiskCache.h
+
+ - Path : /YYCache/YYDiskCache.h
+ - Line : 44 - 53
+ - Note : 
+
+{% highlight oc %}
+/**
+ If the object's data size (in bytes) is larger than this value, then object will
+ be stored as a file, otherwise the object will be stored in sqlite.
+ 
+ 0 means all objects will be stored as separated files, NSUIntegerMax means all
+ objects will be stored in sqlite. 
+ 
+ The default value is 20480 (20KB).
+ */
+@property (readonly) NSUInteger inlineThreshold;
+{% endhighlight %}
+
+
+YYDiskCache 会判断这个阈值，20k以下会存放在sqlite中，否则以文件方式存储。
+
+
+
+## 18. YYDiskCache.h
+
+ - Path : /YYCache/YYDiskCache.h
+ - Line : 139 - 140
+ - Note : 
+
+{% highlight oc %}
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
++ (instancetype)new UNAVAILABLE_ATTRIBUTE;
+{% endhighlight %}
+
+
+声明不可用方法
+
+
+## 19. YYDiskCache.m
+
+ - Path : /YYCache/YYDiskCache.m
+ - Line : 18 - 19
+ - Note : 
+
+{% highlight oc %}
+#define Lock() dispatch_semaphore_wait(self->_lock, DISPATCH_TIME_FOREVER)
+#define Unlock() dispatch_semaphore_signal(self->_lock)
+{% endhighlight %}
+
+
+信号量
+
+
+## 20. YYDiskCache.m
+
+ - Path : /YYCache/YYDiskCache.m
+ - Line : 48 - 58
+ - Note : 
+
+{% highlight oc %}
+/// weak reference for all instances
+static NSMapTable *_globalInstances;
+static dispatch_semaphore_t _globalInstancesLock;
+
+static void _YYDiskCacheInitGlobal() {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _globalInstancesLock = dispatch_semaphore_create(1);
+        _globalInstances = [[NSMapTable alloc] initWithKeyOptions:NSPointerFunctionsStrongMemory valueOptions:NSPointerFunctionsWeakMemory capacity:0];
+    });
+}
+{% endhighlight %}
+
+
+default is **weak**
+
+The NSMapTable class is a mutable collection modeled after NSDictionary, with the following differences:
+Overview
+The major option is to have keys and/or values held “weakly” in a manner that entries are removed when one of the objects is reclaimed.
+Its keys or values may be copied on input or may use pointer identity for equality and hashing.
+It can contain arbitrary pointers (its contents are not constrained to being objects).
+You can configure an NSMapTable instance to operate on arbitrary pointers and not just objects, although typically you are encouraged to use the C function API for void * pointers. (See Managing Map Tables for more information) The object-based API (such as setObject:forKey:) will not work for non-object pointers without type-casting.
+
+
+## 21. YYDiskCache.m
+
+ - Path : /YYCache/YYDiskCache.m
+ - Line : 85 - 93
+ - Note : 
+
+{% highlight oc %}
+- (void)_trimRecursively {
+    __weak typeof(self) _self = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_autoTrimInterval * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        __strong typeof(_self) self = _self;
+        if (!self) return;
+        [self _trimInBackground];
+        [self _trimRecursively];
+    });
+}
+{% endhighlight %}
+
+
+先weak 再strong。
+内部可以直接覆盖外部的self，用起来方便。
+
+
+## 22. YYDiskCache.m
+
+ - Path : /YYCache/YYDiskCache.m
+ - Line : 155 - 155
+ - Note : 
+
+{% highlight oc %}
+    @throw [NSException exceptionWithName:@"YYDiskCache init error" reason:@"YYDiskCache must be initialized with a path. Use 'initWithPath:' or 'initWithPath:inlineThreshold:' instead." userInfo:nil];
+{% endhighlight %}
+
+
+主动抛出异常
+
+
+## 23. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 23 - 27
+ - Note : 
+
+{% highlight oc %}
+static NSString *const kDBFileName = @"manifest.sqlite";
+static NSString *const kDBShmFileName = @"manifest.sqlite-shm";
+static NSString *const kDBWalFileName = @"manifest.sqlite-wal";
+static NSString *const kDataDirectoryName = @"data";
+static NSString *const kTrashDirectoryName = @"trash";
+{% endhighlight %}
+
+
+不知道shm 和 wal 啊。（看来以前一直只是用sqlite，但是没有仔细研究啊）
+
+
+## 24. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 29 - 42
+ - Note : 
+
+{% highlight oc %}
+/*
+ SQL:
+ create table if not exists manifest (
+    key                 text,
+    filename            text,
+    size                integer,
+    inline_data         blob,
+    modification_time   integer,
+    last_access_time    integer,
+    extended_data       blob,
+    primary key(key)
+ ); 
+ create index if not exists last_access_time_idx on manifest(last_access_time);
+ */
+{% endhighlight %}
+
+
+ create index if not exists last_access_time_idx on manifest(last_access_time); 
+
+创建索引（做了5年C++没用过这个呀）
+
+primary key(key) 可以这样后续指定sqlite类型
+
+
+## 25. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 83 - 83
+ - Note : 
+
+{% highlight oc %}
+        NSLog(@"%s line:%d sqlite open failed (%d).", __FUNCTION__, __LINE__, result);
+{% endhighlight %}
+
+
+%s __FUNCTION__   %d __LINE__
+
+
+## 26. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 78 - 80
+ - Note : 
+
+{% highlight oc %}
+        CFDictionaryKeyCallBacks keyCallbacks = kCFCopyStringDictionaryKeyCallBacks;
+        CFDictionaryValueCallBacks valueCallbacks = {0};
+        _dbStmtCache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &keyCallbacks, &valueCallbacks);
+{% endhighlight %}
+
+
+CFDictionaryCreateMutable 的使用。Core Foundation 的使用。
+
+
+## 27. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 111 - 119
+ - Note : 
+
+{% highlight oc %}
+        if (result == SQLITE_BUSY || result == SQLITE_LOCKED) {
+            if (!stmtFinalized) {
+                stmtFinalized = YES;
+                sqlite3_stmt *stmt;
+                while ((stmt = sqlite3_next_stmt(_db, nil)) != 0) {
+                    sqlite3_finalize(stmt);
+                    retry = YES;
+                }
+            }
+{% endhighlight %}
+
+
+busy 和 locked 时，结束所有的statement
+
+
+## 28. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 138 - 142
+ - Note : 
+
+{% highlight oc %}
+- (void)_dbCheckpoint {
+    if (![self _dbIsReady]) return;
+    // Cause a checkpoint to occur, merge `sqlite-wal` file to `sqlite` file.
+    sqlite3_wal_checkpoint(_db, NULL);
+}
+{% endhighlight %}
+
+
+wal checkpoint
+
+
+## 29. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 158 - 172
+ - Note : 
+
+{% highlight oc %}
+- (sqlite3_stmt *)_dbPrepareStmt:(NSString *)sql {
+    if (![self _dbIsReady] || sql.length == 0 || !_dbStmtCache) return NULL;
+    sqlite3_stmt *stmt = (sqlite3_stmt *)CFDictionaryGetValue(_dbStmtCache, (__bridge const void *)(sql));
+    if (!stmt) {
+        int result = sqlite3_prepare_v2(_db, sql.UTF8String, -1, &stmt, NULL);
+        if (result != SQLITE_OK) {
+            if (_errorLogsEnabled) NSLog(@"%s line:%d sqlite stmt prepare error (%d): %s", __FUNCTION__, __LINE__, result, sqlite3_errmsg(_db));
+            return NULL;
+        }
+        CFDictionarySetValue(_dbStmtCache, (__bridge const void *)(sql), stmt);
+    } else {
+        sqlite3_reset(stmt);
+    }
+    return stmt;
+}
+{% endhighlight %}
+
+
+sqlite3_stmt 根据sql缓存起来
+
+
+## 30. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 192 - 216
+ - Note : 
+
+{% highlight oc %}
+- (BOOL)_dbSaveWithKey:(NSString *)key value:(NSData *)value fileName:(NSString *)fileName extendedData:(NSData *)extendedData {
+    NSString *sql = @"insert or replace into manifest (key, filename, size, inline_data, modification_time, last_access_time, extended_data) values (?1, ?2, ?3, ?4, ?5, ?6, ?7);";
+    sqlite3_stmt *stmt = [self _dbPrepareStmt:sql];
+    if (!stmt) return NO;
+    
+    int timestamp = (int)time(NULL);
+    sqlite3_bind_text(stmt, 1, key.UTF8String, -1, NULL);
+    sqlite3_bind_text(stmt, 2, fileName.UTF8String, -1, NULL);
+    sqlite3_bind_int(stmt, 3, (int)value.length);
+    if (fileName.length == 0) {
+        sqlite3_bind_blob(stmt, 4, value.bytes, (int)value.length, 0);
+    } else {
+        sqlite3_bind_blob(stmt, 4, NULL, 0, 0);
+    }
+    sqlite3_bind_int(stmt, 5, timestamp);
+    sqlite3_bind_int(stmt, 6, timestamp);
+    sqlite3_bind_blob(stmt, 7, extendedData.bytes, (int)extendedData.length, 0);
+    
+    int result = sqlite3_step(stmt);
+    if (result != SQLITE_DONE) {
+        if (_errorLogsEnabled) NSLog(@"%s line:%d sqlite insert error (%d): %s", __FUNCTION__, __LINE__, result, sqlite3_errmsg(_db));
+        return NO;
+    }
+    return YES;
+}
+{% endhighlight %}
+
+
+(?1, ?2, ?3, ?4, ?5, ?6, ?7) 
+问号后面可以有数字……
+
+
+## 31. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 218 - 218
+ - Note : 
+
+{% highlight oc %}
+- (BOOL)_dbUpdateAccessTimeWithKey:(NSString *)key {
+{% endhighlight %}
+
+
+更新单个访问时间
+
+
+## 32. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 232 - 232
+ - Note : 
+
+{% highlight oc %}
+- (BOOL)_dbUpdateAccessTimeWithKeys:(NSArray *)keys {
+{% endhighlight %}
+
+
+更新多个key的访问时间
+
+
+## 33. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 603 - 606
+ - Note : 
+
+{% highlight oc %}
+    CFUUIDRef uuidRef = CFUUIDCreate(NULL);
+    CFStringRef uuid = CFUUIDCreateString(NULL, uuidRef);
+    CFRelease(uuidRef);
+    NSString *tmpPath = [_trashPath stringByAppendingPathComponent:(__bridge NSString *)(uuid)];
+{% endhighlight %}
+
+
+生成uuid
+
+
+## 34. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 615 - 627
+ - Note : 
+
+{% highlight oc %}
+- (void)_fileEmptyTrashInBackground {
+    if (_invalidated) return;
+    NSString *trashPath = _trashPath;
+    dispatch_queue_t queue = _trashQueue;
+    dispatch_async(queue, ^{
+        NSFileManager *manager = [NSFileManager new];
+        NSArray *directoryContents = [manager contentsOfDirectoryAtPath:trashPath error:NULL];
+        for (NSString *path in directoryContents) {
+            NSString *fullPath = [trashPath stringByAppendingPathComponent:path];
+            [manager removeItemAtPath:fullPath error:NULL];
+        }
+    });
+}
+{% endhighlight %}
+
+
+这里新建了FileManager。这里并没有设置代理之类的。?? 为何还要生成一个新的FileManager呢。
+
+
+## 35. YYKVStorage.m
+
+ - Path : /YYCache/YYKVStorage.m
+ - Line : 831 - 860
+ - Note : 
+
+{% highlight oc %}
+
+- (BOOL)removeItemsToFitSize:(int)maxSize {
+    if (maxSize == INT_MAX) return YES;
+    if (maxSize <= 0) return [self removeAllItems];
+    
+    int total = [self _dbGetTotalItemSize];
+    if (total < 0) return NO;
+    if (total <= maxSize) return YES;
+    
+    NSArray *items = nil;
+    BOOL suc = NO;
+    do {
+        int perCount = 16;
+        items = [self _dbGetItemSizeInfoOrderByTimeDescWithLimit:perCount];
+        for (YYKVStorageItem *item in items) {
+            if (total > maxSize) {
+                if (item.filename) {
+                    [self _fileDeleteWithName:item.filename];
+                }
+                suc = [self _dbDeleteItemWithKey:item.key];
+                total -= item.size;
+            } else {
+                break;
+            }
+            if (!suc) break;
+        }
+    } while (total > maxSize && items.count > 0 && suc);
+    if (suc) [self _dbCheckpoint];
+    return suc;
+}
+{% endhighlight %}
+
+
+ - 先获取总大小
+ - 每次获取16个不经常访问的数据
+ - 逐个删除（文件或数据库记录），看剩余大小是否满足目标大小
+
+PS : 这里 Desc 是个bug。 应该是Asc 。见：https://github.com/ibireme/YYCache/issues/37
+
+
 
 # Summarize
 
@@ -344,4 +848,4 @@ http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/
 
 
 ---
-*Generated by [XSourceNote](https://github.com/everettjf/XSourceNote) at 2016-03-25 17:52:12 +0000*
+*Generated by [XSourceNote](https://github.com/everettjf/XSourceNote) at 2016-03-27 17:49:14 +0000*
