@@ -27,17 +27,22 @@ comments: true
 # 准备
 
 ### 信息
+
 - 《MacTalk人生元编程》，让我对 Apple 有了第一次认识（以前只知道乔布斯）。（这本书我是2014年买的）
+
 ### 硬件
+
 - MacBook Pro 15寸 非顶配，我是从小闷的水果店买的港版。（现在公司用的13寸+外接显示器，感觉13寸也不错。）（2014年底购买）
 - iPhone 4S，从闲鱼上700块钱买了的二手的。（从来没有用过Apple的产品，为了让自己熟悉iOS系统的操作）（2015年3月份开始做iOS开发后买的）
 - 鼠标。前期还是配个鼠标，否则不习惯。慢慢习惯了触摸板就很少用鼠标了。
 
 ###软件
+
 - Xcode，使用AppStore安装。
 - 搭建一个Mac开发环境，推荐看这个文章 [https://aaaaaashu.gitbooks.io/mac-dev-setup/content/](https://aaaaaashu.gitbooks.io/mac-dev-setup/content/)。
 
 # 学习
+
 ## 第一阶段：基础
 
 这个阶段大概用了一个星期，遇到的问题百度都能很快找出来。
