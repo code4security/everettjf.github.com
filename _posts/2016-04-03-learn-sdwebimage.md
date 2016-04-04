@@ -1,15 +1,11 @@
 ---
 layout: post
-title: 学习 SDWebImage
+title: SDWebImage 学习笔记
 excerpt: “浏览SDWebImage源码笔记”
 date: 2016-04-03
 tags: [源码学习]
 comments: true
 ---
-
-
-
-
 
 
 # Basic Information
