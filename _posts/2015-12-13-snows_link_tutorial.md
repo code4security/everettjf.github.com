@@ -47,7 +47,7 @@ comments: true
   - 可以添加标签，多个标签以空格隔开。
   - 如果不想添加，则可以点击弹出页面左下角的删除按钮。
 
-![chrome extension](http://everettjf.github.io/stuff/snows/extension.png)
+![chrome extension](https://everettjf.github.io/stuff/snows/extension.png)
 
 ## 特殊书签
 1. 如何置顶

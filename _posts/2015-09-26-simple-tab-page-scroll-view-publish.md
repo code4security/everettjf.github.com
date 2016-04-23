@@ -15,7 +15,7 @@ comments: true
 # 最终
 使用方法及代码见：https://github.com/everettjf/EVTTabPageScrollView
 
-![demo](http://everettjf.github.io/images/extern/EVTTabPageScrollView.gif)
+![demo](https://everettjf.github.io/images/extern/EVTTabPageScrollView.gif)
 
 
 # 步骤

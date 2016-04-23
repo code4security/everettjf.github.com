@@ -39,7 +39,7 @@ comments: true
 
 效果如下：
 
-![XSourceNote](http://everettjf.github.io/stuff/xsourcenote/project_whole.png)
+![XSourceNote](https://everettjf.github.io/stuff/xsourcenote/project_whole.png)
 
 
 
@@ -64,7 +64,7 @@ comments: true
  - 使用Xcode打开位于 /Users/everettjf/GitHub/XSourceNote 路径下的工程文件。
  - 按快捷键 Shift+F4 打开“笔记列表窗口”，如下图：
 
- ![XSourceNote](http://everettjf.github.io/stuff/xsourcenote/project_basic.png)
+ ![XSourceNote](https://everettjf.github.io/stuff/xsourcenote/project_basic.png)
 
  - Root Path（必填）: 选择工程文件所在的本地文件夹。（为了添加笔记时把文件全路径转换为相对路径。这里可优化为查找.git目录自动配置）
  - Project Name : 工程名字
@@ -94,10 +94,10 @@ comments: true
 在代码编辑器中按快捷键 Command+F4 可添加笔记。XSouceNote会自动记录**光标所在行（单行笔记）、或当前选中区域的行（多行笔记）**。
 这个窗口中可输入笔记。（关闭后自动保存）。添加后，会在编辑器对应行的左侧边栏中添加一个绿色的标记。
 
- ![XSourceNote](http://everettjf.github.io/stuff/xsourcenote/quick_note.png)
+ ![XSourceNote](https://everettjf.github.io/stuff/xsourcenote/quick_note.png)
 
 
- ![XSourceNote](http://everettjf.github.io/stuff/xsourcenote/sidebar.png)
+ ![XSourceNote](https://everettjf.github.io/stuff/xsourcenote/sidebar.png)
 
 
 
@@ -105,7 +105,7 @@ comments: true
 
 仍然是 Shift+F4打开的窗口，左侧对代码行的笔记会追加到列表下面。
 
- ![XSourceNote](http://everettjf.github.io/stuff/xsourcenote/line_note.png)
+ ![XSourceNote](https://everettjf.github.io/stuff/xsourcenote/line_note.png)
 
 右侧最上面是 文件的相对路径（如果无法找到RootPath，则会是完整路径）。之后是笔记所在行的代码。
 
@@ -117,7 +117,7 @@ comments: true
 
 点击左侧列表“Tool“，右侧下面一行按钮。可导出到选择的文件。
 
-格式参考：[格式参考](http://everettjf.github.io/2016/03/17/yycache-learn)
+格式参考：[格式参考](https://everettjf.github.io/2016/03/17/yycache-learn)
 
 
 # 总结

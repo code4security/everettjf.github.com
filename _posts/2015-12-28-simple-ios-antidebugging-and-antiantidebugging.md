@@ -37,7 +37,7 @@ int main(int argc, char * argv[]) {
 
 ## 去掉保护
 
-参考文章 http://everettjf.github.io/2015/12/20/amap-ios-client-kill-anti-debugging-protect/
+参考文章 https://everettjf.github.io/2015/12/20/amap-ios-client-kill-anti-debugging-protect/
 
 
 # RESTRICT section

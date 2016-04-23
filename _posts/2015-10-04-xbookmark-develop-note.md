@@ -12,7 +12,7 @@ comments: true
 
 # 效果
 
-![menu](http://everettjf.github.io/images/extern/xbookmark0.3.0.png)
+![menu](https://everettjf.github.io/images/extern/xbookmark0.3.0.png)
 
 # 使用方法
 首先要安装插件管理器 `Alcatraz` ，搜索`XBookmark`并安装，重启Xcode后就可以在`Edit`菜单中找到以下功能啦。
@@ -53,8 +53,8 @@ http://www.raywenderlich.com/17811/how-to-make-a-simple-mac-app-on-os-x-10-7-tut
 ## 安装模板、创建工程
     在 Alcatraz 中的 Templates 中搜索 Xcode Plugin。安装后从此模板创建工程。
 
-![XcodePluginTemplate](http://everettjf.github.io/images/extern/xbookmarkdev1.png)
-![XcodePluginCreate](http://everettjf.github.io/images/extern/xbookmarkdev2.png)
+![XcodePluginTemplate](https://everettjf.github.io/images/extern/xbookmarkdev1.png)
+![XcodePluginCreate](https://everettjf.github.io/images/extern/xbookmarkdev2.png)
 
 ## 增加菜单
 
@@ -94,7 +94,7 @@ XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePat
 
 ## 增加书签列表
 
-![XBookmarkList](http://everettjf.github.io/images/extern/xbookmarkdev3.png)
+![XBookmarkList](https://everettjf.github.io/images/extern/xbookmarkdev3.png)
 
 ## 发布到 Alcatraz
 挺简单，修改配置文件，创建一个 Pull Request 就可以。

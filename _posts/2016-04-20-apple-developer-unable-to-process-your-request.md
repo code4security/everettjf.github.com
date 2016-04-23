@@ -11,7 +11,7 @@ comments: true
 
 只要登录就提示下图：
 
-![apple1](http://everettjf.github.io/stuff/image/apple1.png)
+![apple1](https://everettjf.github.io/stuff/image/apple1.png)
 
 
 后来，开始以为公司网络问题，后来在家，在同事电脑，Chrome, Safari 都试了还不行。
@@ -20,7 +20,7 @@ comments: true
 
 于是找到电话，
 
-![apple1](http://everettjf.github.io/stuff/image/apple2.png)
+![apple1](https://everettjf.github.io/stuff/image/apple2.png)
 
 打了 4006 701 855 ，普通话服务，等了几个两三分钟，就解决了。
 
