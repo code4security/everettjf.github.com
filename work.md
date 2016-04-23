@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Works
+title: 我的作品
 permalink: /work/
 comments: true
 ---
