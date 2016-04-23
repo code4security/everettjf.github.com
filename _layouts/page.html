@@ -6,7 +6,6 @@ layout: default
   {{ content }}
 </div>
 
-{% if site.owner.disqus-shortname and page.comments == true %}
-<div id="disqus_thread"></div>
+{% if page.comments == true %}
 {% include disqus.html %}
 {% endif %}
