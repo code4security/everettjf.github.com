@@ -5,7 +5,7 @@
         "feed_url": "https://blog.cnbluebox.com/atom.xml",
         "id": 142,
         "name": "刘坤的技术博客",
-        "spider": null,
+        "spider": "",
         "url": "https://blog.cnbluebox.com/",
         "zindex": 0
     },
@@ -15,7 +15,7 @@
         "feed_url": "https://bestswifter.com/rss/",
         "id": 105,
         "name": "kt's Dev",
-        "spider": null,
+        "spider": "",
         "url": "https://bestswifter.com/",
         "zindex": 0
     },
@@ -25,7 +25,7 @@
         "feed_url": "http://nshipster.com/feed.xml",
         "id": 74,
         "name": "NSHipster",
-        "spider": null,
+        "spider": "",
         "url": "http://nshipster.com/",
         "zindex": 0
     },
@@ -35,7 +35,7 @@
         "feed_url": "http://blog.leichunfeng.com/atom.xml",
         "id": 51,
         "name": "雷纯锋的技术博客",
-        "spider": null,
+        "spider": "",
         "url": "http://blog.leichunfeng.com/",
         "zindex": 0
     },
@@ -45,7 +45,7 @@
         "feed_url": "http://www.tanhao.me/atom.xml",
         "id": 48,
         "name": "老谭笔记",
-        "spider": null,
+        "spider": "",
         "url": "http://www.tanhao.me/",
         "zindex": 0
     },
@@ -55,7 +55,7 @@
         "feed_url": "http://suenblog.duapp.com/rss/",
         "id": 47,
         "name": "技术哥-编程是一种思想,代码是一种人生",
-        "spider": null,
+        "spider": "",
         "url": "http://suenblog.duapp.com/",
         "zindex": 0
     },
@@ -65,7 +65,7 @@
         "feed_url": "http://www.cnblogs.com/kenshincui/rss",
         "id": 46,
         "name": "KenshinCui - 博客园",
-        "spider": null,
+        "spider": "",
         "url": "http://www.cnblogs.com/kenshincui/",
         "zindex": 0
     },
@@ -75,7 +75,7 @@
         "feed_url": "http://casatwy.com/feeds/all.atom.xml",
         "id": 45,
         "name": "Casa Taloyum",
-        "spider": null,
+        "spider": "",
         "url": "http://casatwy.com/",
         "zindex": 0
     },
@@ -85,7 +85,7 @@
         "feed_url": "http://www.olinone.com/?feed=rss2",
         "id": 44,
         "name": "庞海礁的个人空间 - https://github.com/panghaijiao",
-        "spider": null,
+        "spider": "",
         "url": "http://www.olinone.com/",
         "zindex": 0
     },
@@ -95,7 +95,7 @@
         "feed_url": "http://tutuge.me/atom.xml",
         "id": 43,
         "name": "土土哥的技术Blog",
-        "spider": null,
+        "spider": "",
         "url": "http://tutuge.me/",
         "zindex": 0
     },
@@ -105,7 +105,7 @@
         "feed_url": "http://blog.callmewhy.com/atom.xml",
         "id": 42,
         "name": "Why's Blog",
-        "spider": null,
+        "spider": "",
         "url": "http://blog.callmewhy.com/",
         "zindex": 0
     },
@@ -115,7 +115,7 @@
         "feed_url": "http://adad184.com/atom.xml",
         "id": 41,
         "name": "里脊串的开发随笔",
-        "spider": null,
+        "spider": "",
         "url": "http://adad184.com/",
         "zindex": 0
     },
@@ -125,7 +125,7 @@
         "feed_url": "https://andelf.github.io/atom.xml",
         "id": 39,
         "name": "猫·仁波切",
-        "spider": null,
+        "spider": "",
         "url": "https://andelf.github.io/",
         "zindex": 0
     },
@@ -135,7 +135,7 @@
         "feed_url": "http://yulingtianxia.com/atom.xml",
         "id": 37,
         "name": "yulingtianxia's blog",
-        "spider": null,
+        "spider": "",
         "url": "http://yulingtianxia.com/",
         "zindex": 0
     },
@@ -145,7 +145,7 @@
         "feed_url": "http://msching.github.io/atom.xml",
         "id": 36,
         "name": "码农人生",
-        "spider": null,
+        "spider": "",
         "url": "http://msching.github.io/",
         "zindex": 0
     },
@@ -155,7 +155,7 @@
         "feed_url": "http://koofrank.com/rss/",
         "id": 35,
         "name": "KooFrank's Den",
-        "spider": null,
+        "spider": "",
         "url": "http://koofrank.com/",
         "zindex": 0
     },
@@ -165,7 +165,7 @@
         "feed_url": "http://iiiyu.com/atom.xml",
         "id": 34,
         "name": "萧宸宇 | 如果不能成为拯救世界的神，那就堕落到征服世界的魔吧。",
-        "spider": null,
+        "spider": "",
         "url": "http://iiiyu.com/",
         "zindex": 0
     },
@@ -175,7 +175,7 @@
         "feed_url": "http://geeklu.com/feed",
         "id": 33,
         "name": "Luke's Homepage | 卢克",
-        "spider": null,
+        "spider": "",
         "url": "http://geeklu.com/",
         "zindex": 0
     },
@@ -185,7 +185,7 @@
         "feed_url": "http://www.cnblogs.com/biosli/rss",
         "id": 32,
         "name": "摇滚诗人 - 博客园",
-        "spider": null,
+        "spider": "",
         "url": "http://www.cnblogs.com/biosli",
         "zindex": 0
     },
@@ -195,7 +195,7 @@
         "feed_url": "http://foggry.com/atom.xml",
         "id": 31,
         "name": "王中周的技术博客",
-        "spider": null,
+        "spider": "",
         "url": "http://foggry.com/",
         "zindex": 0
     },
@@ -205,7 +205,7 @@
         "feed_url": "http://travis.wang/rss/",
         "id": 30,
         "name": "Travis.Wang",
-        "spider": null,
+        "spider": "",
         "url": "http://imi.im/",
         "zindex": 0
     },
@@ -215,7 +215,7 @@
         "feed_url": "http://imallen.com/rss/",
         "id": 29,
         "name": "Allen's Memos",
-        "spider": null,
+        "spider": "",
         "url": "http://imallen.com/",
         "zindex": 0
     },
@@ -225,7 +225,7 @@
         "feed_url": "http://gracelancy.com/atom.xml",
         "id": 28,
         "name": "Lancy's Blog",
-        "spider": null,
+        "spider": "",
         "url": "http://gracelancy.com/",
         "zindex": 0
     },
@@ -235,7 +235,7 @@
         "feed_url": "http://blog.nswebfrog.com/feed/",
         "id": 27,
         "name": "nswebfrog' Homepage | nswebfrog",
-        "spider": null,
+        "spider": "",
         "url": "http://blog.nswebfrog.com/",
         "zindex": 0
     },
@@ -245,7 +245,7 @@
         "feed_url": "http://answerhuang.duapp.com/index.php/feed/",
         "id": 26,
         "name": "answer_huang - iOS developer，Python fans",
-        "spider": null,
+        "spider": "",
         "url": "http://answerhuang.duapp.com/",
         "zindex": 0
     },
@@ -255,7 +255,7 @@
         "feed_url": "http://studentdeng.github.io/atom.xml",
         "id": 25,
         "name": "不会开机的男孩",
-        "spider": null,
+        "spider": "",
         "url": "http://studentdeng.github.io/",
         "zindex": 0
     },
@@ -265,7 +265,7 @@
         "feed_url": "http://wonderffee.github.io/atom.xml",
         "id": 21,
         "name": "Wonderffee's Blog",
-        "spider": null,
+        "spider": "",
         "url": "http://wonderffee.github.io/",
         "zindex": 0
     },
@@ -275,7 +275,7 @@
         "feed_url": "http://nonomori.farbox.com/feed",
         "id": 20,
         "name": "Nonomori - Let monkeys coding for iOS",
-        "spider": null,
+        "spider": "",
         "url": "http://nonomori.farbox.com/",
         "zindex": 0
     },
@@ -285,7 +285,7 @@
         "feed_url": "http://billwang1990.github.io/atom.xml",
         "id": 19,
         "name": "亚庆的 Blog",
-        "spider": null,
+        "spider": "",
         "url": "http://billwang1990.github.io/",
         "zindex": 0
     },
@@ -295,7 +295,7 @@
         "feed_url": "http://xiangwangfeng.com/atom.xml",
         "id": 18,
         "name": "阿毛的蛋疼地",
-        "spider": null,
+        "spider": "",
         "url": "http://xiangwangfeng.com/",
         "zindex": 0
     },
@@ -305,7 +305,7 @@
         "feed_url": "http://blog.zhowkev.in/rss/",
         "id": 17,
         "name": "Kevin",
-        "spider": null,
+        "spider": "",
         "url": "http://blog.zhowkev.in/",
         "zindex": 0
     },
@@ -315,7 +315,7 @@
         "feed_url": "http://blog.sunnyxx.com/atom.xml",
         "id": 16,
         "name": "sunnyxx的技术博客",
-        "spider": null,
+        "spider": "",
         "url": "http://blog.sunnyxx.com/",
         "zindex": 0
     },
@@ -325,7 +325,7 @@
         "feed_url": "http://wufawei.com/feed/",
         "id": 14,
         "name": "Ted's Homepage | Ted",
-        "spider": null,
+        "spider": "",
         "url": "http://wufawei.com/",
         "zindex": 0
     },
@@ -335,7 +335,7 @@
         "feed_url": "http://blog.csdn.net/yiyaaixuexi/rss/list",
         "id": 11,
         "name": "念茜的博客 - 博客频道 - CSDN.NET",
-        "spider": null,
+        "spider": "",
         "url": "http://blog.csdn.net/yiyaaixuexi",
         "zindex": 0
     },
@@ -345,7 +345,7 @@
         "feed_url": "http://everettjf.github.io/feed.xml",
         "id": 6,
         "name": "everettjf",
-        "spider": null,
+        "spider": "",
         "url": "http://everettjf.github.io/",
         "zindex": 0
     },
@@ -355,7 +355,7 @@
         "feed_url": "http://nshipster.cn/feed.xml",
         "id": 5,
         "name": "NSHipster 中文版",
-        "spider": null,
+        "spider": "",
         "url": "http://nshipster.cn/",
         "zindex": 0
     },
@@ -365,7 +365,7 @@
         "feed_url": "http://beyondvincent.com/atom.xml",
         "id": 4,
         "name": "破船之家",
-        "spider": null,
+        "spider": "",
         "url": "http://beyondvincent.com/",
         "zindex": 0
     },
@@ -375,7 +375,7 @@
         "feed_url": "http://onevcat.com/feed.xml",
         "id": 3,
         "name": "OneV's Den",
-        "spider": null,
+        "spider": "",
         "url": "http://onevcat.com/",
         "zindex": 0
     },
@@ -385,7 +385,7 @@
         "feed_url": "http://blog.devtang.com/atom.xml",
         "id": 2,
         "name": "唐巧的技术博客",
-        "spider": null,
+        "spider": "",
         "url": "http://blog.devtang.com/",
         "zindex": 0
     }

@@ -8,7 +8,7 @@
             "feed_url": "http://wufawei.com/feed/",
             "id": 14,
             "name": "Ted's Homepage | Ted",
-            "spider": null,
+            "spider": "",
             "url": "http://wufawei.com/",
             "zindex": 0
         },
@@ -18,7 +18,7 @@
             "feed_url": "",
             "id": 13,
             "name": "Xcode Dev",
-            "spider": null,
+            "spider": "",
             "url": "http://blog.xcodev.com/",
             "zindex": 0
         },
@@ -28,7 +28,7 @@
             "feed_url": "http://blog.csdn.net/yiyaaixuexi/rss/list",
             "id": 11,
             "name": "念茜的博客 - 博客频道 - CSDN.NET",
-            "spider": null,
+            "spider": "",
             "url": "http://blog.csdn.net/yiyaaixuexi",
             "zindex": 0
         },
@@ -38,7 +38,7 @@
             "feed_url": "",
             "id": 7,
             "name": "Limboy's HQ",
-            "spider": null,
+            "spider": "",
             "url": "http://limboy.me/",
             "zindex": 0
         },
@@ -48,7 +48,7 @@
             "feed_url": "http://everettjf.github.io/feed.xml",
             "id": 6,
             "name": "everettjf",
-            "spider": null,
+            "spider": "",
             "url": "http://everettjf.github.io/",
             "zindex": 0
         },
@@ -58,7 +58,7 @@
             "feed_url": "http://nshipster.cn/feed.xml",
             "id": 5,
             "name": "NSHipster 中文版",
-            "spider": null,
+            "spider": "",
             "url": "http://nshipster.cn/",
             "zindex": 0
         },
@@ -68,7 +68,7 @@
             "feed_url": "http://beyondvincent.com/atom.xml",
             "id": 4,
             "name": "破船之家",
-            "spider": null,
+            "spider": "",
             "url": "http://beyondvincent.com/",
             "zindex": 0
         },
@@ -78,7 +78,7 @@
             "feed_url": "http://onevcat.com/feed.xml",
             "id": 3,
             "name": "OneV's Den",
-            "spider": null,
+            "spider": "",
             "url": "http://onevcat.com/",
             "zindex": 0
         },
@@ -88,7 +88,7 @@
             "feed_url": "http://blog.devtang.com/atom.xml",
             "id": 2,
             "name": "唐巧的技术博客",
-            "spider": null,
+            "spider": "",
             "url": "http://blog.devtang.com/",
             "zindex": 0
         }

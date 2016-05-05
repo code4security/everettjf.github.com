@@ -8,7 +8,7 @@
             "feed_url": "",
             "id": 98,
             "name": "蒸米 | WooYun知识库",
-            "spider": null,
+            "spider": "",
             "url": "http://drops.wooyun.org/author/%E8%92%B8%E7%B1%B3",
             "zindex": 0
         },
@@ -18,7 +18,7 @@
             "feed_url": "",
             "id": 97,
             "name": "鬼仔's Blog | 关注网络安全",
-            "spider": null,
+            "spider": "",
             "url": "http://huaidan.org/",
             "zindex": 0
         },
@@ -28,7 +28,7 @@
             "feed_url": "",
             "id": 85,
             "name": "supermarin (Marin Usalj)",
-            "spider": null,
+            "spider": "",
             "url": "https://github.com/supermarin",
             "zindex": 0
         }

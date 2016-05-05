@@ -8,7 +8,7 @@
             "feed_url": "",
             "id": 138,
             "name": "Sound Switch",
-            "spider": null,
+            "spider": "",
             "url": "http://sharkfood.com/content/Developers/content/Sound%20Switch/",
             "zindex": 0
         },
@@ -18,7 +18,7 @@
             "feed_url": "",
             "id": 127,
             "name": "obfuscator-llvm/obfuscator",
-            "spider": null,
+            "spider": "",
             "url": "https://github.com/obfuscator-llvm/obfuscator/",
             "zindex": 0
         },
@@ -28,7 +28,7 @@
             "feed_url": "",
             "id": 119,
             "name": "AlvaroFranco/AFSoundManager: iOS audio playing (both local and streaming) and recording made easy",
-            "spider": null,
+            "spider": "",
             "url": "https://github.com/AlvaroFranco/AFSoundManager",
             "zindex": 0
         },
@@ -38,7 +38,7 @@
             "feed_url": "",
             "id": 109,
             "name": "mutualmobile/MMDrawerController: A lightweight, easy to use, Side Drawer Navigation Controller",
-            "spider": null,
+            "spider": "",
             "url": "https://github.com/mutualmobile/MMDrawerController",
             "zindex": 0
         },
@@ -48,7 +48,7 @@
             "feed_url": "",
             "id": 106,
             "name": "dfmuir/KINWebBrowser: A web browser module for your iOS apps.",
-            "spider": null,
+            "spider": "",
             "url": "https://github.com/dfmuir/KINWebBrowser",
             "zindex": 0
         },
@@ -58,7 +58,7 @@
             "feed_url": "",
             "id": 104,
             "name": "AfryMask/AFBrushBoard: 毛笔画板",
-            "spider": null,
+            "spider": "",
             "url": "https://github.com/AfryMask/AFBrushBoard",
             "zindex": 0
         },
@@ -68,7 +68,7 @@
             "feed_url": "",
             "id": 86,
             "name": "supermarin/ObjectiveRecord: ActiveRecord-like API for CoreData",
-            "spider": null,
+            "spider": "",
             "url": "https://github.com/supermarin/ObjectiveRecord",
             "zindex": 0
         },
@@ -78,7 +78,7 @@
             "feed_url": "",
             "id": 79,
             "name": "Smooth asynchronous user interfaces for iOS apps — AsyncDisplayKit",
-            "spider": null,
+            "spider": "",
             "url": "http://asyncdisplaykit.org/",
             "zindex": 0
         }

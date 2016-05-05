@@ -8,7 +8,7 @@
             "feed_url": "",
             "id": 145,
             "name": "全球领先移动广告平台、手机广告专家 - 有米广告",
-            "spider": null,
+            "spider": "",
             "url": "https://www.youmi.net/",
             "zindex": 0
         },
@@ -18,7 +18,7 @@
             "feed_url": "",
             "id": 144,
             "name": "首页 - JSPatch",
-            "spider": null,
+            "spider": "",
             "url": "http://jspatch.com/",
             "zindex": 0
         },
@@ -28,7 +28,7 @@
             "feed_url": "",
             "id": 143,
             "name": "chockenberry/Provisioning: A Quick Look plug-in for .mobileprovision files",
-            "spider": null,
+            "spider": "",
             "url": "https://github.com/chockenberry/Provisioning",
             "zindex": 0
         },
@@ -38,7 +38,7 @@
             "feed_url": "",
             "id": 136,
             "name": "IconBeast | 3000+ iOS Tab Bar and Toolbar Icons for iPhone and iPad",
-            "spider": null,
+            "spider": "",
             "url": "http://www.iconbeast.com/",
             "zindex": 0
         },
@@ -48,7 +48,7 @@
             "feed_url": "",
             "id": 135,
             "name": "IconPng.com 爱看图标网，免费中文图标搜索引擎！",
-            "spider": null,
+            "spider": "",
             "url": "http://www.iconpng.com/",
             "zindex": 0
         },
@@ -58,7 +58,7 @@
             "feed_url": "",
             "id": 134,
             "name": "Which Clang Warning Is Generating This Message?",
-            "spider": null,
+            "spider": "",
             "url": "http://fuckingclangwarnings.com/",
             "zindex": 0
         },
@@ -68,7 +68,7 @@
             "feed_url": "",
             "id": 126,
             "name": "首页 - JSPatch",
-            "spider": null,
+            "spider": "",
             "url": "http://www.jspatch.com/",
             "zindex": 0
         },
@@ -78,7 +78,7 @@
             "feed_url": "",
             "id": 122,
             "name": "Sketch - Professional Digital Design for Mac",
-            "spider": null,
+            "spider": "",
             "url": "http://www.sketchapp.com/",
             "zindex": 0
         },
@@ -88,7 +88,7 @@
             "feed_url": "",
             "id": 121,
             "name": "MacApp.So",
-            "spider": null,
+            "spider": "",
             "url": "http://www.macapp.so/",
             "zindex": 0
         },
@@ -98,7 +98,7 @@
             "feed_url": "",
             "id": 116,
             "name": "YDIMAGE － APP 开发图片处理工具",
-            "spider": null,
+            "spider": "",
             "url": "http://ydimage.yidianhulian.com/",
             "zindex": 0
         },
@@ -108,7 +108,7 @@
             "feed_url": "",
             "id": 108,
             "name": "Disconnect Search: Search privately using your favorite search engine",
-            "spider": null,
+            "spider": "",
             "url": "https://search.disconnect.me/",
             "zindex": 0
         },
@@ -118,7 +118,7 @@
             "feed_url": "",
             "id": 99,
             "name": "Cycript",
-            "spider": null,
+            "spider": "",
             "url": "http://www.cycript.org/",
             "zindex": 0
         },
@@ -128,7 +128,7 @@
             "feed_url": "",
             "id": 95,
             "name": "iOS Developer Library",
-            "spider": null,
+            "spider": "",
             "url": "https://developer.apple.com/library/ios/navigation/",
             "zindex": 0
         },
@@ -138,7 +138,7 @@
             "feed_url": "",
             "id": 91,
             "name": "云梯 VPN - 连接世界的梯子",
-            "spider": null,
+            "spider": "",
             "url": "https://www.trueyt.com/",
             "zindex": 0
         },
@@ -148,7 +148,7 @@
             "feed_url": "",
             "id": 90,
             "name": "Alcatraz | The Package manager for Xcode",
-            "spider": null,
+            "spider": "",
             "url": "http://alcatraz.io/",
             "zindex": 0
         },
@@ -158,7 +158,7 @@
             "feed_url": "",
             "id": 89,
             "name": "XVimProject/XVim: Xcode plugin for Vim keybindings",
-            "spider": null,
+            "spider": "",
             "url": "https://github.com/XVimProject/XVim",
             "zindex": 0
         },
@@ -168,7 +168,7 @@
             "feed_url": "",
             "id": 88,
             "name": "Wireless Network Reproduction",
-            "spider": null,
+            "spider": "",
             "url": "https://finaltheory.github.io/wireless-network-reproduction/",
             "zindex": 0
         }

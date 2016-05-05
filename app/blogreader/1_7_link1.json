@@ -8,7 +8,7 @@
             "feed_url": "",
             "id": 112,
             "name": "LeetCode Online Judge",
-            "spider": null,
+            "spider": "",
             "url": "https://leetcode.com/",
             "zindex": 0
         },
@@ -18,7 +18,7 @@
             "feed_url": "",
             "id": 111,
             "name": "iOSRE",
-            "spider": null,
+            "spider": "",
             "url": "http://iosre.com/",
             "zindex": 0
         },
@@ -28,7 +28,7 @@
             "feed_url": "",
             "id": 102,
             "name": "Application Security Research, News, and Education Blog | Veracode",
-            "spider": null,
+            "spider": "",
             "url": "https://www.veracode.com/blog",
             "zindex": 0
         },
@@ -38,7 +38,7 @@
             "feed_url": "",
             "id": 93,
             "name": "Hacker News",
-            "spider": null,
+            "spider": "",
             "url": "https://news.ycombinator.com/",
             "zindex": 0
         },
@@ -48,7 +48,7 @@
             "feed_url": "",
             "id": 92,
             "name": "Startup News",
-            "spider": null,
+            "spider": "",
             "url": "http://news.dbanotes.net/",
             "zindex": 0
         },
@@ -58,7 +58,7 @@
             "feed_url": "",
             "id": 87,
             "name": "V2EX",
-            "spider": null,
+            "spider": "",
             "url": "http://www.v2ex.com/",
             "zindex": 0
         },
@@ -68,7 +68,7 @@
             "feed_url": "",
             "id": 80,
             "name": "Stack Overflow",
-            "spider": null,
+            "spider": "",
             "url": "http://stackoverflow.com/",
             "zindex": 0
         }
