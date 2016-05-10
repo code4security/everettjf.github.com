@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 雪花书签 snows.link 介绍及使用说明
+title: 雪花书签介绍及使用说明
 excerpt: "第二次内测，改名为snows.link"
 date: 2015-12-13
 tags: [snows.link]
