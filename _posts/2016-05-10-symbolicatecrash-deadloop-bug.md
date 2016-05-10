@@ -2,7 +2,7 @@
 layout: post
 title: symbolicatecrash deadloop bug
 excerpt: "Why Apple not fix "
-date: 2016-05-11
+date: 2016-05-10
 tags: [iOS开发]
 comments: true
 ---
