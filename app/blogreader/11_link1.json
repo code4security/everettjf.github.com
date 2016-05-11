@@ -1,0 +1,19 @@
+{
+    "count": 1,
+    "cur_page": 1,
+    "links": [
+        {
+            "aspect_id": 11,
+            "created_at": 1462984453.0,
+            "domain_id": 1,
+            "favicon": "https://developer.vuforia.com/favicon.ico",
+            "feed_url": "",
+            "id": 153,
+            "name": "Getting Started View | Vuforia Library Prod",
+            "spider": "",
+            "url": "https://developer.vuforia.com/library/getting-started",
+            "zindex": 0
+        }
+    ],
+    "num_pages": 1
+}
