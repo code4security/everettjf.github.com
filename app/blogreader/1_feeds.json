@@ -638,18 +638,6 @@
         },
         {
             "aspect_id": 1,
-            "created_at": 1463208596.0,
-            "domain_id": 1,
-            "favicon": "",
-            "feed_url": "http://sindrilin.com/rss.xml",
-            "id": 171,
-            "name": "SindriLin's 小巢 - Blog for SindriLin",
-            "spider": "",
-            "url": "http://sindrilin.com/",
-            "zindex": 0
-        },
-        {
-            "aspect_id": 1,
             "created_at": 1463208758.0,
             "domain_id": 1,
             "favicon": "http://allluckly.cn/favicon.ico",
