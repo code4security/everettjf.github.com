@@ -1,6 +1,12 @@
 {
     "posts": [
         {
+            "createtime": "2016-05-17T00:38:11+08:00", 
+            "image": null, 
+            "link": "http://www.jianshu.com/p/cf86dffd0c7f", 
+            "title": "ios--简单弹幕实现"
+        }, 
+        {
             "createtime": "2016-05-12T01:12:08+08:00", 
             "image": "http://upload-images.jianshu.io/upload_images/1412973-af1b62d89f24e544.png?imageMogr2/auto-orient/strip%7CimageView2/1/w/300/h/300", 
             "link": "http://www.jianshu.com/p/3233200b8c1a", 
@@ -47,13 +53,7 @@
             "image": "http://upload-images.jianshu.io/upload_images/1412973-c4f669b99aa833eb.png?imageMogr2/auto-orient/strip%7CimageView2/1/w/300/h/300", 
             "link": "http://www.jianshu.com/p/035461986396", 
             "title": "ios - NSTimer中target的self是强引用问题"
-        }, 
-        {
-            "createtime": "2016-05-05T11:11:05+08:00", 
-            "image": null, 
-            "link": "http://www.jianshu.com/p/f4c47181e404", 
-            "title": "ios无限 自动 图片轮播器"
         }
     ], 
-    "updated_at": "2016-05-15T15:06:09.762907"
+    "updated_at": "2016-05-17T13:40:35.787498"
 }
