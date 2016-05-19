@@ -7,6 +7,10 @@ tags: [snows.link]
 comments: true
 ---
 
+2016年5月19日补充：雪花书签已经逐渐演化为 [番茄阅读](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader)。是的，不断的演化，失去了原本的功能。
+
+---
+
 # 新的
 - 域名：http://snows.link/
 - 名称：雪花书签
