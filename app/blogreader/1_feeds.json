@@ -659,6 +659,18 @@
             "spider": "",
             "url": "http://xiongzenghuidegithub.github.io/",
             "zindex": 0
+        },
+        {
+            "aspect_id": 1,
+            "created_at": 1463538552.0,
+            "domain_id": 1,
+            "favicon": "http://starming-staticpic.stor.sinaapp.com/pic/64.png",
+            "feed_url": "http://www.starming.com/index.php?v=index&rss=all",
+            "id": 176,
+            "name": "Starming星光社",
+            "spider": "",
+            "url": "http://www.starming.com/",
+            "zindex": 0
         }
     ]
 }

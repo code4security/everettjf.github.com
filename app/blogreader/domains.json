@@ -3,6 +3,11 @@
         {
             "aspects": [
                 {
+                    "id": 2,
+                    "name": "文章",
+                    "zindex": 1
+                },
+                {
                     "id": 1,
                     "name": "博客",
                     "zindex": 0
@@ -38,9 +43,9 @@
                     "zindex": 0
                 },
                 {
-                    "id": 2,
-                    "name": "文章",
-                    "zindex": 1
+                    "id": 12,
+                    "name": "书",
+                    "zindex": 0
                 }
             ],
             "id": 1,
