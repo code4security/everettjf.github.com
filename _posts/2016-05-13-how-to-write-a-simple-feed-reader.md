@@ -1,40 +1,41 @@
 ---
 layout: post
-title: （编写中）如何编写一个简单的博客RSS阅读器，番茄阅读的开发总结
+title: 如何编写一个简单的博客RSS阅读器，番茄阅读的开发总结
 excerpt: "简单说下 番茄阅读 的开发思路"
 date: 2016-05-13
 tags: [iOS开发]
 comments: true
 ---
 
+终于上线第一个App，简单总结。
 
 # 背景
 
-`啰嗦，请直接忽略。但确实是这个过程。`
+- 最初我是想做个大而全的开发者导航网站，想学什么都能找到最优质的网址，但没有那么多时间去搜集网址。由于工作是iOS开发，可以只关注iOS开发类的网址。
+- 于是想做个App，将收集的博客以及博客的RSS订阅信息通过App展示出来。
+- 目标不断的缩小，或许就是伪需求变为真实需求的过程。
 
-- 2014年10月份我还在做Windows开发，我想开发一个导航网站，精选各类优质开发类的网站。后来发现要耗费太多人力。
-- 2015年5月份，我想开发一个分享自己收藏网址的网站。中间开发出了几个版本，但感觉使用麻烦（虽然做了Chrome插件）。（后来想到，直接把Chrome收藏夹发布出去，更简单、易用。但现在感觉也是伪需求，或者很小众。）
-- 2016年找到几个有相同目标的小伙伴，做出了 钦慕网（https://admire.so）。但设计类网站太过追求漂亮，我又不想过多维护开发类的网址，就单独做出了个 http://iosblog.cc，专注于 iOS/OS X 开发者博客的收集。(这个网站也即将废弃，后面会有原因)
-- 最后终于回到了本职工作。将收集的博客以及博客的RSS订阅信息通过App展示出来。
-- 目标不断的在缩小，或许就是伪需求变为真实需求的过程。
 
 # 架构
-## 组成
 
-- Web服务器
-- 静态内容服务器
-- 爬虫
-- App
+- Web服务器：用于收藏网址
+- 静态内容服务器：用户提供App访问接口
+- 爬虫：爬取不支持RSS/Atom订阅的博客文章列表
+- App：最终展现
 
 ## Web服务器
 
 Web服务器主要用于网址收集和删除。
 
-为了能看到一个博客后，方便的收藏博客，可以编写一个`Chrome插件`。当浏览到一个博客网址后，点击Chrome插件，Chrome插件会自动收集当前博客的网址、标题、favicon。还可以添加订阅地址。
+为了能看到一个博客后，方便的收藏博客，可以编写`Chrome插件`。当浏览到一个博客网址后，点击Chrome插件，Chrome插件会自动收集当前博客的网址、标题、favicon。还可以添加订阅地址。
 
 免去了使用文本方式记录博客的麻烦。
 
-Web服务器使用Django实现。
+Web服务器使用Django实现（熟悉Python）。目前可以使用 [http://iosblog.cc](http://iosblog.cc)访问，由于App并不依赖这个域名，后期可能、可以随时更换。这个网址仅用于辅助收集，不用于公开使用。
+
+
+[Chrome插件源码](https://github.com/everettjf/TomatoRead/tree/master/chrome)
+[Web服务器源码](https://github.com/everettjf/TomatoRead/tree/master/web)
 
 
 ## 静态内容服务器
@@ -45,6 +46,8 @@ Web服务器使用Django实现。
 
 这一层服务器的存在，让我们可以随便更换Web服务器。App也不依赖Web服务器。
 
+[导出效果](https://github.com/everettjf/everettjf.github.com/tree/master/app/blogreader)
+
 
 ## 爬虫
 
@@ -52,30 +55,51 @@ Web服务器使用Django实现。
 
 收藏了一些不错的简书博客后，可以写个小爬虫，只爬指定博客的文章列表。App中点击这类文章时，直接以浏览器的方式打开。
 
-scrapy是Python很好的爬虫框架，使用起来简单易用。
+scrapy是Python很好的爬虫框架，使用起来简单易用。爬某个网址文章列表的代码如下：
+
+```
+    def parse(self, response):
+        print response.url
+        oid = self.url_to_oid[response.url]
+        filepath = os.path.join(target_json_dir,'spider', 'jianshu', '%d.json'%oid)
+        print filepath
+
+        items = []
+        for post in response.xpath('//div[@id="list-container"]/ul/li'):
+            url = post.xpath('div/h4[@class="title"]/a/@href').extract_first()
+            url = response.urljoin(url)
+
+            title = post.xpath('div/h4[@class="title"]/a/text()').extract_first()
+            title = title.strip()
+
+            item = {}
+            item['title'] = title
+            item['link'] = url
+            item['createtime'] = post.xpath('div/p[@class="list-top"]/span[@class="time"]/@data-shared-at').extract_first()
+            item['image'] = post.xpath('a[@class="wrap-img"]/img/@src').extract_first()
+            items.append(item)
+```
+
+Scrapy文档也很全，看完[入门教程](http://doc.scrapy.org/en/master/intro/tutorial.html)就能完成这个简书文章列表的爬取了。
+
+[爬虫源码](https://github.com/everettjf/TomatoRead/tree/master/jianspider)
+[爬到的结果](https://github.com/everettjf/everettjf.github.com/tree/master/app/blogreader/spider/jianshu)
+
+有个小问题，可以不解决。简书博客首页的文章默认是加载10条（数不一定对），剩余文章是在向下滚动浏览时异步加载。由于是做订阅，只抓取最新的N条就足够了。（如何抓取异步加载的这些文章，我还没有研究。或许找到请求后台的地址，就很容易抓取了）
 
 
 ## App
 
 ### 开源库
 
-为了快速组装这个App，可以使劲用现成的开源库。
+为了快速组装这个App，主要用了以下两个开源库。
 
-主要：
+[MWFeedParser](https://github.com/mwaterfall/MWFeedParser) 可用于解析RSS/Atom，但使用过程中有些源的时间并不标准，可以直接修改源码，增加支持的时间。
 
-- Rss/Atom解析 https://github.com/mwaterfall/MWFeedParser
-- App 内嵌浏览器 https://github.com/dfmuir/KINWebBrowser
+[KINWebBrowser](https://github.com/dfmuir/KINWebBrowser) 用于查看原文、或者打开不支持订阅的博客文章。
 
-辅助：
 
-- 自动布局：https://github.com/SnapKit/Masonry
-- 网络：https://github.com/AFNetworking/AFNetworking
-- 标签页：https://github.com/HeshamMegid/HMSegmentedControl
-- JSON模型转换：https://github.com/ibireme/YYModel
-- 日志：https://github.com/CocoaLumberjack/CocoaLumberjack
-- 下拉刷新：https://github.com/CoderMJLee/MJRefresh
-- 异步加载图片：https://github.com/ibireme/YYWebImage
-- 动画：https://github.com/facebook/pop
+
 
 ### 加载策略
 
@@ -96,6 +120,7 @@ scrapy是Python很好的爬虫框架，使用起来简单易用。
 
 RSS/Atom订阅拿到的文章内容是一段html代码。缺少css。程序内部要内置一套较为通用的css。
 
+这里目前直接copy了[已阅App](https://github.com/ming1016/RSSRead)的css代码。但[这个css](https://github.com/everettjf/TomatoRead/tree/master/iOS/iOSBlogReader/Resource)对有些文章展示的兼容不好。以后再优化啦。
 
 
 
@@ -106,27 +131,22 @@ RSS/Atom订阅拿到的文章内容是一段html代码。缺少css。程序内�
 最近看最强大脑，在学习魔方算法，想来可以做个类似魔方的动画。为了简单、快速可用，可以用 facebook的 pop 库，9个颜色挨个淡入淡出，再加个状态栏。
 
 
-### 工具
 
-- 生成图标
-- Photoshop
+
 
 
 ### 第三方服务
+
 - 统计：友盟
-- 崩溃分析：ugly
+- 崩溃分析：bugly
 - 热修复：JSPatch
 
-### 名称
 
-- iOS博客精选：不能带有iOS
-- 博客精选：太过大众化。
-- 番茄阅读：加个副标题。相对好记一些。且算是有个小品牌。AppStore还没有同名的App。好，就这个了。
 
 
 # 总结
 
-自己做iOS工作接近一年了（中间暂停了3个月在家做奶爸了）,这是第一个上架的App。虽然App较为简单，但这个想法的演变过程，值得我反思和总结。
+自己做iOS工作接近一年（中间暂停了3个月在家做奶爸了）,这是第一个上架的App。虽然App较为简单，但这个想法的演变过程，值得我反思和总结。
 
 
 
