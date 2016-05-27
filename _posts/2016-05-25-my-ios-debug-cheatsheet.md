@@ -241,6 +241,8 @@ https://github.com/stefanesser/dumpdecrypted
 例子
 
 ```
+scp -P 2222 Security/dumpdecrypted-master/dumpdecrypted.dylib root@localhost:/var/mobile/Containers/Data/Application/BA2644DB-450F-4DB0-A71F-A38F65488A48/Documents/
+
 scp ~/sec/dumpdecrypted-master/dumpdecrypted.dylib root@192.168.199.164:/var/mobile/Containers/Data/Application/72AB36DD-2E9B-47C0-9695-099235E40C3C/Documents/
 dumpdecrypted.dylib
 
