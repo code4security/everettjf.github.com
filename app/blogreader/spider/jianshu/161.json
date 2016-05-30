@@ -1,6 +1,12 @@
 {
     "posts": [
         {
+            "createtime": "2016-05-30T10:32:41+08:00", 
+            "image": null, 
+            "link": "http://www.jianshu.com/p/00891a31f23a", 
+            "title": "Core Image研究1——人脸识别"
+        }, 
+        {
             "createtime": "2016-05-20T17:26:02+08:00", 
             "image": null, 
             "link": "http://www.jianshu.com/p/6e2d69f2967f", 
@@ -47,13 +53,7 @@
             "image": null, 
             "link": "http://www.jianshu.com/p/7a055b7eb14c", 
             "title": "iOS openCV的研究(3)——人脸识别"
-        }, 
-        {
-            "createtime": "2016-05-04T11:28:25+08:00", 
-            "image": null, 
-            "link": "http://www.jianshu.com/p/fcb88dcb3738", 
-            "title": "iOS开发- 相机获取到的图片自动旋转90度解决办法"
         }
     ], 
-    "updated_at": "2016-05-29T17:35:10.861439"
+    "updated_at": "2016-05-30T17:24:18.179833"
 }
