@@ -1,6 +1,6 @@
 ---
 layout: post
-title: my iOS debug cheatsheet
+title: iOS Debug 速查表
 excerpt: ""
 date: 2016-05-25
 tags: [iOS开发]
