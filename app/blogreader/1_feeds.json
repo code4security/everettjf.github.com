@@ -755,6 +755,18 @@
             "spider": "jianshu",
             "url": "http://www.jianshu.com/users/81c4380481c1/latest_articles",
             "zindex": 0
+        },
+        {
+            "aspect_id": 1,
+            "created_at": 1465065445.0,
+            "domain_id": 1,
+            "favicon": "http://www.cnblogs.com/favicon.ico",
+            "feed_url": "http://www.cnblogs.com/ChenYilong/article/rss",
+            "id": 249,
+            "name": "Chen_Yilong - 博客园",
+            "spider": "",
+            "url": "http://www.cnblogs.com/ChenYilong/?from=inf&wvr=5&loc=infblog",
+            "zindex": 0
         }
     ]
 }
