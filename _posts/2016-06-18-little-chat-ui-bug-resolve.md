@@ -61,7 +61,9 @@ GitHub上有很多参考代码都是第一种实现方式（第二种没找到�
 
 有两步：
 
-1. tableView的cellForRowAtIndexPath中改变frame时要禁用动画。
+## 第一步
+
+tableView的cellForRowAtIndexPath中改变frame时要禁用动画。
 
 ```
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -83,7 +85,9 @@ GitHub上有很多参考代码都是第一种实现方式（第二种没找到�
 
 
 
-2. 不改变tableView大小，仅改变位置。
+## 第二步
+
+不改变tableView大小，仅改变位置。
 
 ```
 - (void)_setBottomOffset:(CGFloat)offset{
@@ -105,7 +109,7 @@ GitHub上有很多参考代码都是第一种实现方式（第二种没找到�
 
 # 总结
 
-测试demo见这里。
+[测试demo见这里](https://github.com/everettjf/EIMKit/tree/master/Other/ChatCellFrameChangeDemo)。
 
 貌似有些第三方IM的sdk也有类似问题。脉脉app应该是自己开发的，也有这个问题。如果开发人员看到这篇文章，就修改下哈。
 
