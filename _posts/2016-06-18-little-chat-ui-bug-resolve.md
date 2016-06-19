@@ -7,6 +7,9 @@ tags: [iOS开发]
 comments: true
 ---
 
+* TOC
+{:toc}
+
 # 背景
 
 聊天界面，有两种实现方法：
