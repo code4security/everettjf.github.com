@@ -7,6 +7,10 @@ tags: [iOS开发]
 comments: true
 ---
 
+
+* TOC
+{:toc}
+
 # 问题
 
 最近1个月左右QA发现App经常出现启动慢的情况。且较容易复现。

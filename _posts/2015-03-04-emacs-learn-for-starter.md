@@ -8,6 +8,10 @@ modified:
 comments: true
 ---
 
+
+* TOC
+{:toc}
+
 作为一名windows程序猿、vim、markdown新手。忽然进入另一个“世界，遇到osx、emac、org，遇到了一些坑，记录下来。
 
 ## 安装

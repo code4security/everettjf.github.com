@@ -7,6 +7,10 @@ tags: [iOS开发]
 comments: true
 ---
 
+
+* TOC
+{:toc}
+
 产品第一次AppStore审核通过，过年时遇到一个“神奇”的bug，在显示某些特殊字符时App会崩溃。后来经过各种尝试找到原因。
 
 

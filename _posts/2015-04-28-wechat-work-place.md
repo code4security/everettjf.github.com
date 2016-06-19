@@ -8,6 +8,10 @@ modified:
 comments: true
 ---
 
+
+* TOC
+{:toc}
+
 *以下想法主要面向软件公司（互联网公司）*
 
 # 多数现有的工作环境

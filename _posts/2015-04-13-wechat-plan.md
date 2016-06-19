@@ -8,6 +8,10 @@ modified:
 comments: true
 ---
 
+
+* TOC
+{:toc}
+
 # 计划即瞎猜
 
 《重来》有一篇文章“计划即瞎猜”。

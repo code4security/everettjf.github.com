@@ -8,7 +8,10 @@ modified:
 comments: true
 ---
 
-**这篇文章最近会进行修改和完善（2015年11月6日），预计11月16日之前会完成**
+
+* TOC
+{:toc}
+
 
 [本文示例代码](https://github.com/everettjf/ios_crash_report_demo)
 

@@ -7,6 +7,10 @@ tags: [iOS开发]
 comments: true
 ---
 
+
+* TOC
+{:toc}
+
 # 问题
 
 最近开发类似微信发语音的功能，ViewController 如下：

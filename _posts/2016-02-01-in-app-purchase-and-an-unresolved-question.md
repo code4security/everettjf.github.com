@@ -7,6 +7,10 @@ tags: [开发]
 comments: true
 ---
 
+
+* TOC
+{:toc}
+
 # 背景
 
 产品类似QQ，有QQ币。必须集成In-App Purchase, 怎么解释都不行。
