@@ -293,7 +293,7 @@ cy# x.length
 
 ### struct vector<Class, std::__1::allocator<Class>> m_messageNodeClass;
 
-这里能看出BaseMsgContentViewController的实现文件是 BaseMsgContentViewController.mm，也就是Objective C++写的。（结合微信内很多变量的命名方式，微信早期的开发者应该有MFC的开发经验）
+这里能看出BaseMsgContentViewController的实现文件是 BaseMsgContentViewController.mm，也就是Objective C++写的。
 
 m_messageNodeClass与下面的方法有关：
 ```
@@ -894,7 +894,7 @@ objc_ivar_offset_CMessageMgr_m_oMsgDB 就是     CMessageDB *m_oMsgDB;
 PS:
 ![img](https://everettjf.github.io/stuff/eimkit/1466141798790.png)
 >  在hopper中能看到不少日志信息，而且写明了当前实现文件的文件名。
-后缀是.mm，当然不止这一个，微信好多类都是Objective C++实现的。包括消息主界面的 BaseMsgContentViewController.mm，以及下面CMessageMgr中的很多类。（再次猜测，微信的初期开发人员不少做Windows下C++开发客户端的哈。C开头的类……）
+后缀是.mm，当然不止这一个，微信好多类都是Objective C++实现的。包括消息主界面的 BaseMsgContentViewController.mm，以及下面CMessageMgr中的很多类。（猜测，微信的初期开发人员不少做Windows下C++开发客户端的哈。C开头的类……）
 
 这个CMessageMgr也是Objective C++开发 。不过hopper能看出 GetMsgByCreateTime: 内部调用了
 
