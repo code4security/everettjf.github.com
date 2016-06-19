@@ -350,6 +350,7 @@ void -[BaseMsgContentViewController initMessageNodeClass](void * self, void * _c
 **这里能看到微信支持的所有可显示的消息类型**
 
 手动整理伪代码如下：
+
 ```
 std::vector<Class> m_messageNodeClass;
 m_messageNodeClass.push_back([MultiColumnReaderMessageNodeView class]);
@@ -431,6 +432,7 @@ Hopper反汇编找到对应代码：
 由于内部有取arg2.m_view的代码，能基本猜到 arg2是 CMessageNodeData类型。（后面可以用lldb证实）
 
 关键代码行及伪代码大概如下：
+
 ```
 void -[BaseMsgContentViewController preCreateMessageTimeNode:](void * self, void * _cmd, void * arg2) {
 messageNodeData = arg2
@@ -574,6 +576,7 @@ char +[ImageMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](vo
 }
 
 ```
+
 可知 0x3、0xd、0x27 都是图像。
 
 还有很多消息，不一一列出了。
@@ -585,6 +588,8 @@ char +[TextMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](voi
     return 0x1;
 }
 ```
+
+
 直接返回的YES。可见，如果所有消息都不是的话，则按照文本消息来处理。TextMessageNodeView也正好是最后一个push_back到 m_messageNodeClass中去的。
 
 #### initWithMessageWrap
@@ -625,6 +630,7 @@ ssh root@localhost -p 2222
 ```
 
 debugserver
+
 ```
 everettjfs-iPhone:~ root# debugserver *:1234 -a WeChat
 debugserver-@(#)PROGRAM:debugserver  PROJECT:debugserver-320.2.89
@@ -635,6 +641,7 @@ Waiting for debugger instructions for process 0.
 ```
 
 lldb
+
 ```
 [everettjf@e ~ ]$ lldb
 (lldb) process connect connect://localhost:1234
@@ -651,6 +658,7 @@ libsystem_kernel.dylib`mach_msg_overwrite_trap:
 ```
 
 找到偏移地址
+
 ```
 (lldb) image list -o -f
 [  0] 0x000e7000 /private/var/mobile/Containers/Bundle/Application/25FB096A-8122-49B5-9304-5FDB9080D9B0/WeChat.app/WeChat(0x00000000000eb000)
@@ -668,12 +676,14 @@ hopper中找到BaseMsgContentViewController::preCreateMessageContentNode:  的�
 ![img](https://everettjf.github.io/stuff/eimkit/1465992949249.png)
 
 计算出真实偏移地址（我比较喜欢拿ipython当计算器）：
+
 ```
 In [1]: hex(0x000e7000+0x0160a444)
 Out[1]: '0x16f1444'
 ```
 
 下断点：
+
 ```
 (lldb) br s -a 0x16f1444
 Breakpoint 1: where = WeChat`___lldb_unnamed_function80337$$WeChat, address = 0x016f1444
@@ -708,6 +718,7 @@ Breakpoint 1: where = WeChat`___lldb_unnamed_function80337$$WeChat, address = 0x
     frame #6: 0x26c548fc UIKit`-[UIViewController view] + 24
     省略
 ```
+
 可见这几个方法都是在主线程调用。frame#0就是preCreateMessageContentNode方法。frame #1就是调用preCreateMessageContentNode的方法。我们找下frame#1的方法。
 从内存地址 0x016f2516 减去 偏移地址0x000e7000 就得到文件偏移地址：
 
@@ -715,6 +726,7 @@ Breakpoint 1: where = WeChat`___lldb_unnamed_function80337$$WeChat, address = 0x
 In [4]: hex(0x016f2516-0x000e7000)
 Out[4]: '0x160b516'
 ```
+
 hopper 中找到这个方法：
 ![img](https://everettjf.github.io/stuff/eimkit/1466097350949.png)
 
@@ -722,12 +734,13 @@ hopper 中找到这个方法：
 ![img](https://everettjf.github.io/stuff/eimkit/1466097381889.png)
 
 就是这个方法：
+
 ```
 void -[BaseMsgContentViewController addMessageNode:layout:addMoreMsg:](void * self, void * _cmd, void * arg2, char arg3, char arg4) {
-
 ```
 
 下断点到这个方法的首地址 0x16f2138 = 0x000e7000 + 0x0160b138：（先清掉之前的断点）
+
 ```
 In [6]: hex(0x000e7000 + 0x0160b138)
 Out[6]: '0x16f2138'
@@ -780,6 +793,7 @@ void -[BaseMsgContentViewController viewDidLoad](void * self, void * _cmd) {
 ## 历史消息来源
 
 仔细看 
+
 ```
 void -[BaseMsgContentViewController initHistroyMessageNodeData](void * self, void * _cmd) {
 ...
@@ -787,6 +801,7 @@ void -[BaseMsgContentViewController initHistroyMessageNodeData](void * self, voi
             r0 = [r5 GetMessageArray];
             r7 = r7;
 ```
+
 找到 [r5 GetMessageArray] 这句的汇编代码行 0x0160bb20。
 
 ![img](https://everettjf.github.io/stuff/eimkit/1466104472059.png)
@@ -810,6 +825,7 @@ void -[BaseMsgContentViewController initHistroyMessageNodeData](void * self, voi
 (lldb) po [[$r0 firstObject]class]
 CMessageWrap
 ```
+
 单步执行后，也可以看返回值$r0，也就是所有消息CMessageWrap。
 
 可知是WeixinContentLogicController类， 看下这个类：
@@ -825,6 +841,7 @@ hopper看下WeixinContentLogicController的GetMessageArray方法，发现找不�
 ```
 
 内部又调用了 WeixinContentLogicController GetMsg:FromID:Limit:LeftCount:LeftUnreadCount:
+
 ```
 - WeixinContentLogicController GetMsg:FromID:Limit:LeftCount:LeftUnreadCount:
 
@@ -847,11 +864,14 @@ hopper看下WeixinContentLogicController的GetMessageArray方法，发现找不�
 大概就是 从 MMServiceCenter 获取到CMessageMgr，然后调用 CMessageMgr的GetMsgByCreateTime:arg_20 FromID:arg_1C FromCreateTime:STK1 Limit:STK0 LeftCount:STK-1 方法。
 
 有两个方法：
+
 ```
 - (id)GetMsgByCreateTime:(id)arg1 FromID:(unsigned long)arg2 FromCreateTime:(unsigned long)arg3 Limit:(unsigned long)arg4 LeftCount:(unsigned int *)arg5;
 - (id)GetMsgByCreateTime:(id)arg1 FromID:(unsigned long)arg2 FromCreateTime:(unsigned long)arg3 Limit:(unsigned long)arg4 LeftCount:(unsigned int *)arg5 FromSequence:(unsigned long)arg6;
 ```
+
 第一个会调用第二个带FromSequence的方法，hopper看下第二个方法：
+
 ```
   r0 = *objc_ivar_offset_CMessageMgr_m_oMsgDB;
     r2 = *(r7 + 0x14);
@@ -877,6 +897,7 @@ PS:
 后缀是.mm，当然不止这一个，微信好多类都是Objective C++实现的。包括消息主界面的 BaseMsgContentViewController.mm，以及下面CMessageMgr中的很多类。（再次猜测，微信的初期开发人员不少做Windows下C++开发客户端的哈。C开头的类……）
 
 这个CMessageMgr也是Objective C++开发 。不过hopper能看出 GetMsgByCreateTime: 内部调用了
+
 ```
 int -[CMessageDB GetMsg:Where:order:Limit:](int arg0) {
 ```
@@ -910,6 +931,7 @@ CMMDB的 GetMessagesByChatName方法内部如下：
     r0 = [res getObjectsWhere:r10 onProperties:r4 orderBy:STK0 limit:STK-1];
 
 ```
+
 也就是对 CMMDB::GetMessageTable 的返回值调用了getObjectsWhere方法。
 
 ```
