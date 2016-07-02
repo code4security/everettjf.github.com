@@ -1,13 +1,10 @@
 ---
 layout: page
-title: 我的解决方案
+title: 我的常用软件
 permalink: /solution/
 comments: true
 ---
 
-
-> 目前我的完美解决方案。
-> 适合我，或许适合你。
 
 - App
     + 番茄阅读（AppStore搜索『番茄阅读博客』）

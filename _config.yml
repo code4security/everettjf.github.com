@@ -1,8 +1,8 @@
-markdown: rdiscount
+markdown: kramdown
 highlighter: pygments
 permalink: /:year/:month/:day/:title
 name: "everettjf"
-markdown: rdiscount
+
 
 author: "everettjf"
 atom-baseurl: "https://everettjf.github.io"
@@ -18,9 +18,9 @@ navigations:
   - title: About
     class: fa fa-user
     href: /about.html
-  - title: Gallery
+  - title: Software
     class: fa fa-film
-    href: https://github.com/everettjf
+    href: /software
   - title: Subscribe
     class: fa fa-rss
     href: /atom.xml
