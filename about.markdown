@@ -5,18 +5,20 @@ layout: page
 
 a
 
-> Minimalist | Appleist | Unixer | Coder
+> Coder
 
-who involved in 
+on
 
-> [github](https://github.com/waynezhang)
+> iOS | macOS | Windows
 
 mail 
 
-> echo srvpqxfbyqfvpdtkbjwt | tr yxwvtsrqpkjfdb zuonmlihgeca@.
+> everettjf(at)live.com
 
 or follow 
 
-> [@o_lll](https://twitter.com/#!/o_lll)
 
-to reach me
+> [github](https://github.com/everettjf)
+
+> [@everettjf](http://weibo.com/everettjf)
+
