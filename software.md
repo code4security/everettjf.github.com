@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 我的常用软件
-permalink: /solution/
+permalink: /software/
 comments: true
 ---
 
