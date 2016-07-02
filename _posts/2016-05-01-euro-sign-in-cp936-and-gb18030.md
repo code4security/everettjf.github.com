@@ -60,7 +60,7 @@ https://msdn.microsoft.com/zh-cn/goglobal/bb688113.aspx
 
 关键代码如下：
 
-{% highlight oc %}
+{% highlight c %}
 @implementation NSString(EncodingUtil)
 
 +(NSString *)stringFromGBK:(const char *)srcString{
@@ -124,7 +124,7 @@ https://msdn.microsoft.com/zh-cn/goglobal/bb688113.aspx
 测试代码： 
 
 
-{% highlight oc %}
+{% highlight c %}
 char szBadName[101];
         memset(szBadName, 0, sizeof(szBadName));
         int pos = 0;

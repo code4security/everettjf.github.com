@@ -30,7 +30,7 @@ comments: true
  - Line : 60 - 72
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 #define dispatch_main_sync_safe(block)\
     if ([NSThread isMainThread]) {\
         block();\
@@ -56,7 +56,7 @@ comments: true
  - Line : 33 - 33
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     if (NSClassFromString(@"SDNetworkActivityIndicator")) {
 {% endhighlight %}
 
@@ -70,7 +70,7 @@ comments: true
  - Line : 35 - 38
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         id activityIndicator = [NSClassFromString(@"SDNetworkActivityIndicator") performSelector:NSSelectorFromString(@"sharedActivityIndicator")];
@@ -87,7 +87,7 @@ comments: true
  - Line : 67 - 68
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         _downloadQueue = [NSOperationQueue new];
         _downloadQueue.maxConcurrentOperationCount = 6;
 {% endhighlight %}
@@ -102,7 +102,7 @@ NSOperation相比GCD的优势，可配置并行最大线程数
  - Line : 111 - 113
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)setOperationClass:(Class)operationClass {
     _operationClass = operationClass ?: [SDWebImageDownloaderOperation class];
 }
@@ -118,7 +118,7 @@ NSOperation相比GCD的优势，可配置并行最大线程数
  - Line : 207 - 207
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     dispatch_barrier_sync(self.barrierQueue, ^{
 {% endhighlight %}
 
@@ -134,7 +134,7 @@ NSOperation相比GCD的优势，可配置并行最大线程数
  - Line : 214 - 224
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         // Handle single download of simultaneous download request for the same URL
         NSMutableArray *callbacksForURL = self.URLCallbacks[url];
         NSMutableDictionary *callbacks = [NSMutableDictionary new];
@@ -158,7 +158,7 @@ NSOperation相比GCD的优势，可配置并行最大线程数
  - Line : 187 - 192
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         [wself.downloadQueue addOperation:operation];
         if (wself.executionOrder == SDWebImageDownloaderLIFOExecutionOrder) {
             // Emulate LIFO execution order by systematically adding new operations as last operation's dependency
@@ -177,7 +177,7 @@ NSOperation相比GCD的优势，可配置并行最大线程数
  - Line : 33 - 33
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @property (assign, nonatomic) UIBackgroundTaskIdentifier backgroundTaskId;
 {% endhighlight %}
 
@@ -191,7 +191,7 @@ NSOperation相比GCD的优势，可配置并行最大线程数
  - Line : 77 - 92
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         Class UIApplicationClass = NSClassFromString(@"UIApplication");
         BOOL hasApplication = UIApplicationClass && [UIApplicationClass respondsToSelector:@selector(sharedApplication)];
         if (hasApplication && [self shouldContinueWhenAppEntersBackground]) {
@@ -220,7 +220,7 @@ NSOperation相比GCD的优势，可配置并行最大线程数
  - Line : 96 - 96
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         self.connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO];
 {% endhighlight %}
 
@@ -234,7 +234,7 @@ NSOperation相比GCD的优势，可配置并行最大线程数
  - Line : 100 - 123
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     [self.connection start];
 
     if (self.connection) {
@@ -273,7 +273,7 @@ SDWebImage是个古老的库，兼容iOS5.1以下。
  - Line : 155 - 167
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)cancelInternalAndStop {
     if (self.isFinished) return;
     [self cancelInternal];
@@ -299,7 +299,7 @@ SDWebImage是个古老的库，兼容iOS5.1以下。
  - Line : 196 - 200
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)setFinished:(BOOL)finished {
     [self willChangeValueForKey:@"isFinished"];
     _finished = finished;
@@ -317,7 +317,7 @@ KVO
  - Line : 213 - 225
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     
@@ -343,7 +343,7 @@ KVO
  - Line : 231 - 239
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         NSUInteger code = [((NSHTTPURLResponse *)response) statusCode];
         
         //This is the case when server returns '304 Not Modified'. It means that remote image is not changed.
@@ -365,7 +365,7 @@ KVO
  - Line : 252 - 253
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [self.imageData appendData:data];
 {% endhighlight %}
@@ -380,7 +380,7 @@ KVO
  - Line : 256 - 266
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         // The following code is from http://www.cocoaintheshell.com/2011/05/progressive-images-download-imageio/
         // Thanks to the author @Nyx0uf
 
@@ -404,7 +404,7 @@ KVO
  - Line : 337 - 358
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 + (UIImageOrientation)orientationFromPropertyValue:(NSInteger)value {
     switch (value) {
         case 1:
@@ -439,7 +439,7 @@ KVO
  - Line : 14 - 35
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 // See https://github.com/rs/SDWebImage/pull/1141 for discussion
 @interface AutoPurgeCache : NSCache
 @end
@@ -474,7 +474,7 @@ KVO
  - Line : 38 - 53
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 // PNG signature bytes and data (below)
 static unsigned char kPNGSignatureBytes[8] = {0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A};
 static NSData *kPNGSignatureData = nil;
@@ -503,7 +503,7 @@ png文件前缀
  - Line : 55 - 57
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     return image.size.height * image.size.width * image.scale * image.scale;
 }
@@ -520,7 +520,7 @@ FOUNDATION_STATIC_INLINE 可以学习用用。
  - Line : 77 - 77
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         instance = [self new];
 {% endhighlight %}
 
@@ -534,7 +534,7 @@ FOUNDATION_STATIC_INLINE 可以学习用用。
  - Line : 105 - 105
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         _memCache = [[AutoPurgeCache alloc] init];
 {% endhighlight %}
 
@@ -548,7 +548,7 @@ FOUNDATION_STATIC_INLINE 可以学习用用。
  - Line : 125 - 127
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         dispatch_sync(_ioQueue, ^{
             _fileManager = [NSFileManager new];
         });
@@ -566,7 +566,7 @@ _ioQueue = dispatch_queue_create("com.hackemist.SDWebImageCache", DISPATCH_QUEUE
  - Line : 177 - 189
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (NSString *)cachedFileNameForKey:(NSString *)key {
     const char *str = [key UTF8String];
     if (str == NULL) {
@@ -592,7 +592,7 @@ _ioQueue = dispatch_queue_create("com.hackemist.SDWebImageCache", DISPATCH_QUEUE
  - Line : 213 - 238
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
             if (image && (recalculate || !data)) {
 #if TARGET_OS_IPHONE
                 // We need to determine if the image is a PNG or a JPEG
@@ -636,7 +636,7 @@ PS：如果需要加载gif，这里注意不要recalculate，否则 再次从磁
  - Line : 276 - 278
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     // this is an exception to access the filemanager on another queue than ioQueue, but we are using the shared instance
     // from apple docs on NSFileManager: The methods of the shared NSFileManager object can be called from multiple threads safely.
     exists = [[NSFileManager defaultManager] fileExistsAtPath:[self defaultCachePathForKey:key]];
@@ -652,7 +652,7 @@ sharedManager 线程安全的哦
  - Line : 15 - 49
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
     if (!image) {
         return nil;
@@ -700,7 +700,7 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
  - Line : 11 - 40
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 + (NSString *)sd_contentTypeForImageData:(NSData *)data {
     uint8_t c;
     [data getBytes:&c length:1];
@@ -742,7 +742,7 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
  - Line : 14 - 57
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 + (UIImage *)sd_animatedGIFWithData:(NSData *)data {
     if (!data) {
         return nil;
@@ -798,7 +798,7 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
  - Line : 15 - 77
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 + (UIImage *)decodedImageWithImage:(UIImage *)image {
     // while downloading huge amount of images
     // autorelease the bitmap context
@@ -873,7 +873,7 @@ decode image，优化图片加载速度
  - Line : 506 - 536
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         NSArray *resourceKeys = @[NSURLIsDirectoryKey, NSURLContentModificationDateKey, NSURLTotalFileAllocatedSizeKey];
 
         // This enumerator prefetches useful properties for our cache files.
@@ -917,7 +917,7 @@ decode image，优化图片加载速度
  - Line : 442 - 442
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @interface NSDictionary<KeyType, ObjectType> (NSFileAttributes)
 {% endhighlight %}
 
@@ -931,7 +931,7 @@ KeyType 和 ObjectType 。Objective C还有这个语法呀。类似泛型。
  - Line : 14 - 14
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @interface NSDictionary<__covariant KeyType, __covariant ObjectType> : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, NSFastEnumeration>
 {% endhighlight %}
 
@@ -949,7 +949,7 @@ https://msdn.microsoft.com/zh-cn/library/dd799517.aspx
  - Line : 131 - 134
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     BOOL isFailedUrl = NO;
     @synchronized (self.failedURLs) {
         isFailedUrl = [self.failedURLs containsObject:url];
@@ -966,7 +966,7 @@ https://msdn.microsoft.com/zh-cn/library/dd799517.aspx
  - Line : 119 - 126
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     if ([url isKindOfClass:NSString.class]) {
         url = [NSURL URLWithString:(NSString *)url];
     }
@@ -987,7 +987,7 @@ https://msdn.microsoft.com/zh-cn/library/dd799517.aspx
  - Line : 305 - 306
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         NSArray *copiedOperations = [self.runningOperations copy];
         [copiedOperations makeObjectsPerformSelector:@selector(cancel)];
 {% endhighlight %}
@@ -1002,7 +1002,7 @@ NSArray竟然有这个方法，Objective C真的开发者友好啊。
  - Line : 51 - 71
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 +(UIImageOrientation)sd_imageOrientationFromImageData:(NSData *)imageData {
     UIImageOrientation result = UIImageOrientationUp;
     CGImageSourceRef imageSource = CGImageSourceCreateWithData((__bridge CFDataRef)imageData, NULL);
@@ -1036,7 +1036,7 @@ NSArray竟然有这个方法，Objective C真的开发者友好啊。
  - Line : 16 - 24
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (NSMutableDictionary *)operationDictionary {
     NSMutableDictionary *operations = objc_getAssociatedObject(self, &loadOperationKey);
     if (operations) {
@@ -1058,7 +1058,7 @@ NSArray竟然有这个方法，Objective C真的开发者友好啊。
  - Line : 43 - 43
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         } else if ([operations conformsToProtocol:@protocol(SDWebImageOperation)]){
 {% endhighlight %}
 
@@ -1073,7 +1073,7 @@ conformsToProtocol:@protocol
  - Line : 174 - 177
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)addActivityIndicator {
     if (!self.activityIndicator) {
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:[self getIndicatorStyle]];
@@ -1090,7 +1090,7 @@ conformsToProtocol:@protocol
  - Line : 44 - 46
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)sd_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock {
     [self sd_cancelCurrentImageLoad];
     objc_setAssociatedObject(self, &imageURLKey, url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

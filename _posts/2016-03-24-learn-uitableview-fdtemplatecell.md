@@ -34,7 +34,7 @@ comments: true
  - Line : 35 - 35
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (__kindof UITableViewCell *)fd_templateCellForReuseIdentifier:(NSString *)identifier;
 {% endhighlight %}
 
@@ -48,7 +48,7 @@ __kindof XXXClass 可以这么用
  - Line : 28 - 28
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @interface UITableView (FDTemplateLayoutCell)
 {% endhighlight %}
 
@@ -62,7 +62,7 @@ UITableView的extension
  - Line : 87 - 99
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @interface UITableViewCell (FDTemplateLayoutCell)
 
 /// Indicate this is a template layout cell for calculation only.
@@ -88,7 +88,7 @@ UITableView的extension
  - Line : 221 - 229
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @implementation UITableViewCell (FDTemplateLayoutCell)
 
 - (BOOL)fd_isTemplateLayoutCell {
@@ -118,7 +118,7 @@ SEL类型的_cmd ， 每个方法内部都有，表示方法自身。
  - Line : 36 - 43
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         static const CGFloat systemAccessoryWidths[] = {
             [UITableViewCellAccessoryNone] = 0,
             [UITableViewCellAccessoryDisclosureIndicator] = 34,
@@ -139,7 +139,7 @@ SEL类型的_cmd ， 每个方法内部都有，表示方法自身。
  - Line : 57 - 64
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         // Add a hard width constraint to make dynamic content views (like labels) expand vertically instead
         // of growing horizontally, in a flow-layout manner.
         NSLayoutConstraint *widthFenceConstraint = [NSLayoutConstraint constraintWithItem:cell.contentView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:contentViewWidth];
@@ -161,7 +161,7 @@ AutoLayout 计算Size的方法 systemLayoutSizeFittingSize。
  - Line : 79 - 81
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         // Try '- sizeThatFits:' for frame layout.
         // Note: fitting height should not include separator view.
         fittingHeight = [cell sizeThatFits:CGSizeMake(contentViewWidth, 0)].height;
@@ -177,7 +177,7 @@ AutoLayout 计算Size的方法 systemLayoutSizeFittingSize。
  - Line : 100 - 121
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (__kindof UITableViewCell *)fd_templateCellForReuseIdentifier:(NSString *)identifier {
     NSAssert(identifier.length > 0, @"Expect a valid identifier - %@", identifier);
     
@@ -217,7 +217,7 @@ AutoLayout 计算Size的方法 systemLayoutSizeFittingSize。
  - Line : 26 - 26
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 typedef NSMutableArray<NSMutableArray<NSNumber *> *> FDIndexPathHeightsBySection;
 {% endhighlight %}
 
@@ -231,7 +231,7 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> FDIndexPathHeightsBySection
  - Line : 29 - 30
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @property (nonatomic, strong) FDIndexPathHeightsBySection *heightsBySectionForPortrait;
 @property (nonatomic, strong) FDIndexPathHeightsBySection *heightsBySectionForLandscape;
 {% endhighlight %}
@@ -246,7 +246,7 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> FDIndexPathHeightsBySection
  - Line : 45 - 45
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     return UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation) ? self.heightsBySectionForPortrait: self.heightsBySectionForLandscape;
 {% endhighlight %}
 
@@ -260,7 +260,7 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> FDIndexPathHeightsBySection
  - Line : 65 - 73
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (CGFloat)heightForIndexPath:(NSIndexPath *)indexPath {
     [self buildCachesAtIndexPathsIfNeeded:@[indexPath]];
     NSNumber *number = self.heightsBySectionForCurrentOrientation[indexPath.section][indexPath.row];
@@ -282,7 +282,7 @@ CGFLOAT_IS_DOUBLE 注意这个。
  - Line : 124 - 124
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         [self methodSignatureForSelector:nil];
 {% endhighlight %}
 
@@ -296,7 +296,7 @@ CGFLOAT_IS_DOUBLE 注意这个。
  - Line : 133 - 145
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 // We just forward primary call, in crash report, top most method in stack maybe FD's,
 // but it's really not our bug, you should check whether your table view's data source and
 // displaying cells are not matched when reloading.
@@ -322,7 +322,7 @@ static void __FD_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void (
  - Line : 147 - 168
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 + (void)load {
     // All methods that trigger height cache's invalidation
     SEL selectors[] = {
@@ -376,7 +376,7 @@ In a custom implementation of load you can therefore safely message other unrela
  - Line : 162 - 166
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         SEL originalSelector = selectors[index];
         SEL swizzledSelector = NSSelectorFromString([@"fd_" stringByAppendingString:NSStringFromSelector(originalSelector)]);
         Method originalMethod = class_getInstanceMethod(self, originalSelector);
@@ -398,7 +398,7 @@ method_exchangeImplementations 可以交换两个Method。
  - Line : 75 - 86
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @implementation UITableView (FDKeyedHeightCache)
 
 - (FDKeyedHeightCache *)fd_keyedHeightCache {
@@ -423,7 +423,7 @@ method_exchangeImplementations 可以交换两个Method。
  - Line : 25 - 25
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @interface UITableView (FDTemplateLayoutCellDebug)
 {% endhighlight %}
 

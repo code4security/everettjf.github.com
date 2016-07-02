@@ -34,7 +34,7 @@ comments: true
  - Line : 16 - 30
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 /**
  YYMemoryCache is a fast in-memory cache that stores key-value pairs.
  In contrast to NSDictionary, keys are retained and not copied.
@@ -64,7 +64,7 @@ comments: true
  - Line : 15 - 15
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 #import <QuartzCore/QuartzCore.h>
 {% endhighlight %}
 
@@ -79,7 +79,7 @@ QuartzCore 这个框架需要研究下。
  - Line : 18 - 18
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 #if __has_include("YYDispatchQueuePool.h")
 {% endhighlight %}
 
@@ -93,7 +93,7 @@ QuartzCore 这个框架需要研究下。
  - Line : 32 - 45
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 /**
  A node in linked map.
  Typically, you should not use this class directly.
@@ -124,7 +124,7 @@ _prev 和 _next 是__unsafe_unretained 修饰，被外层的 CFMutableDictionary
  - Line : 57 - 66
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @interface _YYLinkedMap : NSObject {
     @package
     CFMutableDictionaryRef _dic; // do not set object directly
@@ -147,7 +147,7 @@ _prev 和 _next 是__unsafe_unretained 修饰，被外层的 CFMutableDictionary
  - Line : 92 - 92
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     _dic = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 {% endhighlight %}
 
@@ -161,7 +161,7 @@ CFMutableDictionaryRef 用法mark。
  - Line : 101 - 154
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 
 - (void)insertNodeAtHead:(_YYLinkedMapNode *)node {
     CFDictionarySetValue(_dic, (__bridge const void *)(node->_key), (__bridge const void *)(node));
@@ -228,7 +228,7 @@ CFMutableDictionaryRef 用法mark。
  - Line : 190 - 198
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)_trimRecursively {
     __weak typeof(self) _self = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_autoTrimInterval * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -250,7 +250,7 @@ CFMutableDictionaryRef 用法mark。
  - Line : 208 - 218
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)_trimToCost:(NSUInteger)costLimit {
     BOOL finish = NO;
     pthread_mutex_lock(&_lock);
@@ -276,7 +276,7 @@ http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/
  - Line : 220 - 233
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     NSMutableArray *holder = [NSMutableArray new];
     while (!finish) {
         if (pthread_mutex_trylock(&_lock) == 0) {
@@ -303,7 +303,7 @@ http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/
  - Line : 344 - 345
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_appDidReceiveMemoryWarningNotification) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_appDidEnterBackgroundNotification) name:UIApplicationDidEnterBackgroundNotification object:nil];
 {% endhighlight %}
@@ -318,7 +318,7 @@ http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/
  - Line : 406 - 416
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (id)objectForKey:(id)key {
     if (!key) return nil;
     pthread_mutex_lock(&_lock);
@@ -344,7 +344,7 @@ http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/
  - Line : 478 - 478
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         } else if (_lru->_releaseOnMainThread && !pthread_main_np()) {
 {% endhighlight %}
 
@@ -358,7 +358,7 @@ pthread_main_np 判断主线程。返回非零，则为主线程。
  - Line : 357 - 363
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 
 - (NSUInteger)totalCount {
     pthread_mutex_lock(&_lock);
@@ -380,7 +380,7 @@ pthread mutex 基本使用方法。
  - Line : 291 - 291
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         if (pthread_mutex_trylock(&_lock) == 0) {
 {% endhighlight %}
 
@@ -394,7 +394,7 @@ pthread mutex 基本使用方法。
  - Line : 352 - 353
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
 {% endhighlight %}
@@ -409,7 +409,7 @@ pthread mutex 基本使用方法。
  - Line : 27 - 27
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
 {% endhighlight %}
 
@@ -423,7 +423,7 @@ static inline 文件内，内联
  - Line : 44 - 53
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 /**
  If the object's data size (in bytes) is larger than this value, then object will
  be stored as a file, otherwise the object will be stored in sqlite.
@@ -447,7 +447,7 @@ YYDiskCache 会判断这个阈值，20k以下会存放在sqlite中，否则以�
  - Line : 139 - 140
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 {% endhighlight %}
@@ -462,7 +462,7 @@ YYDiskCache 会判断这个阈值，20k以下会存放在sqlite中，否则以�
  - Line : 18 - 19
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 #define Lock() dispatch_semaphore_wait(self->_lock, DISPATCH_TIME_FOREVER)
 #define Unlock() dispatch_semaphore_signal(self->_lock)
 {% endhighlight %}
@@ -477,7 +477,7 @@ YYDiskCache 会判断这个阈值，20k以下会存放在sqlite中，否则以�
  - Line : 48 - 58
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 /// weak reference for all instances
 static NSMapTable *_globalInstances;
 static dispatch_semaphore_t _globalInstancesLock;
@@ -508,7 +508,7 @@ You can configure an NSMapTable instance to operate on arbitrary pointers and no
  - Line : 85 - 93
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)_trimRecursively {
     __weak typeof(self) _self = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_autoTrimInterval * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -531,7 +531,7 @@ You can configure an NSMapTable instance to operate on arbitrary pointers and no
  - Line : 155 - 155
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     @throw [NSException exceptionWithName:@"YYDiskCache init error" reason:@"YYDiskCache must be initialized with a path. Use 'initWithPath:' or 'initWithPath:inlineThreshold:' instead." userInfo:nil];
 {% endhighlight %}
 
@@ -545,7 +545,7 @@ You can configure an NSMapTable instance to operate on arbitrary pointers and no
  - Line : 23 - 27
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 static NSString *const kDBFileName = @"manifest.sqlite";
 static NSString *const kDBShmFileName = @"manifest.sqlite-shm";
 static NSString *const kDBWalFileName = @"manifest.sqlite-wal";
@@ -563,7 +563,7 @@ static NSString *const kTrashDirectoryName = @"trash";
  - Line : 29 - 42
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 /*
  SQL:
  create table if not exists manifest (
@@ -594,7 +594,7 @@ primary key(key) 可以这样后续指定sqlite类型
  - Line : 83 - 83
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         NSLog(@"%s line:%d sqlite open failed (%d).", __FUNCTION__, __LINE__, result);
 {% endhighlight %}
 
@@ -608,7 +608,7 @@ primary key(key) 可以这样后续指定sqlite类型
  - Line : 78 - 80
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         CFDictionaryKeyCallBacks keyCallbacks = kCFCopyStringDictionaryKeyCallBacks;
         CFDictionaryValueCallBacks valueCallbacks = {0};
         _dbStmtCache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &keyCallbacks, &valueCallbacks);
@@ -624,7 +624,7 @@ CFDictionaryCreateMutable 的使用。Core Foundation 的使用。
  - Line : 111 - 119
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         if (result == SQLITE_BUSY || result == SQLITE_LOCKED) {
             if (!stmtFinalized) {
                 stmtFinalized = YES;
@@ -646,7 +646,7 @@ busy 和 locked 时，结束所有的statement
  - Line : 138 - 142
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)_dbCheckpoint {
     if (![self _dbIsReady]) return;
     // Cause a checkpoint to occur, merge `sqlite-wal` file to `sqlite` file.
@@ -664,7 +664,7 @@ wal checkpoint
  - Line : 158 - 172
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (sqlite3_stmt *)_dbPrepareStmt:(NSString *)sql {
     if (![self _dbIsReady] || sql.length == 0 || !_dbStmtCache) return NULL;
     sqlite3_stmt *stmt = (sqlite3_stmt *)CFDictionaryGetValue(_dbStmtCache, (__bridge const void *)(sql));
@@ -692,7 +692,7 @@ sqlite3_stmt 根据sql缓存起来
  - Line : 192 - 216
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (BOOL)_dbSaveWithKey:(NSString *)key value:(NSData *)value fileName:(NSString *)fileName extendedData:(NSData *)extendedData {
     NSString *sql = @"insert or replace into manifest (key, filename, size, inline_data, modification_time, last_access_time, extended_data) values (?1, ?2, ?3, ?4, ?5, ?6, ?7);";
     sqlite3_stmt *stmt = [self _dbPrepareStmt:sql];
@@ -731,7 +731,7 @@ sqlite3_stmt 根据sql缓存起来
  - Line : 218 - 218
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (BOOL)_dbUpdateAccessTimeWithKey:(NSString *)key {
 {% endhighlight %}
 
@@ -745,7 +745,7 @@ sqlite3_stmt 根据sql缓存起来
  - Line : 232 - 232
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (BOOL)_dbUpdateAccessTimeWithKeys:(NSArray *)keys {
 {% endhighlight %}
 
@@ -759,7 +759,7 @@ sqlite3_stmt 根据sql缓存起来
  - Line : 603 - 606
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     CFUUIDRef uuidRef = CFUUIDCreate(NULL);
     CFStringRef uuid = CFUUIDCreateString(NULL, uuidRef);
     CFRelease(uuidRef);
@@ -776,7 +776,7 @@ sqlite3_stmt 根据sql缓存起来
  - Line : 615 - 627
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)_fileEmptyTrashInBackground {
     if (_invalidated) return;
     NSString *trashPath = _trashPath;
@@ -802,7 +802,7 @@ sqlite3_stmt 根据sql缓存起来
  - Line : 831 - 860
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 
 - (BOOL)removeItemsToFitSize:(int)maxSize {
     if (maxSize == INT_MAX) return YES;

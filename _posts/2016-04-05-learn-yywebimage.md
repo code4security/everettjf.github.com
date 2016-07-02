@@ -30,7 +30,7 @@ YYKit 组件之一。新出炉的WebImage。
  - Line : 47 - 55
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (NSUInteger)imageCost:(UIImage *)image {
     CGImageRef cgImage = image.CGImage;
     if (!cgImage) return 1;
@@ -52,7 +52,7 @@ CGImageGetHeight 和 CGImageGetBytesPerRow。
  - Line : 27 - 41
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 
 /// Returns nil in App Extension.
 static UIApplication *_YYSharedApplication() {
@@ -80,7 +80,7 @@ appex : Share Extension 。 iOS8 新增功能。
  - Line : 71 - 89
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 static NSMutableSet *URLBlacklist;
 static dispatch_semaphore_t URLBlacklistLock;
 
@@ -112,7 +112,7 @@ dispatch_semaphore_xxx 系列。这里竟然用了静态变量。不过文件内
  - Line : 100 - 159
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 /// A proxy used to hold a weak object.
 @interface _YYWebImageWeakProxy : NSProxy
 @property (nonatomic, weak, readonly) id target;
@@ -184,7 +184,7 @@ NSProxy 协议，实现了NSObject协议
  - Line : 190 - 198
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 /// Network thread entry point.
 + (void)_networkThreadMain:(id)object {
     @autoreleasepool {
@@ -206,7 +206,7 @@ NSProxy 协议，实现了NSObject协议
  - Line : 214 - 240
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 /// Global image queue, used for image reading and decoding.
 + (dispatch_queue_t)_imageQueue {
     #define MAX_QUEUE_COUNT 16
@@ -250,7 +250,7 @@ iOS 8 以下使用dispatch_set_target_queue设置优先级。
  - Line : 341 - 341
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
                         [self performSelector:@selector(_startRequest:) onThread:[self.class _networkThread] withObject:nil waitUntilDone:NO];
 {% endhighlight %}
 
@@ -264,7 +264,7 @@ iOS 8 以下使用dispatch_set_target_queue设置优先级。
  - Line : 366 - 371
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
         if (_request.URL.isFileURL) {
             NSArray *keys = @[NSURLFileSizeKey];
             NSDictionary *attr = [_request.URL resourceValuesForKeys:keys error:nil];
@@ -285,7 +285,7 @@ iOS 8 以下使用dispatch_set_target_queue设置优先级。
  - Line : 516 - 532
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     @autoreleasepool {
         [_lock lock];
@@ -315,7 +315,7 @@ iOS 8 以下使用dispatch_set_target_queue设置优先级。
  - Line : 132 - 164
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 + (void)_delaySetActivity:(NSTimer *)timer {
     UIApplication *app = _YYSharedApplication();
     if (!app) return;
@@ -361,7 +361,7 @@ iOS 8 以下使用dispatch_set_target_queue设置优先级。
  - Line : 57 - 84
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 /**
  Return the path scale.
  
@@ -402,7 +402,7 @@ static CGFloat _NSStringPathScale(NSString *string) {
  - Line : 66 - 66
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @interface YYSpriteSheetImage : UIImage <YYAnimatedImage>
 {% endhighlight %}
 
@@ -416,7 +416,7 @@ static CGFloat _NSStringPathScale(NSString *string) {
  - Line : 39 - 39
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 @interface YYFrameImage : UIImage <YYAnimatedImage>
 {% endhighlight %}
 
@@ -430,7 +430,7 @@ static CGFloat _NSStringPathScale(NSString *string) {
  - Line : 1 - 1
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 //
 {% endhighlight %}
 
@@ -444,7 +444,7 @@ static CGFloat _NSStringPathScale(NSString *string) {
  - Line : 243 - 254
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 
 + (UIImage *)yy_imageWithColor:(UIColor *)color size:(CGSize)size {
     if (!color || size.width <= 0 || size.height <= 0) return nil;
@@ -469,7 +469,7 @@ static CGFloat _NSStringPathScale(NSString *string) {
  - Line : 102 - 107
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     _YYWebImageSetter *setter = objc_getAssociatedObject(self, &_YYWebImageSetterKey);
     if (!setter) {
         setter = [_YYWebImageSetter new];
@@ -488,7 +488,7 @@ static CGFloat _NSStringPathScale(NSString *string) {
  - Line : 25 - 31
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 static inline void _yy_dispatch_sync_on_main_queue(void (^block)()) {
     if (pthread_main_np()) {
         block();
@@ -508,7 +508,7 @@ static inline void _yy_dispatch_sync_on_main_queue(void (^block)()) {
  - Line : 80 - 91
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (int32_t)cancelWithNewURL:(NSURL *)imageURL {
     int32_t sentinel;
     dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);
@@ -533,7 +533,7 @@ static inline void _yy_dispatch_sync_on_main_queue(void (^block)()) {
  - Line : 64 - 73
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
     dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);
     if (sentinel == _sentinel) {
         if (_operation) [_operation cancel];
@@ -556,7 +556,7 @@ static inline void _yy_dispatch_sync_on_main_queue(void (^block)()) {
  - Line : 180 - 180
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
             newSentinel = [setter setOperationWithSentinel:sentinel url:imageURL options:options manager:manager progress:_progress transform:transform completion:_completion];
 {% endhighlight %}
 
@@ -570,7 +570,7 @@ static inline void _yy_dispatch_sync_on_main_queue(void (^block)()) {
  - Line : 46 - 56
  - Note : 
 
-{% highlight oc %}
+{% highlight c %}
 - (int32_t)setOperationWithSentinel:(int32_t)sentinel
                                 url:(NSURL *)imageURL
                             options:(YYWebImageOptions)options
