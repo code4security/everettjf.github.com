@@ -2,6 +2,8 @@ markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title
 name: "everettjf"
+url: https://everettjf.github.io # the base hostname & protocol for your site
+
 
 
 author: "everettjf"
