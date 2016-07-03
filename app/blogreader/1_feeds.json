@@ -50,18 +50,6 @@
         },
         {
             "aspect_id": 1,
-            "created_at": 1456247997.0,
-            "domain_id": 1,
-            "favicon": "http://everettjf.github.io/images/everettjf.ico",
-            "feed_url": "http://everettjf.github.io/feed.xml",
-            "id": 6,
-            "name": "everettjf",
-            "spider": "",
-            "url": "http://everettjf.github.io/",
-            "zindex": 0
-        },
-        {
-            "aspect_id": 1,
             "created_at": 1456249204.0,
             "domain_id": 1,
             "favicon": "http://c.csdnimg.cn/public/favicon.ico",
@@ -838,6 +826,18 @@
             "name": "ZeroJ - 简书",
             "spider": "jianshu",
             "url": "http://www.jianshu.com/users/fb31a3d1ec30/latest_articles",
+            "zindex": 0
+        },
+        {
+            "aspect_id": 1,
+            "created_at": 1467545432.0,
+            "domain_id": 1,
+            "favicon": "https://everettjf.github.io/favicon.ico",
+            "feed_url": "https://everettjf.github.io/atom.xml",
+            "id": 356,
+            "name": "everettjf",
+            "spider": "",
+            "url": "https://everettjf.github.io/",
             "zindex": 0
         }
     ]
