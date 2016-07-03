@@ -12,7 +12,9 @@
 @import url(/media/fonts/telex-regular.css);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:300);
 @import url(//code.cdn.mozilla.net/fonts/fira.css);
-
+* {
+  margin: 5px;
+  padding: 0px; }
 body {
   font-size: 14px;
   font-family: telexregular, Hiragino Sans GB, Microsoft YaHei, sans-serif;
