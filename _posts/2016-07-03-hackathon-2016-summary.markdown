@@ -1,10 +1,9 @@
 ---
 title: segmentfault hackathon 2016 summary
 layout: post
-guid: urn:uuid:30eabe14-9d9e-419b-afd4-c01e034420f2
-tags:
-  - 随笔
-
+date: 2016-06-26
+tags: [随笔]
+comments: true
 ---
 
 
