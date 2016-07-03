@@ -1,9 +1,7 @@
 ---
 title: segmentfault hackathon 2016 summary
 layout: post
-date: 2016-06-26
 tags: [随笔]
-comments: true
 ---
 
 
