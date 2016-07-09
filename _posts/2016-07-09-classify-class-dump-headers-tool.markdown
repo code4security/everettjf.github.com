@@ -1,5 +1,5 @@
 ---
-title: supotato : classify class-dump headers tool
+title: supotato - classify class-dump headers tool
 layout: post
 guid: urn:uuid:e579485d-f42b-471b-9902-a6d81eecb2d5
 tags:
