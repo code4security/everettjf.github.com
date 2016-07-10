@@ -72,5 +72,5 @@ tags:
 
 ---
 
-**Let’s go**, see u [here](https://github.com/everettjf/EVTIMKit)
+**Let’s go**, see u [here](https://github.com/everettjf/cogiggle)
 
