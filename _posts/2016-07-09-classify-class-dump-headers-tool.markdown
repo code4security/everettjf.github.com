@@ -6,11 +6,26 @@ tags:
   - 工具
 ---
 
-class-dump 出的头文件这么多，supotato 可以根据头文件的`前2个字符`形成个简单的分类报告。
 
-[GitHub](https://github.com/everettjf/supotato)
+class-dump 出的头文件这么多，supotato 可以根据头文件的`前2个字符`形成个简单的分类报告。同时可以猜测出使用了哪些第三方库（CocoaPods）。
+
+[源码](https://github.com/everettjf/supotato)
+
+* TOC
+{:toc}
 
 ---
+
+## 使用方法
+
+```sh
+pip install supotato
+
+cd <header files directory>
+
+supotato
+```
+
 
 
 ## 例子
@@ -30,7 +45,7 @@ $ supotato -i headers -o .
 [Here](https://github.com/everettjf/supotato/blob/master/example/result.txt)
 
 
-下面是真实的例子（闲鱼头文件列表的分类）：
+下面是真实的例子：
 
 [Here](https://github.com/everettjf/supotato/blob/master/example/lots.txt).
 
@@ -38,9 +53,9 @@ $ supotato -i headers -o .
 ## 参数
 
 ```
-$ supotato -h
+[everettjf@e supotato (master)]$ supotato --help
 usage: supotato [-h] [-i INPUT] [-o OUTPUT] [-s SORTBY] [-d ORDER]
-                [-p PREFIXLENGTH]
+                [-p PREFIXLENGTH] [-u UPDATEDB]
 
 Generate a simple report for header files in your directory
 
@@ -56,28 +71,36 @@ optional arguments:
                         desc or asc.
   -p PREFIXLENGTH, --prefixlength PREFIXLENGTH
                         prefix length for classify , default to 2.
+  -u UPDATEDB, --updatedb UPDATEDB
+                        force update cocoapods database.
 
 ```
 
-```
-$ supotato -i /Users/xxx/wechat/headers/ -o /Users/xxx/wechat/ -s prefix -order desc -p 3
-```
+1. -i 指定头文件所在的目录。
+2. -o 指定 result.txt 文件输出的目录，也可以是文件路径。
+3. -s 指定分类的排序依据。prefix 根据文件名前N个字符（N可指定，默认为2）排序，count 根据每个分类的文件数目排序。
+4. -d 排序类型。desc 倒序，asc 顺序。
+5. -p 分类依据前几个字符。默认2 。
+6. -u 更新本地数据库（用于判断文件属于哪个第三方库）
 
 
-# 计划
-
-如果能自动猜测出使用了哪些第三方库，岂不是更好。
-
-思路如下：
-
-- 获取cocoapods的数据库（公开的）
-- 遍历所有cocoapods的库，获取最新版本的文件，获取10个文件作为特征。
-- 遍历class-dump的头文件，查找。
-
-思路很简单，但如何更快速的判断出，需要优化。
-
-**此feature开发中，即将上线**
+## 原理
 
 
+1. 根据 https://github.com/CocoaPods/Specs 可或许所有repo，全部下载后，根据 spec.json文件，获取库中的头文件(.h)文件。
+2. 记录头文件与Pod名称的关系到本地数据库中。
+3. 逐个比较。
+
+相关代码 https://github.com/everettjf/supotato/tree/master/podtool
 
 
+## 总结
+
+
+1. 简单的小工具，可以加快对class-dump头文件的整体了解。
+2. 或许还能做：
+	- 解析.h文件，构造类图。
+	- 对.h文件进一步分类。（根据父类，或最后的几个字符）
+
+	
+	
