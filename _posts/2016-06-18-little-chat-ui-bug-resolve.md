@@ -115,6 +115,27 @@ tableView的cellForRowAtIndexPath中改变frame时要禁用动画。
 
 ![imbug](https://everettjf.github.io/stuff/eimkit/imbug1.gif)
 
+## 第三步
+
+改变位置会带来一个问题。当消息很少（例如一条），改变位置后，最上面的这一条消息就跑屏幕外面。需要调整UITableView的contentInset：
+
+```
+    @property (nonatomic,assign) CGFloat insetTop;
+    
+    // 初始化设置
+    _insetTop = STATUS_BAR_HEIGHT + self.navigationController.navigationBar.bounds.size.height;
+    _tableView.contentInset = UIEdgeInsetsMake(_insetTop, 0, 0, 0);
+    
+    // 响应底部键盘高度的改变
+    CGFloat offset = _tableView.contentSize.height - _tableView.bounds.size.height;
+    if(offset < 0){
+        _tableView.contentInset = UIEdgeInsetsMake(_insetTop + height, 0, 0, 0);
+    }else{
+        _tableView.contentInset = UIEdgeInsetsMake(_insetTop, 0, 0, 0);
+    }
+
+```
+
 
 # 总结
 
