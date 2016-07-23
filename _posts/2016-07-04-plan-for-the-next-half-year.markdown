@@ -30,7 +30,7 @@ tags:
 - [translate] Instruments Guide
 - [view] WWDC
 
-- [wheels] **EVTIMKit** (Image,Cache,Model...)
+- [wheels] **FZKit** (Image,Cache,Model...)
 
 # Layout
 
@@ -38,44 +38,43 @@ tags:
 
 - ReactiveCocoa
 
-- EVTModel
-- EVTCache
+- Model
+- Cache
 
-- Skelton of EVTIMKit
+- Skelton of IMKit
 
 ## 08
 
 - AsyncDisplayKit
-- EVTImage
+- Image
 
-- EVTFleaTabBarController (TabBar like FleaMarket’s)
+- FleaTabBarController (TabBar like FleaMarket’s)
 
 - Translate Instruments Guide
 
 ## 09
 
 - review YYWebImage and SDWebImage
-- EVTWebImage
+- WebImage
 
 ## 10
 
 - Modular Solution
-- EVTModular
+- Modular
 
 ## 11
 
 - AOP
-- EVTAspect
+- Aspect
 
 - YYText
-- EVTText
+- Text
 
 ## 12
 
 - class-dump
-- EVTClassDump
 
 ---
 
-**Let’s go**, see u [here](https://github.com/everettjf/fluffy)
+**Let’s go**, see u [here](https://github.com/everettjf/FZKit)
 
