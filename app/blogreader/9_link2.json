@@ -1,19 +1,7 @@
 {
-    "count": 25,
+    "count": 24,
     "cur_page": 2,
     "links": [
-        {
-            "aspect_id": 9,
-            "created_at": 1459229635.0,
-            "domain_id": 1,
-            "favicon": "https://developer.apple.com/favicon.ico",
-            "feed_url": "",
-            "id": 95,
-            "name": "iOS Developer Library",
-            "spider": "",
-            "url": "https://developer.apple.com/library/ios/navigation/",
-            "zindex": 0
-        },
         {
             "aspect_id": 9,
             "created_at": 1459006987.0,
