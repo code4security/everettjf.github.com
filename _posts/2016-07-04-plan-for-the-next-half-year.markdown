@@ -1,7 +1,7 @@
 ---
 title: Plan for the next half year (2016) on iOS 
 layout: post
-guid: urn:uuid:a4613273-df1b-4901-aa75-4794f09230b9
+excerpt: "计划"
 tags:
   - Plan
 ---

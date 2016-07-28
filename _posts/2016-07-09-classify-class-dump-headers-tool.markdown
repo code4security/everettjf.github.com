@@ -1,7 +1,7 @@
 ---
 title: supotato - classify class-dump headers tool
 layout: post
-guid: urn:uuid:e579485d-f42b-471b-9902-a6d81eecb2d5
+excerpt: "对class-dump出的头文件分类，并猜测出第三方库"
 tags:
   - 工具
 ---
