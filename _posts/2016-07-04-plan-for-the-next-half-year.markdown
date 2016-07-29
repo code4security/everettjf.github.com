@@ -2,8 +2,8 @@
 title: Plan for the next half year (2016) on iOS 
 layout: post
 excerpt: "计划"
-tags:
-  - Plan
+tags: [Plan]
+comments: true
 ---
 
 > Throughout the 3 failure interviews for FleaMarket(iOS),Dingding(Mac) and Mogujie, I got some knowledge about what libraries they use, tools they use , so I made plans below in order to catch up the wind ... and for the first step of my little dream ...

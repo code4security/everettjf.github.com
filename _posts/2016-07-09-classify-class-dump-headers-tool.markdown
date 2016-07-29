@@ -2,8 +2,8 @@
 title: supotato - classify class-dump headers tool
 layout: post
 excerpt: "对class-dump出的头文件分类，并猜测出第三方库"
-tags:
-  - 工具
+tags: [工具]
+comments: true
 ---
 
 

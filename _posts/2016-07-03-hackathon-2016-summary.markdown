@@ -3,6 +3,7 @@ title: segmentfault hackathon 2016 summary
 layout: post
 excerpt: "魔方还原App"
 tags: [随笔]
+comments: true
 ---
 
 
