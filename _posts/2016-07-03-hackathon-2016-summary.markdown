@@ -51,7 +51,7 @@ comments: true
 ---
 
 - 按钮如下图：
-![](https://everettjf.github.io/stuff/rubiks/a.jpg)
+![](https://everettjf.github.io/stuff/rubiks/app.jpg)
 
 - 语音，可以使用讯飞识别。
 - 拍照，也就是每个面都拍照。识别出固定位置的颜色。
