@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 聊天界面开发极有可能遇到的一个UI动画小问题（不期望的Cell动画）
+title: 聊天界面开发极有可能遇到的一个UI动画小问题
 excerpt: "little chat ui bug resolve"
 date: 2016-06-18
 tags: [iOS开发]
