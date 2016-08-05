@@ -6,7 +6,6 @@ tags: [Plan]
 comments: true
 ---
 
-> Throughout the 3 failure interviews for FleaMarket(iOS),Dingding(Mac) and Mogujie, I got some knowledge about what libraries they use, tools they use , so I made plans below in order to catch up the wind ... and for the first step of my little dream ...
 
 # Time Range
 
