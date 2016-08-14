@@ -38,6 +38,11 @@ task :post do
     post.puts "tags: []"
     post.puts 'comments: true'
     post.puts "---"
+    post.puts " "
+    post.puts "* TOC"
+    post.puts "{:toc}"
+    post.puts "---"
+    post.puts " "
   end
 end # task :post
 
