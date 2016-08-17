@@ -53,7 +53,7 @@ https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Concept
 
 ![](media/14712795366819.jpg)
 
-可知，如果要支持 iOS7.0，TEXT段的大小最大为 60MB（每个架构的TEXT段）。 Facebook 的 TEXT段马上就到 60MB。
+可知，如果要支持 iOS7.x或8.x，TEXT段的大小最大为 60MB（每个架构的TEXT段）。 Facebook 的 TEXT段马上就到 60MB。
 
 # 如何做
 
@@ -104,6 +104,13 @@ getSection 来自 GlobalVariable的父类 GlobalObject。
 从目前信息看来，section可能的内容是 `__TEXT,__objc_methname` 或  `__RODATA,__objc_methname` ，而上面的代码是 Section.find，是在字符串中查找，也就能自动适配segment的修改。
 
 其他一些段大概使用类似的方式，可以确定不会有影响了。
+
+# TEXT段能瘦身多少
+
+以 Facebook armv7 为例，RODATA segment大小约14MB。
+
+![](media/14713639408868.jpg)
+
 
 
 # 历史想法
