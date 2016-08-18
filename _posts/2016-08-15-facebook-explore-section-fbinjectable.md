@@ -76,8 +76,21 @@ getsectiondata 的定义如下：
 
 ![](media/14713904842654.jpg)
 
+## MachOView 确认FBInjectable含义
 
-## lldb 确认getsectiondata返回值
+再次看 FBInjectable 段的前四个字节，B8DB8404，由于little-endian的原因，内存地址为0x0484DBB8。
+
+![](media/14715339253688.jpg)
+
+Hopper中跳转到这个地址：
+![](media/14715347620860.jpg)
+
+其他四个字节都是这样。
+
+
+
+
+## lldb 确认getsectiondata返回值含义
 
 为确认Facebook启动后是否调用了 getsectiondata，并传入了FBInjectable，可以先条件断点。
 
@@ -107,7 +120,7 @@ everettjfs-iPhone:~ root# debugserver -x backboard *:1234 /var/mobile/Containers
  
  ![](media/14713917406057.jpg)
 
-但发现个规律，每4位相减正好是 ASLR 偏移地址。
+但发现个规律，每4位相减正好是 ASLR 偏移地址。（例如： 0x0488bbb8 - 0x0484dbb8 = 0x3e000）
 
 也就是说 FBInjectable 数据段 的数据在调用getsectiondata之前就被修改了。这里暂且忽略修改的方法（下文会介绍一种修改方法），继续探索。
 
@@ -143,7 +156,7 @@ PS：这一步使用条件断点会导致启动特别慢。但条件断点的目
 
 根据调用堆栈，可以跟踪到如下位置：
 
-这里跨度可能有点大，但仔细定位那些frame的地址，可以看到下图内容（18个流程中的一个）。
+这里跨度可能有点大，但根据调用栈中的那些frame的地址，很容易看到下图内容（这只是18个配置中的一个）。
 
 ![](media/14713937815940.jpg)
 ![](media/14713938170666.jpg)
@@ -162,7 +175,7 @@ FBNavigationBarSearchFieldLayout 类的
 + (Class)classForProtocol:(id)arg1;
 ```
 
-以及
+进一步调用了
 
 ```
 + (id)classesForProtocol_internal:(id)arg1;
@@ -170,18 +183,113 @@ FBNavigationBarSearchFieldLayout 类的
 
 classesForProtocol_internal 会在首次调用时（dispatch_once）时加载FBInjectable的内容并获取这18个字符串，进而转化为对应的类。
 
+classForProtocol的参数是 协议 FBNavigationBarConfiguration，通过这个协议获取到 类FBNavigationBarDefaultConfiguration。
+
+最终调用静态方法，
+![](media/14715360284429.jpg)
+
+
+## 再看头文件
+
+这18个类有几个共同点
+
+1. 都包含方法 fb_injectable。
+2. 都包含方法 integrationPriority。
+3. 都是静态方法。
+4. 都会实现一个类似名称的协议。例如：FBNavigationBarDefaultConfiguration 实现协议 FBNavigationBarConfiguration。
+    ![](media/14715363734149.jpg)
+
+5. 第4条提到的协议都会继承另一个协议 FBIntegrationToOne。
+    ![](media/14715363409527.jpg)
 
 
 
 # 结论
 
-fb_injectable 只是个标记。
+至此，基本能知道FBInjectable的作用了，可以得出如下结论。
+
+FBInjectable section用于在打包阶段更改一些配置。这个配置可能影响到界面（UI）、功能（Policy）等各个方面。
+
+```
+FBNewAccountNUXPYMKVCFactory,
+FBPersonContextualTimelineHeaderDataSourceDefaultConfiguration,
+FBTimelineActionBarDefaultConfiguration,
+FBTimelineActionBarNuxPresentersDefaultConfiguration,
+FBTimelineNavTilesFriendsFollowersDefaultConfiguration,
+FBGroupsModuleDefaultConfiguration,
+FBGroupsLandingWildeCoordinator,
+FBEventsModuleDefaultConfiguration,
+FBEventMessageGuestsDefaultCapability,
+FBPhotoModuleDefaultConfiguration,
+FBGrowthModuleDefaultConfiguration,
+FBEventComposerKitDefaultConfiguration,
+FBComposerDestinationOptionsDefaultPolicy,
+FBBookmarksDownloaderConfiguration,
+FBGroupCreationViewControllerDefaultStepsFactory,
+FBNavigationBarDefaultConfiguration,
+FBPersonalAppSuiteDefinitionProvider,
+WildeKeys
+```
+
+这些类有以下共同信息：
+
+1. +(void)fb_injectable 方法。
+	- 这个方法只是个标记。
+	- 用于方便的查找到这个类。
+2. 都会实现一个与当前类对应的协议。
+	- 例如：FBNewAccountNUXPYMKVCFactory类 对应 FBNewAccountNUXPYMKVCFactory协议。
+	- 再例如：FBNavigationBarDefaultConfiguration类 对应 FBNavigationBarConfiguration协议。
+	- 再例如：FBEventsModuleDefaultConfiguration类 对应 FBEventsModuleConfiguration协议。
+3. 这个对应的协议一定会实现 FBIntegrationToOne。也就是说当前类还包括 + (unsigned int)integrationPriority; 方法。
+	- 例如：FBNewAccountNUXPYMKVCFactory、FBNavigationBarConfiguration、FBEventsModuleConfiguration都会继承 FBIntegrationToOne 协议。就导致 FBNewAccountNUXPYMKVCFactory等类也都包含  + (unsigned int)integrationPriority;  方法。
+	- 这个方法用于指定查找优先级。
+	- FBIntegrationToOne 从名称看，只能集成1个。就是根据优先级选择1个的意思。
+
+例如：
+
+```
+float __cdecl +[FBNavigationBarSearchFieldLayout _calculateLeftOffsetForController:isRoot:hasLeftMessengerButton:]
+
+FBNavigationBarConfiguration
+
+循环判断哪个类实现了这个协议，最后找到FBNavigationBarDefaultConfiguration，然后获取shouldShowBackButton。
+```
+
+# FBInjectable的创建
+
+可以使用 `__attribute((unused,section("segmentname,sectionname")))` 关键字把某个变量的放入特殊的section中。 
+
+attribute 参考 http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html
+
+例如：
+
+```
+const char * const kConstString1 __attribute((unused,section("__DATA,FBInjectable"))) = "const string 1";
+const char * const kConstString2 __attribute((unused,section("__DATA,FBInjectable"))) = "const string 2";
+const char * const kConstString3 __attribute((unused,section("__DATA,FBInjectable"))) = "const string 3";
+```
+
+主要在某个地方引用下这个变量，否则编译器会优化掉未使用的变量。
+例如：
+
+```
+NSLog(@"string 1 = %s", kConstString1);
+NSLog(@"string 2 = %s", kConstString2);
+NSLog(@"string 3 = %s", kConstString3);
+```
 
 
-# 用途
+# 一句话概括
+
+编译时的配置选择机制。
 
 
-# 例子
+# 例子及进一步说明
+
+Demo中模仿了这个机制。
+
+https://github.com/everettjf/FBInjectableTest
+
 
 
 
