@@ -264,18 +264,18 @@ attribute 参考 http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.h
 例如：
 
 ```
-const char * const kConstString1 __attribute((unused,section("__DATA,FBInjectable"))) = "const string 1";
-const char * const kConstString2 __attribute((unused,section("__DATA,FBInjectable"))) = "const string 2";
-const char * const kConstString3 __attribute((unused,section("__DATA,FBInjectable"))) = "const string 3";
+char * kString1 __attribute((unused,section("__DATA,FBInjectable"))) = "string 1";
+char * kString2 __attribute((unused,section("__DATA,FBInjectable"))) = "string 2";
+char * kString3 __attribute((unused,section("__DATA,FBInjectable"))) = "string 3";
 ```
 
 主要在某个地方引用下这个变量，否则编译器会优化掉未使用的变量。
 例如：
 
 ```
-NSLog(@"string 1 = %s", kConstString1);
-NSLog(@"string 2 = %s", kConstString2);
-NSLog(@"string 3 = %s", kConstString3);
+NSLog(@"string 1 = %s", kString1);
+NSLog(@"string 2 = %s", kString2);
+NSLog(@"string 3 = %s", kString3);
 ```
 
 
