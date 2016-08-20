@@ -283,19 +283,82 @@ NSLog(@"string 3 = %s", kString3);
 
 编译时的配置选择机制。
 
-编译时期选择某些配置类加入编译（精确说是，链接时期选择某些配置类的目标文件加入链接），App运行时通过FBInjectable获取到所有配置类，并使用每个配置类对应的协议获取当前使用的具体配置。
+编译时期选择某些配置类加入编译（精确说是，链接时期选择某些配置类的目标文件加入链接）或者配置优先级，App运行时通过FBInjectable获取到所有配置类，并使用每个配置类对应的协议获取当前使用的具体配置。
 
 
 # 例子及进一步说明
 
 Demo中模仿了这个机制。
 
-https://github.com/everettjf/FBInjectableTest
+代码： https://github.com/everettjf/FBInjectableTest
+
+![](media/14717165824862.jpg)
 
 
+Demo中实现了三种配置类，每个配置类使用类似下面的代码自动创建FBInjectable 段。 （printf只是为了防止被编译器优化掉，应该有其他方法防止优化掉，暂时没找到，如果你知道，请告诉我哈）
 
+```
+#define FBInjectableDATA __attribute((unused, section("__DATA,FBInjectable")))
+```
+
+```
+char * kNoteDisplayDefaultConfiguration FBInjectableDATA = "+[NoteDisplayDefaultConfiguration(FBInjectable) fb_injectable]";
+
+@implementation NoteDisplayDefaultConfiguration
+
++ (void)fb_injectable{
+    printf("%s",kNoteDisplayDefaultConfiguration);
+}
++ (NSUInteger)integrationPriority{
+    return 0;
+}
+
++ (BOOL)showDeleteButton{
+    return YES;
+}
++ (UIColor *)noteBackgroundColor{
+    return [UIColor blackColor];
+}
+
+@end
+```
+
+读取FBInjectable段：
+
+```
+        Dl_info info;
+        dladdr(readConfigurationClasses, &info);
+        
+#ifndef __LP64__
+        const struct mach_header *mhp = _dyld_get_image_header(0);
+        unsigned long size = 0;
+        uint8_t *memory = getsectiondata(mhp, "__DATA", InjectableSectionName, & size);
+#else /* defined(__LP64__) */
+        const struct mach_header_64 *mhp = (struct mach_header_64*)info.dli_fbase;
+        unsigned long size = 0;
+        uint64_t *memory = (uint64_t*)getsectiondata(mhp, "__DATA", InjectableSectionName, & size);
+#endif /* defined(__LP64__) */
+```
+
+
+最后使用方式如下：
+
+```
+    Class config = [FBIntegrationManager classForProtocol:@protocol(NoteDisplayConfiguration)];
+    NSLog(@"cls = %@",config);
+    NSLog(@"color = %@",[config noteBackgroundColor]);
+```
+
+# 探索中遇到的困难
+
+http://iosre.com/t/facebook-app-fbinjectable-section/4685
+
+当时还没有些Demo，以为需要手动修改，但写Demo的过程中才恍然大悟。
 
 # 总结
 
 以上步骤只是我在探索后重新整理的步骤，真正探索过程中可能步骤相互穿插。
+
+Facebook 貌似没有在任何文章中提到这个“配置选择”的小方法。
+
 
