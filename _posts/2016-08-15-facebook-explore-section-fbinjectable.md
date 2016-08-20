@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (Writing)探索 Facebook iOS 客户端 - Section FBInjectable
+title: 探索 Facebook iOS 客户端 - Section FBInjectable
 excerpt: "一种链接时的配置选择器"
 date: 2016-08-15
 tags: [逆向]
@@ -15,7 +15,7 @@ comments: true
  
  MachOView查看Facebook的可执行文件，发现 FBInjectable 和 fbsessiongks 的数据段，这篇文章就探索下 FBInjectable 数据段的产生与用途。
  
-![](media/14713701978671.jpg)
+![](/media/14713701978671.jpg)
 
 
 # 如何定位
@@ -30,7 +30,7 @@ Clutch 或 dumpdecrypted，获取到未加密的Facebook armv7 可执行文件�
 
 使用strings 搜搜关键词FBInjectable，可知可以通过字符串作为切入点。
 
-![](media/14713711043679.jpg)
+![](/media/14713711043679.jpg)
 
 
 ## 使用Hopper和IDA分析
@@ -45,27 +45,27 @@ Clutch 或 dumpdecrypted，获取到未加密的Facebook armv7 可执行文件�
 
 搜索字符串FBInjectable
 
-![](media/14713715442206.jpg)
+![](/media/14713715442206.jpg)
 
 查看存在交叉引用的一个
 
-![](media/14713716052181.jpg)
+![](/media/14713716052181.jpg)
 
-![](media/14713716295066.jpg)
+![](/media/14713716295066.jpg)
 
 跳转过去查看，可知地址在 0x0334cc1c，且FBInjectable是作为 getsectiondata 的第三个参数。
 
-![](media/14713716878000.jpg)
+![](/media/14713716878000.jpg)
 
 getsectiondata 的调用地址为 0x0334cc20。
 
 getsectiondata 的定义如下：
 
-![](media/14713897883425.jpg)
+![](/media/14713897883425.jpg)
 
 反汇编：
 
-![](media/14713901424795.jpg)
+![](/media/14713901424795.jpg)
 
 
 需要重点关注下，r11这个变量。Hopper反汇编的代码貌似丢掉一些很关键的r2的信息。但看完能大概知道这里在遍历 getsectiondata的返回值，每4个字节做了一些处理。
@@ -74,16 +74,16 @@ getsectiondata 的定义如下：
 
 也就是把getsectiondata的返回值buffer中的前四个字节当做字符串的内存地址。
 
-![](media/14713904842654.jpg)
+![](/media/14713904842654.jpg)
 
 ## MachOView 确认FBInjectable含义
 
 再次看 FBInjectable 段的前四个字节，B8DB8404，由于little-endian的原因，内存地址为0x0484DBB8。
 
-![](media/14715339253688.jpg)
+![](/media/14715339253688.jpg)
 
 Hopper中跳转到这个地址：
-![](media/14715347620860.jpg)
+![](/media/14715347620860.jpg)
 
 其他四个字节都是这样。
 
@@ -112,30 +112,30 @@ everettjfs-iPhone:~ root# debugserver -x backboard *:1234 /var/mobile/Containers
 继续运行，发现可以断下来。
 
 单步运行，打印返回值 r0的数据。
-![](media/14713916594647.jpg)
+![](/media/14713916594647.jpg)
 
-![](media/14713916821535.jpg)
+![](/media/14713916821535.jpg)
 
  到这里我们发现个问题，与FBInjectable section的数据不一样。
  
- ![](media/14713917406057.jpg)
+ ![](/media/14713917406057.jpg)
 
 但发现个规律，每4位相减正好是 ASLR 偏移地址。（例如： 0x0488bbb8 - 0x0484dbb8 = 0x3e000）
 
 也就是说 FBInjectable 数据段 的数据在调用getsectiondata之前就被修改了。这里暂且忽略修改的方法（下文会介绍一种修改方法），继续探索。
 
 打印当前方法的 返回值。
-![](media/14713924113293.jpg)
+![](/media/14713924113293.jpg)
 
 可见这里与开始strings查找FBInjectable时的结果很相似，
-![](media/14713711043679.jpg)
+![](/media/14713711043679.jpg)
 
 PS：这一步使用条件断点会导致启动特别慢。但条件断点的目的只是为了确认是否有这个调用。由于调试中要多次启动App，也可以直接断点到目标地址。（启动时，先断点到start，然后image list 查看ASLR偏移地址，再计算出getsectiondata的地址，然后 br s -a ADDRESS）
 
 ## 初步结论
 
 由此可知，FBInjectable中存储的是
-![](media/14713945376097.jpg)
+![](/media/14713945376097.jpg)
 
 这类字符串的地址，armv7（32位）下每个地址占用4个字节，上图18个地址总共占用72个字节。通过FBInjectable的数据可以获取到这18个字符串。
 
@@ -144,13 +144,13 @@ PS：这一步使用条件断点会导致启动特别慢。但条件断点的目
 
 在头文件中搜索fb_injectable，
 
-![](media/14713926308331.jpg)
+![](/media/14713926308331.jpg)
 
 
 ## 再看lldb调用栈
 
 
-![](media/14713930823544.jpg)
+![](/media/14713930823544.jpg)
 
 图中看到好多folly的符号，folly是Facebook开源的专注于性能的C++ Library，但不知为何会对lldb的符号有这么大的影响。（有时间需要进一步了解下lldb的符号如何查找的）。不过，地址都是正确的。可以通过frame中的地址减去ASLR偏移地址，得到文件中的地址。
 
@@ -158,8 +158,8 @@ PS：这一步使用条件断点会导致启动特别慢。但条件断点的目
 
 这里跨度可能有点大，但根据调用栈中的那些frame的地址，很容易看到下图内容（这只是18个配置中的一个）。
 
-![](media/14713937815940.jpg)
-![](media/14713938170666.jpg)
+![](/media/14713937815940.jpg)
+![](/media/14713938170666.jpg)
 
 大概流程如下：
 
@@ -186,7 +186,7 @@ classesForProtocol_internal 会在首次调用时（dispatch_once）时加载FBI
 classForProtocol的参数是 协议 FBNavigationBarConfiguration，通过这个协议获取到 类FBNavigationBarDefaultConfiguration。
 
 最终调用静态方法，
-![](media/14715360284429.jpg)
+![](/media/14715360284429.jpg)
 
 
 ## 再看头文件
@@ -197,10 +197,10 @@ classForProtocol的参数是 协议 FBNavigationBarConfiguration，通过这个�
 2. 都包含方法 integrationPriority。
 3. 都是静态方法。
 4. 都会实现一个类似名称的协议。例如：FBNavigationBarDefaultConfiguration 实现协议 FBNavigationBarConfiguration。
-    ![](media/14715363734149.jpg)
+    ![](/media/14715363734149.jpg)
 
 5. 第4条提到的协议都会继承另一个协议 FBIntegrationToOne。
-    ![](media/14715363409527.jpg)
+    ![](/media/14715363409527.jpg)
 
 
 
@@ -292,7 +292,7 @@ Demo中模仿了这个机制。
 
 代码： https://github.com/everettjf/FBInjectableTest
 
-![](media/14717165824862.jpg)
+![](/media/14717165824862.jpg)
 
 
 Demo中实现了三种配置类，每个配置类使用类似下面的代码自动创建FBInjectable 段。 （printf只是为了防止被编译器优化掉，应该有其他方法防止优化掉，暂时没找到，如果你知道，请告诉我哈）
@@ -360,5 +360,7 @@ http://iosre.com/t/facebook-app-fbinjectable-section/4685
 以上步骤只是我在探索后重新整理的步骤，真正探索过程中可能步骤相互穿插。
 
 Facebook 貌似没有在任何文章中提到这个“配置选择”的小方法。
+
+
 
 

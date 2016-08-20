@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (Writing)探索 Facebook iOS 客户端 - Section RODATA
+title: 探索 Facebook iOS 客户端 - Section RODATA
 excerpt: "Facebook 瘦身"
 date: 2016-08-14
 tags: [逆向]
@@ -17,11 +17,11 @@ comments: true
 
 下图是 Facebook ：
 
-![Facebook](media/14712760652964.jpg)
+![Facebook](/media/14712760652964.jpg)
 
 下图是微信：
 
-![](media/14712762093391.jpg)
+![](/media/14712762093391.jpg)
 
 
 # 初步分析
@@ -36,14 +36,14 @@ comments: true
 
 TEXT 是代码段，DATA是数据段，RODATA是只读数据段。Facebook把代码段中的部分内容移动到只读段，可知这些内容是不需要执行的，从下图也可看出都是常量。
 
-![](media/14712778296998.jpg)
+![](/media/14712778296998.jpg)
 
 
 
 # 为什么
 
 看 Facebook 的各个段大小，如下图：
-![](media/14712790779062.jpg)
+![](/media/14712790779062.jpg)
 
 把 TEXT 段的内容移到 RODATA 段，也就是减少了 TEXT 段的大小。
 
@@ -51,7 +51,7 @@ TEXT 是代码段，DATA是数据段，RODATA是只读数据段。Facebook把代
 
 https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/SubmittingTheApp.html
 
-![](media/14712795366819.jpg)
+![](/media/14712795366819.jpg)
 
 可知，如果要支持 iOS7.x或8.x，TEXT段的大小最大为 60MB（每个架构的TEXT段）。 Facebook 的 TEXT段马上就到 60MB。
 
@@ -60,7 +60,7 @@ https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Concept
 如果我们的App的TEXT大小马上到60MB，如何处理成Facebook这样呢？
 
 man ld：
-![](media/14712799872260.jpg)
+![](/media/14712799872260.jpg)
 
 加入链接选项：
 
@@ -74,9 +74,9 @@ man ld：
 ```
 
 如图：
-![](media/14712804570512.jpg)
+![](/media/14712804570512.jpg)
 
-![](media/14712804466103.jpg)
+![](/media/14712804466103.jpg)
 
 # 影响App运行吗？
 
@@ -94,12 +94,12 @@ man ld：
 
 修改segment会影响这个优化器吗？
 
-![](media/14712826297536.jpg)
+![](/media/14712826297536.jpg)
 
 进一步查找 GlobalVariable::getSection() 的来源。
 getSection 来自 GlobalVariable的父类 GlobalObject。
 
-![](media/14712828749695.jpg)
+![](/media/14712828749695.jpg)
 
 从目前信息看来，section可能的内容是 `__TEXT,__objc_methname` 或  `__RODATA,__objc_methname` ，而上面的代码是 Section.find，是在字符串中查找，也就能自动适配segment的修改。
 
@@ -109,13 +109,19 @@ getSection 来自 GlobalVariable的父类 GlobalObject。
 
 以 Facebook armv7 为例，RODATA segment大小约14MB。
 
-![](media/14713639408868.jpg)
+![](/media/14713639408868.jpg)
 
 
 
 # 历史想法
 
 开始以为把 TEXT段中不需要马上加载的数据移到RODATA中是为了加快App启动速度，但想想内存映射 mmap 的优势就是可以快速处理大文件，一起加载并不会有什么性能影响。
+
+# 参考工程
+
+代码： https://github.com/everettjf/FBInjectableTest
+
+![](/media/14717179771404.jpg)
 
 
 # 其他资料
