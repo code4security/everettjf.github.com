@@ -2,7 +2,7 @@
 layout: post
 title: 探索 Facebook iOS 客户端 - Section FBInjectable
 excerpt: "一种链接时的配置选择器"
-date: 2016-08-15
+date: 2016-08-20
 tags: [逆向]
 comments: true
 ---
@@ -359,7 +359,7 @@ http://iosre.com/t/facebook-app-fbinjectable-section/4685
 
 以上步骤只是我在探索后重新整理的步骤，真正探索过程中可能步骤相互穿插。
 
-Facebook 貌似没有在任何文章中提到这个“配置选择”的小方法。
+奇怪的是Facebook 貌似没有在任何文章中提到这个“配置选择”的小方法。Twitter和Google都没有搜到任何关于FBInjectable的信息。还好可以通过逆向来探索。
 
 
 
