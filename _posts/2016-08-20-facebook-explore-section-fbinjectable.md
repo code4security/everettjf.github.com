@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 探索 Facebook iOS 客户端 - Section FBInjectable
-excerpt: "一种链接时的配置选择器"
+excerpt: "配置选择器"
 date: 2016-08-20
 tags: [逆向]
 comments: true
