@@ -350,6 +350,10 @@ char * kNoteDisplayDefaultConfiguration FBInjectableDATA = "+[NoteDisplayDefault
     NSLog(@"color = %@",[config noteBackgroundColor]);
 ```
 
+# 这样有什么好处
+
+配置文件可分散在各自文件中，省去了统一注册配置文件的代码。这样配置文件更容易添加和删除。
+
 # 探索中遇到的困难
 
 http://iosre.com/t/facebook-app-fbinjectable-section/4685
