@@ -149,7 +149,7 @@ Cell都是MultiSelectTableViewCell，而区分不同消息的是contentView的�
 
 ## 观察Controller
 
-在class-dump出的头文件中找到 BaseMsgContentViewController类。可以找到 BaseMsgContentViewController.h文件，这个头文件有614行，可见这个类的复杂。（估计微信开发早期并没有考虑到后期的大量需求加入，于是成了今天的Mess View Controller）
+在class-dump出的头文件中找到 BaseMsgContentViewController类。可以找到 BaseMsgContentViewController.h文件，这个头文件有614行，可见这个类的复杂。（估计微信开发早期并没有考虑到后期的大量需求加入，于是成了今天的Massive View Controller）
 
 这里细化此次行动的目的：想知道聊天中的每一条消息是如何创建、显示的。
 
