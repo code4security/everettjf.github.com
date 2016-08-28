@@ -40,7 +40,8 @@ comments: true
 - iPhone 4S，从闲鱼上700块钱买了的二手的。（从来没有用过Apple的产品，为了让自己熟悉iOS系统的操作）（2015年3月份开始做iOS开发后买的）
 - 鼠标。前期还是配个鼠标，否则不习惯。慢慢习惯了触摸板就很少用鼠标了。
 
-###软件
+
+### 软件
 
 - Xcode，使用AppStore安装。
 - 搭建一个Mac开发环境，推荐看这个文章 [https://aaaaaashu.gitbooks.io/mac-dev-setup/content/](https://aaaaaashu.gitbooks.io/mac-dev-setup/content/)。
@@ -185,3 +186,5 @@ comments: true
 以上是我这几个月的iOS学习经历，可能有遗漏，分享给大家，希望能帮助到其他C++转iOS的同行们。
 
 如有不正确的地方，请指正。
+
+
