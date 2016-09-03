@@ -257,26 +257,19 @@ FBNavigationBarConfiguration
 
 # FBInjectable的创建
 
-可以使用 `__attribute((unused,section("segmentname,sectionname")))` 关键字把某个变量的放入特殊的section中。 
+可以使用 `__attribute((used,section("segmentname,sectionname")))` 关键字把某个变量的放入特殊的section中。 
 
 attribute 参考 http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html
 
 例如：
 
 ```
-char * kString1 __attribute((unused,section("__DATA,FBInjectable"))) = "string 1";
-char * kString2 __attribute((unused,section("__DATA,FBInjectable"))) = "string 2";
-char * kString3 __attribute((unused,section("__DATA,FBInjectable"))) = "string 3";
+char * kString1 __attribute((used,section("__DATA,FBInjectable"))) = "string 1";
+char * kString2 __attribute((used,section("__DATA,FBInjectable"))) = "string 2";
+char * kString3 __attribute((used,section("__DATA,FBInjectable"))) = "string 3";
 ```
 
-主要在某个地方引用下这个变量，否则编译器会优化掉未使用的变量。
-例如：
-
-```
-NSLog(@"string 1 = %s", kString1);
-NSLog(@"string 2 = %s", kString2);
-NSLog(@"string 3 = %s", kString3);
-```
+PS:文章修改：上面代码unused改为used。不需要引用，即可避免release下被优化掉。
 
 
 # 概括
@@ -295,10 +288,10 @@ Demo中模仿了这个机制。
 ![](/media/14717165824862.jpg)
 
 
-Demo中实现了三种配置类，每个配置类使用类似下面的代码自动创建FBInjectable 段。 （printf只是为了防止被编译器优化掉，应该有其他方法防止优化掉，暂时没找到，如果你知道，请告诉我哈）
+Demo中实现了三种配置类，每个配置类使用类似下面的代码自动创建FBInjectable 段。 （~~printf只是为了防止被编译器优化掉，应该有其他方法防止优化掉，暂时没找到，如果你知道，请告诉我哈~~ ，感谢iOS逆向工程群内的vr2d同学，attribute的第一个参数改为used，就可以避免release下被优化掉。还需认真呀，当时看到unused就感觉有点怪，但没有仔细查找含义。）
 
 ```
-#define FBInjectableDATA __attribute((unused, section("__DATA,FBInjectable")))
+#define FBInjectableDATA __attribute((used, section("__DATA,FBInjectable")))
 ```
 
 ```
@@ -307,7 +300,6 @@ char * kNoteDisplayDefaultConfiguration FBInjectableDATA = "+[NoteDisplayDefault
 @implementation NoteDisplayDefaultConfiguration
 
 + (void)fb_injectable{
-    printf("%s",kNoteDisplayDefaultConfiguration);
 }
 + (NSUInteger)integrationPriority{
     return 0;
