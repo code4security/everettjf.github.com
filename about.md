@@ -5,7 +5,8 @@ permalink: /about/
 comments: true
 ---
 
-
-
-- 现在，帝都iOS工程师
-- 曾经，大明湖畔Windows C++工程师
+```
+std::stack<std::string> exp;
+exp.push("5 Years Windows Security Client (C++) Developer");
+exp.push("N Years iOS Client Developer");
+```
