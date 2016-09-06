@@ -5,4 +5,4 @@ permalink: /software/
 comments: true
 ---
 
-![](software.png)
+![](/software.png)
