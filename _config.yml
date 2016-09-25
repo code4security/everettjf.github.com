@@ -8,7 +8,6 @@ logo: false
 paginate: 15
 baseurl: /
 domain_name: 'https://everettjf.github.io'
-google_analytics: 'UA-XXXXXXXX-X'
 gems: [jekyll-paginate]
 
 # Details for the RSS feed generator

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 探索 Facebook iOS 客户端 - Section fbsessiongks
+title: Explore Facebook iOS Client - Section fbsessiongks
 excerpt: "实验性功能的开关"
 date: 2016-08-21
 tags: [逆向]
