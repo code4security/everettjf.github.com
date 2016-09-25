@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 简单的iOS反调试保护及去掉保护方法
+title: Simple antidebugging and antiantidebugging
 excerpt: "反调试，反反调试"
 date: 2015-12-28
 tags: [iOS逆向]

@@ -1,5 +1,5 @@
 ---
-title: supotato - classify class-dump headers tool
+title: supotato - Tool for classify class-dump headers
 layout: post
 excerpt: "对class-dump出的头文件分类，并猜测出第三方库"
 tags: [工具]
@@ -104,3 +104,5 @@ optional arguments:
 
 	
 	
+
+

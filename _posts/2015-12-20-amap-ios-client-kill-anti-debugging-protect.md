@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 去掉使用ptrace的反动态调试保护
+title: Anti ptrace
 excerpt: "hook ptrace"
 date: 2015-12-20
 tags: [iOS逆向]

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: C++转iOS开发一年总结
+title: Summary for C++ transfer to iOS developer for one year
 excerpt: "可以走的慢，但要按照优先级。不要总学新知识的入门资料，至少要在某一个方面继续学习。"
 date: 2016-06-26
 tags: [总结]
@@ -144,3 +144,5 @@ comments: true
 - 优先级：优先级很重要，尤其是“知道的越多，不知道的越多”的时候。
 
 **可以走的慢，但要按照优先级。不要总学新知识的入门资料，至少要在某一个方面继续学习。**
+
+

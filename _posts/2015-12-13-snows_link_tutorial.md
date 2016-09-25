@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 雪花书签介绍及使用说明
+title: SnowBookmarks readme
 excerpt: "第二次内测，改名为snows.link"
 date: 2015-12-13
 tags: [snows.link]
@@ -99,3 +99,5 @@ comments: true
 # 补充
 - 原有的域名mostlike.link不再使用。
 - 暂时没有使用国内服务器，因为备案有点麻烦。
+
+

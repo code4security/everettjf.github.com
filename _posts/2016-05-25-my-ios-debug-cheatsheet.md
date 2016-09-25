@@ -1,6 +1,6 @@
 ---
 layout: post
-title: iOS Debug 速查表
+title: iOS Debug Cheatsheet
 excerpt: ""
 date: 2016-05-25
 tags: [iOS开发]
@@ -289,3 +289,5 @@ ssh root@localhost -p 2222
 ---
 
 PS：[文章首次发布于iosre.com](http://iosre.com/t/debug/3778)
+
+
