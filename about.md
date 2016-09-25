@@ -1,9 +1,8 @@
 ---
 layout: page
-title: About
-permalink: /about/
-comments: true
+title: About me 
 ---
+
 
 ```
 std::stack<std::string> exp;
