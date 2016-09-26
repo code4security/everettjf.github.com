@@ -3,7 +3,7 @@ description: iOS/Windows Developer
 meta_description: "everettjf - iOS/Windows Developer"
 
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 logo: false
 paginate: 15
 baseurl: /
@@ -17,4 +17,3 @@ email: everettjf@live.com
 url: https://everettjf.github.io # the base hostname & protocol for your site
 permalink:  /:year/:month/:day/:title
 
-markdown:    kramdown
