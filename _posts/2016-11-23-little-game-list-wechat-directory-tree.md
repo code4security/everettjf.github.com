@@ -19,7 +19,7 @@ categories: default
 /Users/ioscmechine/Desktop/hudson/workspace/release_appstore_6.3.29/WeApp/Core/LocalCache/WAPackageSweeperLogic.mm
 ```
 
-一定是用了__FILE__宏导致。
+看来是用了__FILE__宏导致。
 
 用strings把微信（砸壳后）的字符串都存储到一个文件中，
 
@@ -41,4 +41,6 @@ $ strings WeChat > strings_wechat.txt
 [脚本地址](https://github.com/everettjf/f7/tree/master/game/wechat_dir_tree)
 
 [输出的微信文件层次](https://github.com/everettjf/f7/blob/master/game/wechat_dir_tree/wechat_tree.txt)
+
+
 
