@@ -2,10 +2,8 @@
 layout: post
 title: "vim emacs 常用快捷键对比"
 excerpt: "对比下两个神器的快捷键吧，不要再折腾啦"
-tags: [emacs笔记,vim笔记]
 date: 2015-03-05
-modified: 
-comments: true
+categories: 技术
 ---
 
 
@@ -103,3 +101,5 @@ emacs的M-x很强大。
 |      |                | C-h i            | 手册                                                      |
 | *    |                | C-h b            | 显示所有函数绑定(describe bindings)                       |
 |      |                |                  |                                                           |
+
+

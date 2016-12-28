@@ -2,10 +2,8 @@
 layout: post
 title: iOS崩溃收集与分析，使用PLCrashReporter
 excerpt: "如何收集崩溃，并通过符号文件分析崩溃日志"
-tags: [iOS开发笔记,崩溃分析,PLCrashReporter]
 date: 2015-09-09 10:10:10
-modified: 
-comments: true
+categories: 技术
 ---
 
 

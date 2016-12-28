@@ -2,10 +2,8 @@
 layout: post
 title: "redis使用方式总结"
 excerpt: "据说互联网公司都用，我就来了解了解"
-tags: [redis]
 date: 2015-05-31
-modified: 
-comments: true
+categories: 技术
 ---
 
 

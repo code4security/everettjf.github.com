@@ -3,8 +3,7 @@ layout: post
 title: 企业证书签名的App启动慢（停在暗色图标N秒）
 excerpt: "低版本（7.1）Xcode在低版本系统上打包高版本（7.3）Xcode的工程"
 date: 2016-04-22
-tags: [iOS开发]
-comments: true
+categories: 技术
 ---
 
 
@@ -71,3 +70,4 @@ App启动过程一般是这样的：App图标颜色会首先变暗，变暗后�
 stackoverflow 有问类似问题的，但问题原因不一样。
 
 http://stackoverflow.com/questions/29589285/why-ios-apps-signed-with-development-or-enterprise-certificates-launch-slower
+

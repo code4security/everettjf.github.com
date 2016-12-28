@@ -3,8 +3,7 @@ layout: post
 title: YYWebImage note
 excerpt: “功能很全的新兴webimage”
 date: 2016-04-05
-tags: [源码学习]
-comments: true
+categories: 技术
 ---
 
 * TOC

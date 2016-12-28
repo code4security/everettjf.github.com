@@ -3,8 +3,7 @@ layout: post
 title: How to write an RSS reader, readme for 番茄阅读
 excerpt: "简单说下 番茄阅读 的开发思路"
 date: 2016-05-13
-tags: [iOS开发]
-comments: true
+categories: 技术
 ---
 
 

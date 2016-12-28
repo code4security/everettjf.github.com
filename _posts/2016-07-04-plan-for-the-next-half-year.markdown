@@ -2,8 +2,7 @@
 title: Plan for the next half year (2016) on iOS 
 layout: post
 excerpt: "计划"
-tags: [Plan]
-comments: true
+categories: 随笔
 ---
 
 

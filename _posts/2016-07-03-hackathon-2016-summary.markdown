@@ -2,8 +2,7 @@
 title: Summary for segmentfault hackathon 2016
 layout: post
 excerpt: "魔方还原App"
-tags: [随笔]
-comments: true
+categories: 随笔
 ---
 
 

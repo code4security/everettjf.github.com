@@ -2,10 +2,8 @@
 layout: post
 title: 我的机器学习之路，第零篇，横冲直撞
 excerpt: "到底还是个程序员，只知道用现成的库，这些基础还是没有掌握，耗去的时间都只是满足自己虚荣的好奇心"
-tags: [机器学习,随笔]
 date: 2015-07-27
-modified: 
-comments: true
+categories: 随笔
 ---
 
 
@@ -50,3 +48,5 @@ comments: true
   + 消耗了大量时间和精力，并没有达到心中的圣地麦加。
 
 [1] - xiao70
+
+

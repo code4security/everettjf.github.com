@@ -3,8 +3,7 @@ layout: post
 title: Explore Facebook iOS Client - Section fbsessiongks
 excerpt: "实验性功能的开关"
 date: 2016-08-21
-tags: [逆向]
-comments: true
+categories: 技术
 ---
  
 * TOC

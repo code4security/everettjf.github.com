@@ -3,8 +3,7 @@ layout: post
 title: In-App Purchase一个坑和一个未解答问题
 excerpt: "被localizeTitle坑了一把"
 date: 2016-02-01
-tags: [开发]
-comments: true
+categories: 技术
 ---
 
 

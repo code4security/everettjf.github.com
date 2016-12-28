@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Join Ant Financial 3 months and Summary for 2016
+title: Summary for 2016 and 3 months in Ant Financial
 excerpt: "想想美好的青春，做有意义的事情吧"
 date: 2016-12-25
-categories: default
+categories: 随笔
 ---
  
 * TOC
@@ -11,7 +11,9 @@ categories: default
 ---
  
 
-# 加入蚂蚁金服
+# 每次换工作都是人生的一大改变
+
+加入蚂蚁金服，实现了我曾经在二线城市时的“小梦想”。
 
 ## 啰嗦下背景
 

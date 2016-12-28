@@ -2,10 +2,8 @@
 layout: post
 title: "windows下实现鼠标滚轮的”自然方向滚动”"
 excerpt: "小程序"
-tags: [随笔]
 date: 2014-11-07 
-modified: 
-comments: true
+categories: 技术
 ---
 
 最近家里用上了macbookpro，用了一阵子发现鼠标的”自然方向滚动“还是挺好用，也适应了。
@@ -17,3 +15,4 @@ comments: true
 搞了下面这个工具，比较简单。分享给大家。
 
 [https://github.com/everettjf/NatrualScrollMouseForWindows](https://github.com/everettjf/NatrualScrollMouseForWindows)
+

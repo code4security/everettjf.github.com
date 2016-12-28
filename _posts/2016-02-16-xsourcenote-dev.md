@@ -3,8 +3,7 @@ layout: post
 title: XSourceNote第一版完成（Xcode源码笔记插件）
 excerpt: "说好的源码学习呢"
 date: 2016-02-16
-tags: [开发]
-comments: true
+categories: 技术
 ---
 
 PS: 此想法意义不大，不再开发和维护。

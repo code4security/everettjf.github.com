@@ -2,10 +2,8 @@
 layout: post
 title: "Windows程序猿的OSX入门笔记"
 excerpt: "简单记录下最近折腾Mac的一些小资料"
-tags: [Mac开发笔记]
 date: 2015-02-14
-modified: 
-comments: true
+categories: 技术
 ---
 
 

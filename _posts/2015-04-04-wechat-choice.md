@@ -2,10 +2,8 @@
 layout: post
 title: "选择"
 excerpt: "我，意志不坚定，优柔寡断，选择太多，迷失方向"
-tags: [随笔]
 date: 2015-04-04
-modified: 
-comments: true
+categories: 随笔
 ---
 
 
@@ -100,3 +98,5 @@ comments: true
 选择，每时每刻都在进行。现在我选择去睡觉了，晚睡1分钟，或许明天就是另一个不同的世界。晚睡几分钟呢？应该有个最优解。
 
   开始美好的工作吧。
+
+

@@ -3,8 +3,7 @@ layout: post
 title: iOS Debug Cheatsheet
 excerpt: ""
 date: 2016-05-25
-tags: [iOS开发]
-comments: true
+categories: 技术
 ---
 
 

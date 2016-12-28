@@ -3,8 +3,7 @@ layout: post
 title: Explore Facebook iOS Client - Section RODATA
 excerpt: "Facebook 瘦身"
 date: 2016-08-19
-tags: [逆向]
-comments: true
+categories: 技术
 ---
  
 * TOC

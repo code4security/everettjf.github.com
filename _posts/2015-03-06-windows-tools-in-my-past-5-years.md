@@ -2,10 +2,8 @@
 layout: post
 title: "Windows平台C++5年来使用到的工具汇总"
 excerpt: "做了5年Windows平台的客户端开发，总结下用过的工具和开发库"
-tags: [Windows开发笔记]
 date: 2015-03-06
-modified: 
-comments: true
+categories: 技术
 ---
 
 Windows平台的C++开发工作已经5年时间，在即将转向Android开发之时，整理下曾经使用到的工具。
@@ -131,3 +129,5 @@ Star表示此工具很常用。
   |      | WTL              |                       |
   |      | libtomcrypt      |                       |
   |      | mysql++          |                       |
+
+

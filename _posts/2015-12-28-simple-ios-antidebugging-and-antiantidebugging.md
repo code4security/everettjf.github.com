@@ -3,8 +3,7 @@ layout: post
 title: Simple antidebugging and antiantidebugging
 excerpt: "反调试，反反调试"
 date: 2015-12-28
-tags: [iOS逆向]
-comments: true
+categories: 技术
 ---
 
 * TOC
@@ -80,3 +79,4 @@ int main(int argc, char * argv[]) {
 4. http://www.opensource.apple.com/source/dyld/dyld-210.2.3/src/dyld.cpp42
 5. https://theiphonewiki.com/wiki/Launchd.conf_untether17
 6. http://navillezhang.me/
+

@@ -3,8 +3,7 @@ layout: post
 title: Explore WeChat for Chat UI Implementation
 excerpt: "逆向辅助正向开发 , Reverse Explore WeChat UI Implementation"
 date: 2016-06-19
-tags: [iOS开发]
-comments: true
+categories: 技术
 ---
 
 

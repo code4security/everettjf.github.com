@@ -3,8 +3,7 @@ layout: post
 title: Apple Developer 登录错误，400电话解决
 excerpt: "可以解决，但原因不告诉我"
 date: 2016-04-20
-tags: [iOS开发]
-comments: true
+categories: 技术
 ---
 
 前端时间发现自己的Apple Developer账号不能在 https://developer.apple.com 登录了。
@@ -29,3 +28,4 @@ comments: true
 我问“平时使用VPN会有影响吗？”，对面说“没有影响”。
 
 好吧，解决了。
+
