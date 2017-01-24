@@ -124,7 +124,11 @@ XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePat
 关于Xcode7支持的问题，我还挺纳闷，自己开发一直都是Xcode7（Xcode6升级到的Xcode7），为什么没有那个id也可以正常用呢。我得研究研究去……
 
 
+---
 
+# 2017年1月24日更新
+
+现在已经支持Xcode8了。模仿的XVim的安装方式（重签名Xcode后，make）。
 
 
 

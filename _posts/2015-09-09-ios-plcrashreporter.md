@@ -11,7 +11,6 @@ categories: 技术
 {:toc}
 
 
-[本文示例代码](https://github.com/everettjf/ios_crash_report_demo)
 
 
 # 简介

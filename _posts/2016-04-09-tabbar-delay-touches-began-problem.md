@@ -82,8 +82,5 @@ Stackoverflow 有类似问题
 
 delay的原因是由于手势需要知道是要滑动还是仅仅点击。
 
-# 代码示例
 
-
-https://github.com/everettjf/mydemos/tree/master/TabTouchDelay
 
