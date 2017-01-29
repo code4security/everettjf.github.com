@@ -38,9 +38,9 @@ $ strings WeChat > strings_wechat.txt
 ![](/media/14798366527896.jpg)
 
 
-[脚本地址](https://github.com/everettjf/Maize/tree/master/game/wechat_dir_tree)
+[脚本地址](https://github.com/everettjf/Abmov/tree/master/game/wechat_dir_tree)
 
-[输出的微信文件层次](https://github.com/everettjf/Maize/blob/master/game/wechat_dir_tree/wechat_tree.txt)
+[输出的微信文件层次](https://github.com/everettjf/Abmov/blob/master/game/wechat_dir_tree/wechat_tree.txt)
 
 
 

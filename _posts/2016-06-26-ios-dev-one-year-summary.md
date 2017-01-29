@@ -27,7 +27,7 @@ categories: 随笔
 
 # 逆向
 
-11月底开始，至12月底，几乎一个月的晚上时间（孩子一般11点才睡觉，我就折腾到一两点）用来学习《iOS应用逆向工程》这本书，最终年底产出一个 [支付宝语音保存Tweak](https://github.com/everettjf/Maize/game/AlipayWalletChatVoiceSaver) ，也写了[开发笔记](https://everettjf.github.io/2015/12/29/tweak-for-alipay-wallet-chat-voice-save)。
+11月底开始，至12月底，几乎一个月的晚上时间（孩子一般11点才睡觉，我就折腾到一两点）用来学习《iOS应用逆向工程》这本书，最终年底产出一个 [支付宝语音保存Tweak](https://github.com/everettjf/Abmov/game/AlipayWalletChatVoiceSaver) ，也写了[开发笔记](https://everettjf.github.io/2015/12/29/tweak-for-alipay-wallet-chat-voice-save)。
 
 2014年我还在做类似360杀毒的安全软件，那时把《病毒分析实战》这本书仔细的边读边做了一遍，但没进一步学习，仅停留在了书中的例子和简单的分析上。由于工作仍然是以业务为主，客户上报了有问题的PE文件，汇编是我的弱势，更多是在金山火眼等其他工具中分析，自己并没有去仔细分析汇编代码。
 

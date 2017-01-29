@@ -213,7 +213,7 @@ cy# [#0x319c400 chatDataSource]
 
 参见代码：
 
-[https://github.com/everettjf/Maize/game/AlipayWalletChatVoiceSaver](https://github.com/everettjf/Maize/game/AlipayWalletChatVoiceSaver)
+[https://github.com/everettjf/Abmov/game/AlipayWalletChatVoiceSaver](https://github.com/everettjf/Abmov/game/AlipayWalletChatVoiceSaver)
 
 # 补充
 
