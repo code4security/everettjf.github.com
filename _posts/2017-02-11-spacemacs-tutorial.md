@@ -101,7 +101,7 @@ C-g 如果在输入某个快捷键中途出错，可以用这个取消。
 <spc> w V 右侧分屏，并移动焦点到右侧
 <spc> w S 下侧分屏，并移动焦点到下侧
 <spc> w d 退出当前分屏
-<spc> 1 切换到编号1的分屏（2、3、4以此类推，每个分屏左下角有编号）
+<spc> 1 切换到编号1的分屏（2、3、4以此类推，每个分屏左下角有编号） <spc> w m 只保留当前分屏（切换）
 ```
 
 
@@ -118,9 +118,64 @@ C-g 如果在输入某个快捷键中途出错，可以用这个取消。
 <spc> f e d
 ```
 
-## 搜索、替换
+## 搜索
 
-// todo
+```
+// 文件内容不多时，基本够用。但文件内容较多（例如文件1MB以上）就慢了
+<spc> s s 
+
+// 使用grep，性能好，适合大文件
+<spc> s g b 对当前打开的所有buffers
+<spc> s g g 对当前文件
+
+// 使用ag，性能更好
+<spc> s a b 对当前打开的所有buffers
+<spc> s a a 对当前文件
+```
+
+## 替换
+
+```
+M-x replace-string 
+```
+
+## 编辑
+
+```
+u 撤销
+C-r 重做
+
+g c c 注释、反注释
+```
+
+## 目录树
+
+```
+<spc> f t 打开关闭目录树
+<spc> p t 定位到工程目录
+```
+
+## project工程
+
+在某个目录下创建.projectile空白文件，或者包含.git目录的文件夹会自动识别为工程根目录。
+
+
+```
+<spc> / 工程内查找
+<spc> * 工程内查找当前光标所在文字
+<spc> p R 工程内替换
+<spc> p f 工程内定位文件
+
+<spc> p p 多个工程切换
+```
+
+工程列表存在于下面的文件：
+
+```
+.emacs.d\.cache\projectile-bookmarks.eld
+```
+
+空格分隔。
 
 # 基本配置
 
@@ -136,17 +191,45 @@ dotspacemacs-fullscreen-at-startup t 全屏最大化
 
 ## 选择layer
 
+配置文件中修改
 
+```
+   dotspacemacs-configuration-layers
+   '(
+     helm
+     auto-completion
+     better-defaults
+     emacs-lisp
+     git
+     markdown
+     org
+     syntax-checking
+     python
+     javascript
+     c-c++
+     )
+```
 
-
+只是我目前的配置。也是为了下文中提到的 python javascript 和 c++。
 
 # 日常小需求
 
 ## 过滤日志
 
+1. 把大文件拖入emacs。
+2. `<spc> s g b` 可以grep。
+
 ## 模糊定位文件夹中的文件
 
+1. 在目标文件夹创建.projectile空白文件。
+2. `<spc> p f`定位文件。
+
+
 ## 查找、替换文件夹中的所有文件
+
+1. 在目标文件夹创建.projectile空白文件。
+2. `<spc> /`文件夹中查找。
+3. `<spc> p R`工程内替换。
 
 ## logos 语法
 
@@ -163,7 +246,11 @@ dotspacemacs-fullscreen-at-startup t 全屏最大化
 
 # 补充
 
-## 安装SourcePro字体
+## 安装SourceCodePro字体
+
+https://github.com/adobe-fonts/source-code-pro
+
+## nyan cat
 
 
 
