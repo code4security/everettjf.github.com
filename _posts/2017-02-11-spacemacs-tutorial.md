@@ -104,10 +104,34 @@ C-g 如果在输入某个快捷键中途出错，可以用这个取消。
 <spc> 1 切换到编号1的分屏（2、3、4以此类推，每个分屏左下角有编号）
 ```
 
+
+## 如何改变字体大小
+
+```
+<spc> z x 弹出选项，=放大，-缩小，0恢复
+```
+
+
+## 打开.spacemacs配置文件
+
+```
+<spc> f e d
+```
+
+## 搜索、替换
+
+// todo
+
 # 基本配置
 
 ## 默认窗口最大化
 
+配置文件中修改以下任意一项
+
+```
+dotspacemacs-maximized-at-startup t 最大化
+dotspacemacs-fullscreen-at-startup t 全屏最大化
+```
 
 
 ## 选择layer
