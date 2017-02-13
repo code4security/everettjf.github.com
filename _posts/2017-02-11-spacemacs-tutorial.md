@@ -43,6 +43,7 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 C-n 表示Ctrl键的同时，按下字母键n。
 M-x 表示Option键（alt键）的同时，按下字母键x。
 <spc> f f 表示先后按下空格键、字母键f、字母键f。
+<ret> 回车。
 ```
 
 # 基本操作
@@ -76,6 +77,28 @@ C-g 如果在输入某个快捷键中途出错，可以用这个取消。
 <spc> s s
 ```
 
+## 多个文件间切换
+
+```
+<spc> b b 列出所有打开的文件
+```
+
+然后C-n、C-p选择，或者输入字符过滤，最后<ret>。
+
+## 回到上一个打开的文件
+
+```
+<spc> <tab>
+```
+
+可以多次执行来回切换。
+
+## 分屏
+
+```
+
+```
+
 # 基本配置
 
 ## 默认窗口最大化
@@ -106,4 +129,14 @@ C-g 如果在输入某个快捷键中途出错，可以用这个取消。
 
 # Python 开发
 
+
+# 补充
+
+## 安装SourcePro字体
+
+
+
+# 参考资料
+
+- https://simpletutorials.com/c/2859/How+to+change+your+.spacemacs+configuration+file
 
