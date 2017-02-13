@@ -252,7 +252,11 @@ https://github.com/adobe-fonts/source-code-pro
 
 ## nyan cat
 
+```
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t)
 
+```
 
 # 参考资料
 
