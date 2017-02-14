@@ -233,13 +233,11 @@ dotspacemacs-fullscreen-at-startup t 全屏最大化
 
 ## logos 语法
 
-# Javascript 开发
-
-
-
 # C++ 开发
 
 # Python 开发
+
+# Javascript 开发
 
 # GTD 时间管理
 
