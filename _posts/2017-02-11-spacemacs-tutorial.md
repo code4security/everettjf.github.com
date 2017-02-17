@@ -259,3 +259,12 @@ https://github.com/adobe-fonts/source-code-pro
 
 - https://simpletutorials.com/c/2859/How+to+change+your+.spacemacs+configuration+file
 
+
+# TODO
+
+*文章会随着我的使用和学习不断完善*
+
+- C++
+- Javascript / TypeScript
+- Python
+
