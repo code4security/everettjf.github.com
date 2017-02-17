@@ -1,6 +1,6 @@
 ---
 layout: post
-title: （Writing)Spacemacs Tutorial
+title: Spacemacs Tutorial
 excerpt: ""
 date: 2017-02-11
 categories: default
@@ -233,13 +233,12 @@ dotspacemacs-fullscreen-at-startup t 全屏最大化
 
 ## logos 语法
 
-# C++ 开发
+```
 
-# Python 开发
+;; theos - for jailbreak iOS Tweak files
+(add-to-list 'auto-mode-alist '("\\.xm$" . objc-mode))
 
-# Javascript 开发
-
-# GTD 时间管理
+```
 
 
 # 补充
