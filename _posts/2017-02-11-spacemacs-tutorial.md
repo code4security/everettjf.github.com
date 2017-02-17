@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Spacemacs Tutorial
-excerpt: "spacemacs 简要入门指南"
+excerpt: "spacemacs 入门指南"
 date: 2017-02-11
 categories: default
 ---
